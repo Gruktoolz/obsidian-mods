@@ -1,0 +1,178 @@
+[mod]
+id = "biomecompass"
+version = "0.2.2"
+# Its pinned guest_command hook shares Game::guest_command with TreeFall's
+# (200); each claims only its own command, so the order between them doesn't
+# matter. Its other pinned hooks are BiomeCompass's alone.
+priority = 150
+
+# Pinned: five hooks (marked below) target game functions that are not native
+# hook points, and native.rs calls the game's own internals (the level's world
+# generator, `/tp`, the LAN hub, the inventories), so BiomeCompass builds on
+# this commit only. Its other hooks use only hook points (NATIVE_HOOKS_API 1).
+[compatibility]
+
+# The search, the settings, the item's components, the recipe and the picker
+# as plain values: in the game's library (public), so the library's hooks (a
+# guest's crafting table, the command tree) reach them as the game's do.
+[[module]]
+id = "runtime"
+file = "crates/horizon-client/src/lib.rs"
+name = "biomecompass"
+source = "runtime.rs"
+visibility = "pub"
+
+# The Biome Compass on the game's item stacks and NBT, the recipe on its
+# crafting grids, the commands in its command tree.
+[[module]]
+id = "item"
+file = "crates/horizon-client/src/lib.rs"
+name = "biomecompass_item"
+source = "item.rs"
+visibility = "pub"
+
+[[module]]
+id = "native"
+file = "crates/horizon-client/src/game.rs"
+name = "biomecompass_native"
+source = "native.rs"
+
+# Hook point: `/biomecompass` (`/bcompass`), typed or clicked in chat.
+[[injection]]
+id = "command"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::Game<'_>::native_command"
+helper = "command.rs"
+bindings = [
+  { name = "game", ty = "&mut crate::game::Game<'_>", value = "&mut *self" },
+  { name = "command", ty = "&str", value = "command" },
+  { name = "ran", ty = "&mut bool", value = "&mut *ran" },
+]
+
+# Hook point: the searches in progress, a slice a tick; the window passes
+# Options > Mods' on/off to single player's server thread.
+[[injection]]
+id = "tick"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::Game<'_>::native_tick"
+helper = "tick.rs"
+bindings = [
+  { name = "game", ty = "&mut crate::game::Game<'_>", value = "&mut *self" },
+]
+
+# Hook point: the needle and the distance on the HUD.
+[[injection]]
+id = "hud"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::Game<'_>::native_hud"
+helper = "hud.rs"
+bindings = [
+  { name = "game", ty = "&mut crate::game::Game<'_>", value = "&mut *self" },
+  { name = "batch", ty = "&mut horizon_client::hud::HudBatch", value = "&mut *batch" },
+  { name = "corners", ty = "&mut horizon_client::extras_hud::Corners", value = "&mut *corners" },
+]
+
+# Hook points: the row in Options > Mods and its settings page.
+[[injection]]
+id = "list"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::Game<'_>::native_mods"
+helper = "list.rs"
+bindings = [
+  { name = "mods", ty = "&mut Vec<crate::game::native_hooks::NativeMod>", value = "&mut *mods" },
+]
+
+[[injection]]
+id = "settings"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::Game<'_>::native_settings"
+helper = "settings.rs"
+bindings = [
+  { name = "game", ty = "&mut crate::game::Game<'_>", value = "&mut *self" },
+  { name = "mod_id", ty = "&str", value = "mod_id" },
+  { name = "buttons", ty = "&mut Vec<String>", value = "&mut *buttons" },
+]
+
+[[injection]]
+id = "click"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::Game<'_>::native_settings_click"
+helper = "click.rs"
+bindings = [
+  { name = "game", ty = "&mut crate::game::Game<'_>", value = "&mut *self" },
+  { name = "mod_id", ty = "&str", value = "mod_id" },
+  { name = "button", ty = "usize", value = "button" },
+]
+
+# Pinned: a LAN or server guest may run `/biomecompass` (a survival tool)
+# even where guests may not run commands; native_command only sees commands
+# that are allowed to run.
+[[injection]]
+id = "guest-command"
+kind = "HEAD"
+cancellable = true
+target = "horizon_client::game::lan_actions::Game<'_>::guest_command"
+helper = "guest-command.rs"
+bindings = [
+  { name = "game", ty = "&mut crate::game::Game<'_>", value = "&mut *self" },
+  { name = "host", ty = "&mut crate::game::lan::LanHost", value = "&mut *host" },
+  { name = "conn", ty = "u32", value = "conn" },
+  { name = "command", ty = "&str", value = "command" },
+]
+
+# Pinned: a right-click with the Biome Compass opens the biome picker. In
+# use_hand, use_potion_item is the first item use a compass reaches once the
+# block aimed at has had its turn (a guest's UseItem; the window's player
+# in-frame); use_hand itself holds a macro, which HEAD refuses.
+[[injection]]
+id = "use"
+kind = "HEAD"
+cancellable = true
+target = "horizon_client::game::potions::Game<'_>::use_potion_item"
+helper = "use.rs"
+bindings = [
+  { name = "game", ty = "&mut crate::game::Game<'_>", value = "&mut *self" },
+  { name = "stack", ty = "&horizon_client::items::ItemStack", value = "stack" },
+]
+
+# Pinned: the recipe, on the window's own crafting grid (in-frame). The data
+# pack's recipes are loaded once into read-only resources, so the recipe is
+# matched where the grid's result is looked up.
+[[injection]]
+id = "craft"
+kind = "HEAD"
+cancellable = true
+target = "horizon_client::game::Game<'_>::craft_recipe"
+helper = "craft.rs"
+bindings = [
+  { name = "game", ty = "&crate::game::Game<'_>", value = "self" },
+]
+
+# Pinned: the recipe, on a crafting table run by the host's menu engine (LAN
+# and server guests, single player's own window).
+[[injection]]
+id = "menu-craft"
+kind = "HEAD"
+cancellable = true
+target = "horizon_client::menu::Menu::recompute"
+helper = "menu-craft.rs"
+bindings = [
+  { name = "menu", ty = "&mut Menu", value = "&mut *self" },
+  { name = "env", ty = "&Env<'_>", value = "env" },
+]
+
+# Pinned: `/biomecompass` in the command tree a guest receives, so their
+# chat box knows it and a vanilla client runs the picker's buttons as typed.
+# It joins the server mods' commands, which the game sets when a hub opens
+# (send_commands, which builds the packet, holds a macro).
+[[injection]]
+id = "commands"
+kind = "HEAD"
+cancellable = true
+target = "horizon_client::lan::hub::Hub::set_mod_commands"
+helper = "commands.rs"
+bindings = [
+  { name = "hub", ty = "&mut Hub", value = "&mut *self" },
+  { name = "key", ty = "u64", value = "key" },
+  { name = "commands", ty = "&serde_json::Value", value = "&commands" },
+]

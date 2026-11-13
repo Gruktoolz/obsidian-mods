@@ -1,0 +1,187 @@
+[mod]
+id = "chat_animation"
+version = "0.1.3"
+priority = 100
+
+[compatibility]
+
+# The animations, the settings and the config screen. In the render library, beside the chat.
+[[module]]
+id = "anim"
+file = "crates/horizon-client-render/src/lib.rs"
+name = "native_chat_animation"
+source = "anim.rs"
+visibility = "pub"
+
+# ChatComponent: a new message rises into place and fades in; the indicator bar can go.
+[[injection]]
+id = "layout"
+kind = "HEAD"
+cancellable = true
+target = "horizon_client_render::chat::Chat::layout"
+helper = "layout.rs"
+bindings = [
+  { name = "chat", ty = "&Chat", value = "self" },
+  { name = "height", ty = "i32", value = "height" },
+  { name = "ticks", ty = "f32", value = "ticks" },
+  { name = "focused", ty = "bool", value = "focused" },
+]
+
+# ChatScreen: the input field slides up as the chat opens.
+[[injection]]
+id = "opened"
+kind = "HEAD"
+target = "horizon_client_render::chat::ChatScreen::new"
+helper = "opened.rs"
+bindings = [{ name = "width", ty = "i32", value = "width" }]
+
+[[injection]]
+id = "input"
+kind = "HEAD"
+cancellable = true
+target = "horizon_client_render::chat::ChatScreen::draw"
+helper = "input.rs"
+bindings = [
+  { name = "screen", ty = "&mut ChatScreen", value = "&mut *self" },
+  { name = "m", ty = "&Measure", value = "m" },
+  { name = "mouse", ty = "(i32, i32)", value = "mouse" },
+  { name = "blink_ms", ty = "u64", value = "blink_ms" },
+  { name = "background", ty = "i32", value = "background" },
+]
+
+# Options' first page: the "Chat Animation Settings..." button, in the free half of the last row.
+# Around other mods' layout hooks (it runs outside them), so it takes a place they left free and
+# never hides their buttons.
+[[injection]]
+id = "options-layout"
+kind = "HEAD"
+cancellable = true
+priority = 150
+target = "horizon_client_render::options_ui::OptionsUi::layout"
+helper = "options_layout.rs"
+bindings = [
+  { name = "ui", ty = "&mut OptionsUi", value = "&mut *self" },
+  { name = "s", ty = "&Settings", value = "s" },
+  { name = "w", ty = "f32", value = "w" },
+  { name = "h", ty = "f32", value = "h" },
+]
+
+# The config screen: drawn in place of the Options screen while it is open, and the Options
+# screen's mouse, drag, wheel and keys are its own then.
+[[injection]]
+id = "options-draw"
+kind = "HEAD"
+cancellable = true
+priority = 200
+target = "horizon_client::game::options::Game<'_>::draw_options"
+helper = "options_draw.rs"
+bindings = [
+  { name = "game", ty = "&mut crate::game::Game<'_>", value = "&mut *self" },
+  { name = "batch", ty = "&mut HudBatch", value = "&mut *batch" },
+]
+
+[[injection]]
+id = "options-mouse"
+kind = "HEAD"
+cancellable = true
+priority = 200
+target = "horizon_client::game::options::Game<'_>::options_mouse"
+helper = "options_mouse.rs"
+bindings = [
+  { name = "game", ty = "&mut crate::game::Game<'_>", value = "&mut *self" },
+  { name = "pressed", ty = "bool", value = "pressed" },
+  { name = "right", ty = "bool", value = "right" },
+]
+
+[[injection]]
+id = "options-drag"
+kind = "HEAD"
+cancellable = true
+priority = 200
+target = "horizon_client::game::options::Game<'_>::options_drag"
+helper = "options_drag.rs"
+bindings = [{ name = "game", ty = "&mut crate::game::Game<'_>", value = "&mut *self" }]
+
+[[injection]]
+id = "options-scroll"
+kind = "HEAD"
+cancellable = true
+priority = 200
+target = "horizon_client::game::options::Game<'_>::options_scroll"
+helper = "options_scroll.rs"
+bindings = [
+  { name = "game", ty = "&mut crate::game::Game<'_>", value = "&mut *self" },
+  { name = "amount", ty = "f32", value = "amount" },
+]
+
+[[injection]]
+id = "options-key"
+kind = "HEAD"
+cancellable = true
+priority = 200
+target = "horizon_client::game::options::Game<'_>::options_key"
+helper = "options_key.rs"
+bindings = [
+  { name = "game", ty = "&mut crate::game::Game<'_>", value = "&mut *self" },
+  { name = "key", ty = "KeyCode", value = "key" },
+  { name = "text", ty = "Option<&str>", value = "text" },
+]
+
+# Options > Mods: the row and its settings page.
+[[injection]]
+id = "listed"
+hook = "mods"
+hook_version = 1
+kind = "HEAD"
+helper = "listed.rs"
+bindings = [{ name = "mods", ty = "&mut Vec<crate::game::native_hooks::NativeMod>", value = "&mut *mods" }]
+
+[[injection]]
+id = "settings"
+hook = "settings"
+hook_version = 1
+kind = "HEAD"
+helper = "settings.rs"
+bindings = [
+  { name = "mod_id", ty = "&str", value = "mod_id" },
+  { name = "buttons", ty = "&mut Vec<String>", value = "&mut *buttons" },
+]
+
+[[injection]]
+id = "settings-click"
+hook = "settings_click"
+hook_version = 1
+kind = "HEAD"
+helper = "settings_click.rs"
+bindings = [
+  { name = "mod_id", ty = "&str", value = "mod_id" },
+  { name = "button", ty = "usize", value = "button" },
+]
+
+# Once a frame: the settings, and the mod's switch.
+[[injection]]
+id = "frame"
+hook = "frame"
+hook_version = 1
+kind = "HEAD"
+helper = "frame.rs"
+bindings = [{ name = "game", ty = "&mut crate::game::Game<'_>", value = "&mut *self" }]
+
+# DirectX 12 (FXC): Horizon's terrain shader made ready for FXC; the game crashed at its start there.
+[[module]]
+id = "fxc_runtime"
+file = "crates/horizon-client-render/src/lib.rs"
+name = "native_chat_animation_fxc"
+source = "fxc_runtime.rs"
+visibility = "pub"
+
+[[injection]]
+id = "fxc"
+kind = "HEAD"
+cancellable = true
+target = "horizon_client_render::gfx::reuse::On<'_>::create_shader_module"
+helper = "fxc.rs"
+bindings = [
+  { name = "this", ty = "&On<'_>", value = "self" },
+  { name = "descriptor", ty = "&wgpu::ShaderModuleDescriptor<'_>", value = "&descriptor" },
+]

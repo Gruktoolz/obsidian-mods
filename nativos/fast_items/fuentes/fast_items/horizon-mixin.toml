@@ -1,0 +1,52 @@
+[mod]
+id = "fast_items"
+version = "0.1.0"
+priority = 100
+
+[compatibility]
+
+[[module]]
+id = "runtime"
+file = "crates/horizon-client/src/game.rs"
+name = "fast_items_runtime"
+source = "runtime.rs"
+
+[[module]]
+id = "renderer"
+file = "crates/horizon-client/src/game.rs"
+name = "fast_items_renderer"
+source = "renderer.rs"
+
+[[injection]]
+id = "flatten-sprite-layers"
+kind = "MODIFY_VARIABLE"
+target = "horizon_client::game::item_draw::Game<'_>::dropped_item_geometry"
+variable = { name = "state", ordinal = 0, at = "STORE" }
+require = 1
+ordinal = 0
+helper = "flatten.rs"
+bindings = [{ name = "value", ty = "horizon_client::item_render::ItemRenderState", value = "$value" }]
+
+[[injection]]
+id = "face-camera"
+kind = "MODIFY_VARIABLE"
+target = "horizon_client::game::item_draw::Game<'_>::dropped_item_geometry"
+variable = { name = "pose", ordinal = 0, at = "STORE" }
+require = 1
+ordinal = 0
+helper = "pose.rs"
+bindings = [
+  { name = "value", ty = "glam::Mat4", value = "$value" },
+  { name = "game", ty = "&crate::game::Game<'_>", value = "&*self" },
+  { name = "state", ty = "&horizon_client::item_render::ItemRenderState", value = "$local_ref:state:0" },
+]
+
+[[injection]]
+id = "item-shadows"
+kind = "MODIFY_VARIABLE"
+target = "horizon_client::game::Game<'_>::entity_geometry"
+variable = { name = "item", ordinal = 1, at = "STORE" }
+require = 1
+ordinal = 0
+helper = "shadows.rs"
+bindings = [{ name = "value", ty = "(f32, f32)", value = "$value" }]

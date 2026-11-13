@@ -1,0 +1,71 @@
+[mod]
+id = "enchantmenthints"
+version = "0.1.0"
+# Nobody else hooks the tooltip; same-site HEAD hooks run by priority, highest
+# first, and the first Break skips the rest.
+priority = 100
+
+# Pinned: the tooltip hook (marked below) targets a game function that is not
+# a native hook point (game/native_hooks.rs has none for item tooltips), and
+# native.rs reads the game's own internals (the enchantment registry, the
+# Shift keys), so the mod is made for this one commit. Its other hooks use only
+# hook points (NATIVE_HOOKS_API 1).
+[compatibility]
+
+[[module]]
+id = "runtime"
+file = "crates/horizon-client/src/game.rs"
+name = "enchantmenthints"
+source = "runtime.rs"
+
+[[module]]
+id = "native"
+file = "crates/horizon-client/src/game.rs"
+name = "enchantmenthints_native"
+source = "native.rs"
+
+# Pinned: every item tooltip (inventories, creative, containers, chat's
+# show_item, the recipe book) is built here; the hints go in under its
+# enchantment lines.
+[[injection]]
+id = "tooltip"
+kind = "HEAD"
+cancellable = true
+target = "horizon_client::game::stations::Game<'_>::stack_tooltip"
+helper = "tooltip.rs"
+bindings = [
+  { name = "game", ty = "&crate::game::Game<'_>", value = "self" },
+  { name = "stack", ty = "&horizon_client::items::ItemStack", value = "stack" },
+]
+
+# Hook points: the row in Options > Mods and its settings page.
+[[injection]]
+id = "list"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::Game<'_>::native_mods"
+helper = "list.rs"
+bindings = [
+  { name = "mods", ty = "&mut Vec<crate::game::native_hooks::NativeMod>", value = "&mut *mods" },
+]
+
+[[injection]]
+id = "settings"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::Game<'_>::native_settings"
+helper = "settings.rs"
+bindings = [
+  { name = "game", ty = "&mut crate::game::Game<'_>", value = "&mut *self" },
+  { name = "mod_id", ty = "&str", value = "mod_id" },
+  { name = "buttons", ty = "&mut Vec<String>", value = "&mut *buttons" },
+]
+
+[[injection]]
+id = "click"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::Game<'_>::native_settings_click"
+helper = "click.rs"
+bindings = [
+  { name = "game", ty = "&mut crate::game::Game<'_>", value = "&mut *self" },
+  { name = "mod_id", ty = "&str", value = "mod_id" },
+  { name = "button", ty = "usize", value = "button" },
+]

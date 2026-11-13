@@ -1,0 +1,88 @@
+{
+ "id": "atlas",
+ "estado": "sin probar",
+ "necesita": {
+  "companeros": [],
+  "mundo": "creativo, plano o nuevo"
+ },
+ "entradas": [
+  {
+   "tipo": "tecla",
+   "accion": "(fija en el código)",
+   "tecla": "key.keyboard.b",
+   "efecto_esperado": null
+  },
+  {
+   "tipo": "tecla",
+   "accion": "(fija en el código)",
+   "tecla": "key.keyboard.equal",
+   "efecto_esperado": null
+  },
+  {
+   "tipo": "tecla",
+   "accion": "(fija en el código)",
+   "tecla": "key.keyboard.f1",
+   "efecto_esperado": null
+  },
+  {
+   "tipo": "tecla",
+   "accion": "(fija en el código)",
+   "tecla": "key.keyboard.h",
+   "efecto_esperado": null
+  },
+  {
+   "tipo": "tecla",
+   "accion": "(fija en el código)",
+   "tecla": "key.keyboard.keypad.add",
+   "efecto_esperado": null
+  },
+  {
+   "tipo": "tecla",
+   "accion": "(fija en el código)",
+   "tecla": "key.keyboard.keypad.subtract",
+   "efecto_esperado": null
+  },
+  {
+   "tipo": "tecla",
+   "accion": "(fija en el código)",
+   "tecla": "key.keyboard.left.bracket",
+   "efecto_esperado": null
+  },
+  {
+   "tipo": "tecla",
+   "accion": "(fija en el código)",
+   "tecla": "key.keyboard.m",
+   "efecto_esperado": null
+  },
+  {
+   "tipo": "tecla",
+   "accion": "(fija en el código)",
+   "tecla": "key.keyboard.minus",
+   "efecto_esperado": null
+  },
+  {
+   "tipo": "tecla",
+   "accion": "(fija en el código)",
+   "tecla": "key.keyboard.n",
+   "efecto_esperado": null
+  },
+  {
+   "tipo": "tecla",
+   "accion": "(fija en el código)",
+   "tecla": "key.keyboard.right.bracket",
+   "efecto_esperado": null
+  },
+  {
+   "tipo": "tecla",
+   "accion": "(fija en el código)",
+   "tecla": "key.keyboard.t",
+   "efecto_esperado": null
+  }
+ ],
+ "comprobaciones": [
+  "el juego arranca con el mod activado",
+  "sin panic ni ANR durante 30 s",
+  "cada entrada no produce error en el registro"
+ ],
+ "funcional": false
+}

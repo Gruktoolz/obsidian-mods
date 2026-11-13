@@ -1,0 +1,36 @@
+[mod]
+id = "invisible_frames"
+version = "0.1.1"
+priority = 100
+
+[compatibility]
+
+[[injection]]
+id = "invisible_frames-hook"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::Game<'_>::native_interact_entity"
+helper = "hook.rs"
+bindings = [{ name = "game", ty = "&mut crate::game::Game<'_>", value = "&mut *self" }, { name = "entity", ty = "i32", value = "entity" }, { name = "kind", ty = "&str", value = "kind" }, { name = "claimed", ty = "&mut bool", value = "&mut *claimed" }]
+
+[[injection]]
+id = "listed"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::Game<'_>::native_mods"
+helper = "list_hook.rs"
+bindings = [{ name = "mods", ty = "&mut Vec<crate::game::native_hooks::NativeMod>", value = "&mut *mods" }]
+
+[[module]]
+id = "acting-sneak"
+file = "crates/horizon-client/src/game.rs"
+name = "invisible_frames_sneak"
+source = "sneak.rs"
+
+[[injection]]
+id = "capture-acting-sneak"
+kind = "HEAD"
+target = "horizon_client::game::lan_actions::Game<'_>::enter_guest"
+helper = "sneak_hook.rs"
+bindings = [
+ {name="host",ty="&mut crate::game::lan::LanHost",value="&mut *host"},
+ {name="conn",ty="u32",value="conn"},
+]

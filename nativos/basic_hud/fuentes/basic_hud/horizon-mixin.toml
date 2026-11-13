@@ -1,0 +1,337 @@
+[mod]
+id = "basic_hud"
+version = "0.5.0"
+priority = 100
+
+# Counting totems and writing above a player's head hook the game's own
+# functions, which have no hook point, so it builds on this commit only.
+[compatibility]
+
+[[module]]
+id = "recent_pickups"
+file = "crates/horizon-client/src/game.rs"
+name = "basic_hud_recent_pickups"
+source = "recent_pickups.rs"
+
+[[module]]
+id = "pickup_data"
+file = "crates/horizon-client/src/game.rs"
+name = "basic_hud_pickup_data"
+source = "pickup_data.rs"
+
+[[injection]]
+id = "pickup_before"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::Game<'_>::native_pickup_refused"
+helper = "pickup_before.rs"
+bindings = [
+  { name = "game", ty = "&crate::game::Game<'_>", value = "&*self" },
+  { name = "stack", ty = "&horizon_client::items::ItemStack", value = "stack" },
+]
+
+[[injection]]
+id = "pickup_local"
+kind = "HEAD"
+target = "horizon_client::game::pickups::Game<'_>::add_pickup"
+helper = "pickup_local.rs"
+bindings = [
+  { name = "game", ty = "&crate::game::Game<'_>", value = "&*self" },
+  { name = "taken", ty = "&crate::game::pickups::Taken", value = "&taken" },
+  { name = "collector", ty = "crate::game::pickups::Collector", value = "collector" },
+]
+
+[[module]]
+id = "pickup_packets"
+file = "crates/horizon-client/src/net.rs"
+name = "basic_hud_pickup_packets"
+source = "pickup_packets.rs"
+visibility = "pub"
+
+[[injection]]
+id = "pickup_poll"
+kind = "RETURN"
+target = "horizon_client::net::Session::poll"
+helper = "pickup_poll.rs"
+bindings = [
+  { name = "events", ty = "Vec<Event>", value = "$value" },
+  { name = "session", ty = "&crate::net::Session", value = "self" },
+]
+
+[[module]]
+id = "runtime"
+file = "crates/horizon-client/src/game.rs"
+name = "basic_hud"
+source = "runtime.rs"
+
+[[module]]
+id = "players"
+file = "crates/horizon-client/src/game.rs"
+name = "basic_hud_players"
+source = "players.rs"
+
+[[module]]
+id = "i18n"
+file = "crates/horizon-client/src/game.rs"
+name = "basic_hud_i18n"
+source = "i18n.rs"
+
+[[module]]
+id = "data"
+file = "crates/horizon-client/src/game.rs"
+name = "basic_hud_data"
+source = "data.rs"
+
+[[module]]
+id = "data_logic"
+file = "crates/horizon-client/src/game.rs"
+name = "basic_hud_logic"
+source = "data_logic.rs"
+
+[[module]]
+id = "render"
+file = "crates/horizon-client/src/game.rs"
+name = "basic_hud_render"
+source = "render.rs"
+
+[[module]]
+id = "editor"
+file = "crates/horizon-client/src/game.rs"
+name = "basic_hud_editor"
+source = "editor.rs"
+
+[[module]]
+id = "thread_done"
+file = "crates/horizon-threads/src/lib.rs"
+name = "basic_hud_thread_done"
+source = "thread_done.rs"
+
+[[module]]
+id = "tab"
+file = "crates/horizon-client/src/game.rs"
+name = "basic_hud_tab"
+source = "tab.rs"
+
+[[injection]]
+id = "tab_list"
+kind = "HEAD"
+target = "horizon_client::game::scoreboard::Game<'_>::draw_tab_list"
+helper = "tab_hook.rs"
+cancellable = true
+bindings = [
+  { name = "game", ty = "&mut crate::game::Game<'_>", value = "&mut *self" },
+  { name = "batch", ty = "&mut horizon_client::hud::HudBatch", value = "&mut *batch" },
+]
+
+[[bridge]]
+id = "cooldown_entries"
+kind = "GET"
+target = "horizon_items::cooldowns::Cooldowns"
+member = "entries"
+
+[[bridge]]
+id = "cooldown_tick"
+kind = "GET"
+target = "horizon_items::cooldowns::Cooldowns"
+member = "tick_count"
+
+[[injection]]
+id = "hud"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::Game<'_>::native_hud"
+helper = "hud.rs"
+bindings = [
+  { name = "game", ty = "&mut crate::game::Game<'_>", value = "&mut *self" },
+  { name = "batch", ty = "&mut horizon_client::hud::HudBatch", value = "&mut *batch" },
+  { name = "corners", ty = "&mut horizon_client::extras_hud::Corners", value = "&mut *corners" },
+]
+
+[[injection]]
+id = "tick"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::Game<'_>::native_tick"
+helper = "tick.rs"
+bindings = [
+  { name = "game", ty = "&mut crate::game::Game<'_>", value = "&mut *self" },
+]
+
+[[injection]]
+id = "list"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::Game<'_>::native_mods"
+helper = "list.rs"
+bindings = [
+  { name = "mods", ty = "&mut Vec<crate::game::native_hooks::NativeMod>", value = "&mut *mods" },
+  { name = "game", ty = "&mut crate::game::Game<'_>", value = "&mut *self" },
+]
+
+[[injection]]
+id = "settings"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::Game<'_>::native_settings"
+helper = "settings.rs"
+bindings = [
+  { name = "game", ty = "&mut crate::game::Game<'_>", value = "&mut *self" },
+  { name = "mod_id", ty = "&str", value = "mod_id" },
+  { name = "buttons", ty = "&mut Vec<String>", value = "&mut *buttons" },
+]
+
+[[injection]]
+id = "click"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::Game<'_>::native_settings_click"
+helper = "click.rs"
+bindings = [
+  { name = "game", ty = "&mut crate::game::Game<'_>", value = "&mut *self" },
+  { name = "mod_id", ty = "&str", value = "mod_id" },
+  { name = "button", ty = "usize", value = "button" },
+]
+
+# Not hook points: entity event 35 reaches a mod nowhere else.
+[[injection]]
+id = "totem"
+kind = "HEAD"
+target = "horizon_client::game::totem::Game<'_>::totem_event"
+helper = "totem.rs"
+bindings = [
+  { name = "game", ty = "&mut crate::game::Game<'_>", value = "&mut *self" },
+  { name = "body", ty = "&Body", value = "&body" },
+  { name = "own", ty = "bool", value = "own" },
+]
+
+[[injection]]
+id = "name_tags"
+kind = "HEAD"
+target = "horizon_client::game::names::Game<'_>::name_tag_geometry"
+helper = "name_tags.rs"
+bindings = [
+  { name = "game", ty = "&mut crate::game::Game<'_>", value = "&mut *self" },
+  { name = "camera", ty = "glam::DVec3", value = "camera" },
+  { name = "alpha", ty = "f64", value = "alpha" },
+  { name = "out", ty = "&mut Vec<Vertex>", value = "&mut *out" },
+  { name = "see_through", ty = "&mut Vec<Vertex>", value = "&mut *see_through" },
+]
+
+[[injection]]
+id = "frame"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::Game<'_>::native_frame"
+helper = "frame.rs"
+bindings = [
+  { name = "game", ty = "&mut crate::game::Game<'_>", value = "&mut *self" },
+  { name = "elapsed", ty = "std::time::Duration", value = "elapsed" },
+]
+
+[[injection]]
+id = "health_packet"
+kind = "HEAD"
+target = "horizon_client::game::remote_mob_data::Game<'_>::remote_mob_data"
+helper = "health_packet.rs"
+bindings = [
+  { name = "game", ty = "&mut crate::game::Game<'_>", value = "&mut *self" },
+  { name = "id", ty = "i32", value = "id" },
+  { name = "values", ty = "&[(u8, i32, horizon_protocol::entity_data::Value)]", value = "values" },
+]
+
+[[injection]]
+id = "editor_key"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::Game<'_>::native_key"
+helper = "key.rs"
+bindings = [
+  { name = "game", ty = "&mut crate::game::Game<'_>", value = "&mut *self" },
+  { name = "key", ty = "&str", value = "key" },
+  { name = "pressed", ty = "bool", value = "pressed" },
+]
+
+[[injection]]
+id = "editor_draw"
+kind = "HEAD"
+cancellable = true
+target = "horizon_client::game::options::Game<'_>::draw_options"
+helper = "draw_options.rs"
+bindings = [
+  { name = "game", ty = "&mut crate::game::Game<'_>", value = "&mut *self" },
+  { name = "batch", ty = "&mut horizon_client::hud::HudBatch", value = "&mut *batch" },
+]
+
+[[injection]]
+id = "editor_mouse"
+kind = "HEAD"
+cancellable = true
+target = "horizon_client::game::options::Game<'_>::options_mouse"
+helper = "options_mouse.rs"
+bindings = [
+  { name = "game", ty = "&mut crate::game::Game<'_>", value = "&mut *self" },
+  { name = "pressed", ty = "bool", value = "pressed" },
+  { name = "right", ty = "bool", value = "right" },
+]
+
+[[injection]]
+id = "editor_drag"
+kind = "HEAD"
+cancellable = true
+target = "horizon_client::game::options::Game<'_>::options_drag"
+helper = "options_drag.rs"
+bindings = [
+  { name = "game", ty = "&mut crate::game::Game<'_>", value = "&mut *self" },
+]
+
+[[injection]]
+id = "editor_keyboard"
+kind = "HEAD"
+cancellable = true
+target = "horizon_client::game::options::Game<'_>::options_key"
+helper = "options_key.rs"
+bindings = [
+  { name = "game", ty = "&mut crate::game::Game<'_>", value = "&mut *self" },
+  { name = "key", ty = "winit::keyboard::KeyCode", value = "key" },
+  { name = "text", ty = "Option<&str>", value = "text" },
+]
+
+[[injection]]
+id = "editor_scroll"
+kind = "HEAD"
+cancellable = true
+target = "horizon_client::game::options::Game<'_>::options_scroll"
+helper = "options_scroll.rs"
+bindings = [
+  { name = "game", ty = "&mut crate::game::Game<'_>", value = "&mut *self" },
+  { name = "amount", ty = "f32", value = "amount" },
+]
+
+[[injection]]
+id = "editor_shortcut"
+kind = "HEAD"
+cancellable = true
+target = "horizon_client::game::options::Game<'_>::options_shortcut"
+helper = "options_shortcut.rs"
+bindings = [
+  { name = "game", ty = "&mut crate::game::Game<'_>", value = "&mut *self" },
+]
+
+[[injection]]
+id = "entity_spawn_reset"
+kind = "HEAD"
+target = "horizon_client::game::remote::Game<'_>::spawn_entity"
+helper = "entity_spawn.rs"
+bindings = [
+  { name = "game", ty = "&mut crate::game::Game<'_>", value = "&mut *self" },
+  { name = "id", ty = "i32", value = "id" },
+]
+
+[[injection]]
+id = "entity_remove_reset"
+kind = "HEAD"
+target = "horizon_client::game::remote::Game<'_>::remove_entity"
+helper = "entity_remove.rs"
+bindings = [
+  { name = "game", ty = "&mut crate::game::Game<'_>", value = "&mut *self" },
+  { name = "id", ty = "i32", value = "id" },
+]
+
+[[injection]]
+id = "allocator_setup"
+kind = "HEAD"
+target = "horizon_threads::configure_allocator"
+helper = "allocator_setup.rs"
+bindings = []

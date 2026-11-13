@@ -1,0 +1,23 @@
+{
+ "id": "accurate_block_placement",
+ "estado": "sin errores, efecto sin verificar",
+ "necesita": {
+  "companeros": [],
+  "mundo": "creativo, plano o nuevo"
+ },
+ "entradas": [],
+ "comprobaciones": [
+  "el juego arranca con el mod activado",
+  "sin panic ni ANR durante 30 s",
+  "cada entrada no produce error en el registro"
+ ],
+ "funcional": false,
+ "resultado": "sin errores, efecto sin verificar",
+ "errores": [],
+ "entradas_ok": 0,
+ "probado": "2026-11-11 21:33:35",
+ "capturas": [
+  "00-al-entrar.png"
+ ],
+ "registro_del_mod": []
+}

@@ -1,0 +1,40 @@
+{
+ "id": "firstpersonmodel",
+ "estado": "sin probar",
+ "necesita": {
+  "companeros": [],
+  "mundo": "creativo, plano o nuevo"
+ },
+ "entradas": [
+  {
+   "tipo": "tecla",
+   "accion": "(fija en el código)",
+   "tecla": "key.keyboard.a",
+   "efecto_esperado": null
+  },
+  {
+   "tipo": "tecla",
+   "accion": "(fija en el código)",
+   "tecla": "key.keyboard.c",
+   "efecto_esperado": null
+  },
+  {
+   "tipo": "tecla",
+   "accion": "(fija en el código)",
+   "tecla": "key.keyboard.f6",
+   "efecto_esperado": null
+  },
+  {
+   "tipo": "tecla",
+   "accion": "(fija en el código)",
+   "tecla": "key.keyboard.v",
+   "efecto_esperado": null
+  }
+ ],
+ "comprobaciones": [
+  "el juego arranca con el mod activado",
+  "sin panic ni ANR durante 30 s",
+  "cada entrada no produce error en el registro"
+ ],
+ "funcional": false
+}

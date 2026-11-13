@@ -1,0 +1,167 @@
+[mod]
+id = "first_person_body"
+version = "1.0.0"
+priority = 100
+
+# The Horizon commit it was written and checked against (Nightly 2026-11-08).
+# Besides hook points it hooks the game's own rendering functions
+# (perspective.rs, mobs/anim.rs, mobs/render.rs, mob_blocks.rs,
+# cosmetics.rs), which a later Horizon may change.
+[compatibility]
+
+# In `mobs`, which both the game crate and horizon-client-lib (where the
+# model is drawn) reach: `horizon_client::mobs::first_person_body`.
+[[module]]
+id = "runtime"
+file = "crates/horizon-client/src/mobs.rs"
+name = "first_person_body"
+source = "runtime.rs"
+visibility = "pub"
+
+# Whether the own body is drawn: also in first person.
+[[injection]]
+id = "in_view"
+kind = "RETURN"
+target = "horizon_client::game::perspective::Game<'_>::own_body_in_view"
+helper = "in_view.rs"
+bindings = [
+  { name = "game", ty = "&crate::game::Game<'_>", value = "self" },
+  { name = "value", ty = "bool", value = "$value" },
+]
+
+# While the own model is drawn in first person.
+[[injection]]
+id = "begin"
+kind = "HEAD"
+target = "horizon_client::game::perspective::Game<'_>::player_model_geometry"
+helper = "begin.rs"
+bindings = [
+  { name = "game", ty = "&crate::game::Game<'_>", value = "self" },
+]
+
+[[injection]]
+id = "end"
+kind = "RETURN"
+target = "horizon_client::game::perspective::Game<'_>::player_model_geometry"
+helper = "end.rs"
+bindings = [
+  { name = "value", ty = "()", value = "$value" },
+]
+
+# The head (and the arms, with the vanilla hand) hidden: the game's ten-line
+# visibility, rewritten with that added.
+[[injection]]
+id = "parts"
+kind = "OVERWRITE"
+target = "horizon_client::mobs::anim::player_model_visibility"
+helper = "parts.rs"
+bindings = [
+  { name = "p", ty = "&mut Poses", value = "&mut *p" },
+  { name = "hidden", ty = "u8", value = "hidden" },
+  { name = "spectator", ty = "bool", value = "spectator" },
+]
+
+# The body a little behind the camera.
+[[injection]]
+id = "offset"
+kind = "RETURN"
+target = "horizon_client::mobs::render::base_transform"
+helper = "offset.rs"
+bindings = [
+  { name = "value", ty = "glam::Mat4", value = "$value" },
+]
+
+# What would sit at the camera, or double the vanilla hand.
+[[injection]]
+id = "skip_held"
+kind = "HEAD"
+cancellable = true
+target = "horizon_client::game::mob_blocks::Game<'_>::held_item_geometry"
+helper = "skip_held.rs"
+bindings = []
+
+[[injection]]
+id = "skip_head_item"
+kind = "HEAD"
+cancellable = true
+target = "horizon_client::game::mob_blocks::Game<'_>::head_item_geometry"
+helper = "skip_head.rs"
+bindings = []
+
+[[injection]]
+id = "skip_ears"
+kind = "HEAD"
+cancellable = true
+target = "horizon_client::game::perspective::Game<'_>::player_ears_geometry"
+helper = "skip_head.rs"
+bindings = []
+
+[[injection]]
+id = "skip_cosmetics"
+kind = "HEAD"
+cancellable = true
+target = "horizon_client::game::cosmetics::Game<'_>::cosmetics_geometry"
+helper = "skip_cosmetics.rs"
+bindings = []
+
+# Native hook points: the vanilla hand with model arms, settings, key.
+[[injection]]
+id = "hand"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::Game<'_>::native_render_hand"
+helper = "hand.rs"
+bindings = [
+  { name = "game", ty = "&crate::game::Game<'_>", value = "self" },
+  { name = "canceled", ty = "&mut bool", value = "&mut *canceled" },
+]
+
+[[injection]]
+id = "tick"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::Game<'_>::native_tick"
+helper = "tick.rs"
+bindings = [
+  { name = "game", ty = "&mut crate::game::Game<'_>", value = "&mut *self" },
+]
+
+[[injection]]
+id = "key"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::Game<'_>::native_key"
+helper = "key.rs"
+bindings = [
+  { name = "game", ty = "&mut crate::game::Game<'_>", value = "&mut *self" },
+  { name = "key", ty = "&str", value = "key" },
+  { name = "pressed", ty = "bool", value = "pressed" },
+]
+
+[[injection]]
+id = "list"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::Game<'_>::native_mods"
+helper = "list.rs"
+bindings = [
+  { name = "mods", ty = "&mut Vec<crate::game::native_hooks::NativeMod>", value = "&mut *mods" },
+]
+
+[[injection]]
+id = "settings"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::Game<'_>::native_settings"
+helper = "settings.rs"
+bindings = [
+  { name = "game", ty = "&mut crate::game::Game<'_>", value = "&mut *self" },
+  { name = "mod_id", ty = "&str", value = "mod_id" },
+  { name = "buttons", ty = "&mut Vec<String>", value = "&mut *buttons" },
+]
+
+[[injection]]
+id = "click"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::Game<'_>::native_settings_click"
+helper = "click.rs"
+bindings = [
+  { name = "game", ty = "&mut crate::game::Game<'_>", value = "&mut *self" },
+  { name = "mod_id", ty = "&str", value = "mod_id" },
+  { name = "button", ty = "usize", value = "button" },
+]

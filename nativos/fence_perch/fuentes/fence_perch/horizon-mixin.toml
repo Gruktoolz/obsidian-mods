@@ -1,0 +1,84 @@
+[mod]
+id = "fence_perch"
+version = "1.0.0"
+priority = 0
+
+[compatibility]
+
+[[module]]
+id = "core"
+file = "crates/horizon-client/src/client_lib.rs"
+name = "fence_perch_core"
+source = "core.rs"
+
+[[module]]
+id = "query"
+file = "crates/horizon-client/src/client_lib.rs"
+name = "fence_perch_query"
+source = "query.rs"
+
+[[module]]
+id = "validation"
+file = "crates/horizon-client/src/client_lib.rs"
+name = "fence_perch_validation"
+source = "validator.rs"
+
+[[module]]
+id = "player-movement-runtime"
+file = "crates/horizon-client/src/motion.rs"
+name = "fence_perch"
+source = "runtime.rs"
+
+[[module]]
+id = "server"
+file = "crates/horizon-client/src/lan/hub.rs"
+name = "fence_perch_server"
+source = "server.rs"
+
+[[injection]]
+id = "player-movement"
+kind = "HEAD"
+cancellable = true
+target = "horizon_client_lib::motion::<MotionWorld<'_,'_,'_> as EntityMoveWorld>::collide"
+helper = "collide.rs"
+bindings = [
+  { name = "motion", ty = "&mut crate::motion::MotionWorld<'_, '_, '_>", value = "&mut *self" },
+  { name = "movement", ty = "Vec3", value = "movement" },
+]
+
+[[injection]]
+id = "player-clearance"
+kind = "HEAD"
+cancellable = true
+target = "horizon_client_lib::motion::MotionWorld<'_,'_,'_>::no_player_collision"
+helper = "clear.rs"
+bindings = [
+  { name = "motion", ty = "&mut crate::motion::MotionWorld<'_, '_, '_>", value = "&mut *self" },
+  { name = "bounds", ty = "Aabb", value = "bounds" },
+]
+
+[[injection]]
+id = "player-ground-support"
+kind = "HEAD"
+cancellable = true
+target = "horizon_client_lib::motion::<MotionWorld<'_,'_,'_> as EntityMoveWorld>::set_on_ground_with_movement"
+helper = "ground.rs"
+bindings = [
+  { name = "motion", ty = "&mut crate::motion::MotionWorld<'_, '_, '_>", value = "&mut *self" },
+  { name = "below", ty = "bool", value = "below" },
+  { name = "horizontal", ty = "bool", value = "horizontal" },
+  { name = "movement", ty = "Vec3", value = "movement" },
+]
+
+[[injection]]
+id = "server-collision-result"
+kind = "RETURN"
+target = "horizon_client_lib::lan::hub::Hub::collide"
+helper = "result.rs"
+bindings = [
+  { name = "value", ty = "(bool, bool, bool)", value = "$value" },
+  { name = "hub", ty = "&crate::lan::hub::Hub", value = "self" },
+  { name = "index", ty = "usize", value = "i" },
+  { name = "destination", ty = "[f64; 3]", value = "to" },
+  { name = "ctx", ty = "&crate::lan::hub::TickCtx<'_>", value = "ctx" },
+]

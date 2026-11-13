@@ -1,0 +1,36 @@
+Strangely Charming — Ears-compatible skin rendering for Horizon
+
+The Ears skin formats and feature geometry are designed by exa/unascribed and
+Ears contributors. Specification/reference:
+https://git.sleeping.town/exa/Ears-Fifth-Edition
+Reference revision: 3d42f726b05e687c096e7a4d6b427ae6e51768ec2c94ad1430721daec720b64a
+
+This bundle contains a Rust implementation and native Horizon adapters, not the
+Java Ears mod or its game binaries. Ears and Minecraft are names of their
+respective projects/owners. This is not an official Ears or Minecraft release.
+No Minecraft textures, account credentials, or player skins are bundled.
+
+The source packaging tool is adapted from the MIT-licensed Horizon native mod
+template (Horizon Veinminer contributors / Horizon native mod contributors).
+Its license is included as LICENSE.template.
+
+Poison Apple texture: supplied by Evander in this task as apple.png, used
+unmodified as requested. SHA-256: 91df65d18e6881c453bbc657c3db871dea7b8fb9e990980280f5c9e6d047edae
+This asset is not covered by the template's MIT license; no broader licensing
+claim is made. Minecraft infection sound is referenced
+by its vanilla event ID; no Minecraft audio is redistributed.
+Fullbright behavior was requested with Full Brightness Toggle 2.2 as reference;
+no code or assets from that Java mod are included.
+
+Selected block, item and entity artwork and adapted recipes derive from Charm Fabric 4.4.4. See LICENSE.charm. Pinned Horizon adaptations are covered by LICENSE.horizon.
+
+Retreat Horn texture supplied by Evander as goat_horn.png, used unmodified. The item references the vanilla goat horn display transforms.
+
+Moonstone, Totem of Enchanting, quest scrolls and Scrollkeeper artwork derive from Strange 1.15.2 beta.5 hotfix1. The Writing Desk art is credited to mcvinnyq. See LICENSE.charm-and-strange.
+
+Runebreaker sprite: tool_fancy_diamond_hammer.png by Malcolm Riley, unmodified.
+https://github.com/malcolmriley/unused-textures/blob/8b85ad732023174d9a9da74e6bf2272d6c0bef17/items/tool_fancy_diamond_hammer.png
+Creative Commons Attribution 4.0 International: https://creativecommons.org/licenses/by/4.0/
+
+Runestone glyph sprites and the adapted Icy Chambers and Undir structure pieces are from Strange, revision 77f237c60344a20f4fc9c3b59c44b79ca129e87f. Modern jigsaw connectors and decorative marker substitutions by this port. See LICENSE.charm-and-strange.
+Title card, divider, footer and mod icon supplied by Evander.

@@ -1,0 +1,20 @@
+[mod]
+id = "held_item_info"
+version = "0.1.0"
+priority = 100
+
+[compatibility]
+
+[[injection]]
+id = "held_item_info-hook"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::Game<'_>::native_gui_layer_post"
+helper = "hook.rs"
+bindings = [{ name = "game", ty = "&crate::game::Game<'_>", value = "&*self" }, { name = "layer", ty = "&str", value = "layer" }, { name = "batch", ty = "&mut horizon_client::hud::HudBatch", value = "&mut *batch" }]
+
+[[injection]]
+id = "listed"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::Game<'_>::native_mods"
+helper = "list_hook.rs"
+bindings = [{ name = "mods", ty = "&mut Vec<crate::game::native_hooks::NativeMod>", value = "&mut *mods" }]

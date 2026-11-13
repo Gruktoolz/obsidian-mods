@@ -1,0 +1,222 @@
+[mod]
+id = "seedcrackerx"
+version = "0.2.3"
+priority = 90
+
+# The Nightly this was written against: the Horizon the instance plays. It reads the game's world and the seed the server
+# sent, so it names the commit it needs; Baritone is pinned to the same one, so the two build together.
+[compatibility]
+
+[[module]]
+id = "mod_scx_version"
+file = "crates/horizon-client/src/game.rs"
+name = "scx_version"
+source = "src/core/version.rs"
+
+[[module]]
+id = "mod_scx_mth"
+file = "crates/horizon-client/src/game.rs"
+name = "scx_mth"
+source = "src/core/mth.rs"
+
+[[module]]
+id = "mod_scx_lcg"
+file = "crates/horizon-client/src/game.rs"
+name = "scx_lcg"
+source = "src/core/lcg.rs"
+
+[[module]]
+id = "mod_scx_sha256"
+file = "crates/horizon-client/src/game.rs"
+name = "scx_sha256"
+source = "src/core/sha256.rs"
+
+[[module]]
+id = "mod_scx_rand"
+file = "crates/horizon-client/src/game.rs"
+name = "scx_rand"
+source = "src/core/rand.rs"
+
+[[module]]
+id = "mod_scx_seeds"
+file = "crates/horizon-client/src/game.rs"
+name = "scx_seeds"
+source = "src/core/seeds.rs"
+
+[[module]]
+id = "mod_scx_dimension"
+file = "crates/horizon-client/src/game.rs"
+name = "scx_dimension"
+source = "src/core/dimension.rs"
+
+[[module]]
+id = "mod_scx_biome"
+file = "crates/horizon-client/src/game.rs"
+name = "scx_biome"
+source = "src/core/biome.rs"
+
+[[module]]
+id = "mod_scx_worldgen_random"
+file = "crates/horizon-client/src/game.rs"
+name = "scx_worldgen_random"
+source = "src/core/worldgen_random.rs"
+
+[[module]]
+id = "mod_scx_feature"
+file = "crates/horizon-client/src/game.rs"
+name = "scx_feature"
+source = "src/feature/feature.rs"
+
+[[module]]
+id = "mod_scx_cracker_data"
+file = "crates/horizon-client/src/game.rs"
+name = "scx_cracker_data"
+source = "src/cracker/data.rs"
+
+[[module]]
+id = "mod_scx_cracker_storage"
+file = "crates/horizon-client/src/game.rs"
+name = "scx_cracker_storage"
+source = "src/cracker/storage.rs"
+
+[[module]]
+id = "mod_scx_cracker_time_machine"
+file = "crates/horizon-client/src/game.rs"
+name = "scx_cracker_time_machine"
+source = "src/cracker/time_machine.rs"
+
+[[module]]
+id = "mod_scx_config"
+file = "crates/horizon-client/src/game.rs"
+name = "scx_config"
+source = "src/config/config.rs"
+
+[[module]]
+id = "mod_scx_features"
+file = "crates/horizon-client/src/game.rs"
+name = "scx_features"
+source = "src/feature/features.rs"
+
+[[module]]
+id = "mod_scx_level"
+file = "crates/horizon-client/src/game.rs"
+name = "scx_level"
+source = "src/finder/level.rs"
+
+[[module]]
+id = "mod_scx_finder_piece"
+file = "crates/horizon-client/src/game.rs"
+name = "scx_finder_piece"
+source = "src/finder/piece.rs"
+
+[[module]]
+id = "mod_scx_finder_structures"
+file = "crates/horizon-client/src/game.rs"
+name = "scx_finder_structures"
+source = "src/finder/structures_dsl.rs"
+
+[[module]]
+id = "mod_scx_finder"
+file = "crates/horizon-client/src/game.rs"
+name = "scx_finder"
+source = "src/finder/finder.rs"
+
+[[module]]
+id = "mod_scx_finders"
+file = "crates/horizon-client/src/game.rs"
+name = "scx_finders"
+source = "src/finder/finders.rs"
+
+[[module]]
+id = "mod_scx_lang"
+file = "crates/horizon-client/src/game.rs"
+name = "scx_lang"
+source = "src/config/lang.rs"
+
+[[module]]
+id = "mod_scx_structure_save"
+file = "crates/horizon-client/src/game.rs"
+name = "scx_structure_save"
+source = "src/config/structure_save.rs"
+
+[[module]]
+id = "mod_scx_database"
+file = "crates/horizon-client/src/game.rs"
+name = "scx_database"
+source = "src/config/database.rs"
+
+# The part that touches the game.
+[[module]]
+id = "mod_scx_game"
+file = "crates/horizon-client/src/game.rs"
+name = "scx_game"
+source = "src/game/seedcracker.rs"
+
+[[injection]]
+id = "tick"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::Game<'_>::native_tick"
+helper = "hooks/tick.rs"
+bindings = [
+  { name = "game", ty = "&mut crate::game::Game<'_>", value = "&mut *self" },
+]
+
+[[injection]]
+id = "command"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::Game<'_>::native_command"
+helper = "hooks/command.rs"
+bindings = [
+  { name = "game", ty = "&mut crate::game::Game<'_>", value = "&mut *self" },
+  { name = "command", ty = "&str", value = "command" },
+  { name = "ran", ty = "&mut bool", value = "ran" },
+]
+
+[[injection]]
+id = "commands"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::Game<'_>::native_commands"
+helper = "hooks/commands.rs"
+bindings = [
+  { name = "commands", ty = "&mut Vec<&'static str>", value = "commands" },
+]
+
+[[injection]]
+id = "list"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::Game<'_>::native_mods"
+helper = "hooks/list.rs"
+bindings = [
+  { name = "mods", ty = "&mut Vec<crate::game::native_hooks::NativeMod>", value = "&mut *mods" },
+]
+
+[[injection]]
+id = "settings"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::Game<'_>::native_settings"
+helper = "hooks/settings.rs"
+bindings = [
+  { name = "game", ty = "&mut crate::game::Game<'_>", value = "&mut *self" },
+  { name = "mod_id", ty = "&str", value = "mod_id" },
+  { name = "buttons", ty = "&mut Vec<String>", value = "&mut *buttons" },
+]
+
+[[injection]]
+id = "click"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::Game<'_>::native_settings_click"
+helper = "hooks/click.rs"
+bindings = [
+  { name = "game", ty = "&mut crate::game::Game<'_>", value = "&mut *self" },
+  { name = "mod_id", ty = "&str", value = "mod_id" },
+  { name = "button", ty = "usize", value = "button" },
+]
+
+[[injection]]
+id = "gizmos"
+kind = "HEAD"
+target = "horizon_client::game::debug_renderers::Game<'_>::debug_renderer_gizmos"
+helper = "hooks/gizmos.rs"
+bindings = [
+  { name = "gizmos", ty = "&mut horizon_client::gizmos::Gizmos", value = "g" },
+]

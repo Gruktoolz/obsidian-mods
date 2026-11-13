@@ -1,0 +1,157 @@
+[mod]
+id = "livingmotion"
+version = "1.2.0"
+priority = 100
+
+# Nightly 2026-11-05 (nightly-source/2026-11-05-f319701). The player model's
+# pose and rotations are game functions the named hook catalog doesn't cover,
+# so the bundle pins this commit.
+[compatibility]
+
+# The rig: springs and the model hooks, in the client library next to the
+# models (public so the game side can feed it).
+[[module]]
+id = "rig"
+file = "crates/horizon-client/src/mobs.rs"
+name = "livingmotion"
+source = "rig.rs"
+visibility = "pub"
+
+# The game side: the frame update, settings, keys.
+[[module]]
+id = "glue"
+file = "crates/horizon-client/src/game.rs"
+name = "livingmotion"
+source = "glue.rs"
+
+# Elytra trails, ported from Elytra Contrails (MPL-2.0, its own file).
+[[module]]
+id = "trails"
+file = "crates/horizon-client/src/game.rs"
+name = "livingmotion_trails"
+source = "trails.rs"
+
+# ---- the model
+
+# anim::setup (setupAnim for every model): which player is being posed.
+[[injection]]
+id = "pose-start"
+kind = "HEAD"
+target = "horizon_client_lib::mobs::anim::setup"
+helper = "h_pose_start.rs"
+bindings = [
+  { name = "m", ty = "&crate::mobs::Mob", value = "m" },
+  { name = "s", ty = "&crate::mobs::anim::State", value = "s" },
+]
+
+# PlayerModel.setupAnim's end (its part visibility, players only): the rig's angles on top.
+[[injection]]
+id = "pose"
+kind = "RETURN"
+target = "horizon_client_lib::mobs::anim::player_model_visibility"
+helper = "h_pose.rs"
+bindings = [
+  { name = "value", ty = "()", value = "$value" },
+  { name = "p", ty = "&mut crate::mobs::anim::Poses", value = "p" },
+]
+
+# setupRotations' end: the whole model leans, banks, bounces and squashes.
+[[injection]]
+id = "body"
+kind = "RETURN"
+target = "horizon_client_lib::mobs::render::species_rotations"
+helper = "h_body.rs"
+bindings = [
+  { name = "value", ty = "glam::Mat4", value = "$value" },
+  { name = "m", ty = "&crate::mobs::Mob", value = "m" },
+  { name = "alpha", ty = "f32", value = "alpha" },
+]
+
+# ---- the mod's own hook points: list, settings, key, frame
+
+[[injection]]
+id = "list"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::Game<'_>::native_mods"
+helper = "h_list.rs"
+bindings = [
+  { name = "mods", ty = "&mut Vec<horizon_client::mod_api::NativeMod>", value = "&mut *mods" },
+]
+
+[[injection]]
+id = "settings"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::Game<'_>::native_settings"
+helper = "h_settings.rs"
+bindings = [
+  { name = "game", ty = "&mut crate::game::Game<'_>", value = "&mut *self" },
+  { name = "mod_id", ty = "&str", value = "mod_id" },
+  { name = "buttons", ty = "&mut Vec<String>", value = "&mut *buttons" },
+]
+
+[[injection]]
+id = "settings-click"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::Game<'_>::native_settings_click"
+helper = "h_settings_click.rs"
+bindings = [
+  { name = "game", ty = "&mut crate::game::Game<'_>", value = "&mut *self" },
+  { name = "mod_id", ty = "&str", value = "mod_id" },
+  { name = "button", ty = "usize", value = "button" },
+]
+
+[[injection]]
+id = "key"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::Game<'_>::native_key"
+helper = "h_key.rs"
+bindings = [
+  { name = "game", ty = "&mut crate::game::Game<'_>", value = "&mut *self" },
+  { name = "key", ty = "&str", value = "key" },
+  { name = "pressed", ty = "bool", value = "pressed" },
+]
+
+[[injection]]
+id = "frame"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::Game<'_>::native_frame"
+helper = "h_frame.rs"
+bindings = [
+  { name = "game", ty = "&mut crate::game::Game<'_>", value = "&mut *self" },
+]
+
+# ---- first person and the world
+
+# The first-person hands' extra pose (blocks and degrees), API 369.
+[[injection]]
+id = "hand-pose"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::Game<'_>::native_render_hand_pose"
+helper = "h_hand_pose.rs"
+bindings = [
+  { name = "game", ty = "&crate::game::Game<'_>", value = "self" },
+  { name = "hand", ty = "horizon_client::first_person::Hand", value = "hand" },
+  { name = "stack", ty = "Option<&horizon_client::items::ItemStack>", value = "stack" },
+  { name = "partial", ty = "f32", value = "partial" },
+  { name = "swing", ty = "f32", value = "swing" },
+  { name = "x", ty = "&mut f32", value = "&mut *x" },
+  { name = "y", ty = "&mut f32", value = "&mut *y" },
+  { name = "z", ty = "&mut f32", value = "&mut *z" },
+  { name = "pitch", ty = "&mut f32", value = "&mut *pitch" },
+  { name = "yaw", ty = "&mut f32", value = "&mut *yaw" },
+  { name = "roll", ty = "&mut f32", value = "&mut *roll" },
+]
+
+# After the text displays (a translucent entity span): the elytra trails.
+[[injection]]
+id = "world"
+kind = "RETURN"
+target = "horizon_client::game::text_displays::Game<'_>::text_display_geometry"
+helper = "h_world.rs"
+bindings = [
+  { name = "value", ty = "()", value = "$value" },
+  { name = "game", ty = "&mut crate::game::Game<'_>", value = "&mut *self" },
+  { name = "camera", ty = "glam::DVec3", value = "camera" },
+  { name = "partial", ty = "f64", value = "partial" },
+  { name = "normal", ty = "&mut Vec<horizon_client::mesher::Vertex>", value = "&mut *normal" },
+]

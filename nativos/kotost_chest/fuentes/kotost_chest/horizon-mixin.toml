@@ -1,0 +1,38 @@
+# Kotost chest: two buttons beside a chest's sort button: everything from the inventory into the chest, and
+# everything from the chest into the inventory (ordinary Shift-clicks, so they work on any server).
+# Horizon's own sort buttons must be on (Horizon extras: "sort:true" in horizon-extras.txt).
+# Native mod for Horizon nightly-2026-11-08-fdc87ae (docs/native-mods.md, horizon-mixins).
+[mod]
+id = "kotost_chest"
+version = "0.1.0"
+priority = 100
+
+[compatibility]
+
+# Inside the game's inventory extras (crate::game::tweaks::kotost_chest): it reaches their sort buttons and clicks.
+[[module]]
+id = "runtime"
+file = "crates/horizon-client/src/game/tweaks.rs"
+name = "kotost_chest"
+source = "chest.rs"
+visibility = "pub"
+
+[[injection]]
+id = "draw"
+kind = "HEAD"
+target = "horizon_client::game::tweaks::Game<'_>::draw_sort_buttons"
+helper = "hooks/draw.rs"
+bindings = [
+  { name = "game", ty = "&crate::game::Game<'_>", value = "self" },
+  { name = "batch", ty = "&mut HudBatch", value = "&mut *batch" },
+  { name = "ox", ty = "f32", value = "ox" },
+  { name = "oy", ty = "f32", value = "oy" },
+]
+
+[[injection]]
+id = "press"
+kind = "HEAD"
+cancellable = true
+target = "horizon_client::game::tweaks::Game<'_>::sort_press"
+helper = "hooks/press.rs"
+bindings = [{ name = "game", ty = "&mut crate::game::Game<'_>", value = "&mut *self" }]

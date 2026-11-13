@@ -1,0 +1,98 @@
+[mod]
+id = "chatheads"
+version = "0.1.1"
+priority = 100
+
+# The commit it was tested on (the pin the launcher asks for).
+[compatibility]
+
+# The pure logic, beside the glue that uses it: both are read from the same
+# crate, so `glue.rs` reaches `native_chatheads` as a module.
+[[module]]
+id = "runtime"
+file = "crates/horizon-client/src/game/chat.rs"
+name = "native_chatheads"
+source = "runtime.rs"
+
+[[module]]
+id = "glue"
+file = "crates/horizon-client/src/game/chat.rs"
+name = "native_chatheads_glue"
+source = "glue.rs"
+
+# The chat's own crate moves its lines right for the heads; the game crate
+# sets its `ON` each frame, so it is public.
+[[module]]
+id = "layout"
+file = "crates/horizon-client-render/src/chat.rs"
+name = "native_chatheads_layout"
+source = "shift.rs"
+visibility = "pub"
+
+[[injection]]
+id = "list"
+kind = "HEAD"
+hook = "mods"
+hook_version = 1
+helper = "list.rs"
+bindings = [
+  { name = "mods", ty = "&mut Vec<crate::game::native_hooks::NativeMod>", value = "&mut *mods" },
+]
+
+[[injection]]
+id = "settings"
+kind = "HEAD"
+hook = "settings"
+hook_version = 1
+helper = "settings.rs"
+bindings = [
+  { name = "game", ty = "&mut crate::game::Game<'_>", value = "&mut *self" },
+  { name = "mod_id", ty = "&str", value = "mod_id" },
+  { name = "buttons", ty = "&mut Vec<String>", value = "&mut *buttons" },
+]
+
+[[injection]]
+id = "click"
+kind = "HEAD"
+hook = "settings_click"
+hook_version = 1
+helper = "click.rs"
+bindings = [
+  { name = "game", ty = "&mut crate::game::Game<'_>", value = "&mut *self" },
+  { name = "mod_id", ty = "&str", value = "mod_id" },
+  { name = "button", ty = "usize", value = "button" },
+]
+
+# Before the chat is drawn: on or off, and so whether its lines make room.
+[[injection]]
+id = "mark"
+kind = "HEAD"
+target = "horizon_client::game::chat::Game<'_>::draw_chat"
+helper = "mark.rs"
+bindings = [{ name = "game", ty = "&mut crate::game::Game<'_>", value = "&mut *self" }]
+
+# After it: the heads, over the background and beside the moved text.
+[[injection]]
+id = "heads"
+kind = "RETURN"
+target = "horizon_client::game::chat::Game<'_>::draw_chat"
+helper = "heads.rs"
+bindings = [
+  { name = "value", ty = "()", value = "$value" },
+  { name = "game", ty = "&mut crate::game::Game<'_>", value = "&mut *self" },
+  { name = "batch", ty = "&mut horizon_client::hud::HudBatch", value = "&mut *batch" },
+]
+
+# The chat's laid-out lines, moved right by the head and its gap, before the
+# chat paints them.
+[[injection]]
+id = "shift"
+kind = "MODIFY_VARIABLE"
+target = "horizon_client_render::chat::Chat::draw"
+variable = { name = "draws", ordinal = 0, at = "STORE" }
+require = 1
+ordinal = 0
+helper = "shifted.rs"
+bindings = [
+  { name = "value", ty = "Vec<crate::hud_layout::GuiDraw>", value = "$value" },
+]

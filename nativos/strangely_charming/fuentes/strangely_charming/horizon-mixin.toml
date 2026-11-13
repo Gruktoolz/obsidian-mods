@@ -1,0 +1,1246 @@
+[mod]
+id = "strangely_charming"
+version = "0.2.11"
+priority = 100
+
+[compatibility]
+
+[[module]]
+id = "format"
+file = "crates/horizon-client-render/src/lib.rs"
+name = "strangely_charming_format"
+source = "format.rs"
+visibility = "pub"
+
+[[module]]
+id = "skin"
+file = "crates/horizon-client-render/src/lib.rs"
+name = "strangely_charming_skin"
+source = "skin.rs"
+visibility = "pub"
+
+[[module]]
+id = "geometry"
+file = "crates/horizon-client/src/mobs.rs"
+name = "strangely_charming_geometry"
+source = "geometry.rs"
+visibility = "pub"
+
+[[module]]
+id = "commands"
+file = "crates/horizon-client/src/game.rs"
+name = "strangely_charming_commands"
+source = "commands.rs"
+
+[[injection]]
+id = "skin-data"
+kind = "RETURN"
+target = "horizon_client_render::skins::process_legacy_skin"
+helper = "process_hook.rs"
+bindings = [
+  { name = "width", ty = "u32", value = "width" },
+  { name = "height", ty = "u32", value = "height" },
+  { name = "rgba", ty = "&[u8]", value = "rgba" },
+  { name = "value", ty = "Option<Vec<u8>>", value = "$value" }
+]
+
+[[injection]]
+id = "skin-textures"
+kind = "HEAD"
+target = "horizon_client::game::remote::Game<'_>::store_skin"
+helper = "store_hook.rs"
+bindings = [
+  { name = "game", ty = "&mut crate::game::Game<'_>", value = "&mut *self" },
+  { name = "location", ty = "&str", value = "&location" },
+  { name = "rgba", ty = "&[u8]", value = "&rgba" }
+]
+
+[[injection]]
+id = "skin-texture-residency"
+kind = "HEAD"
+target = "horizon_client::game::remote::Game<'_>::again_skin"
+helper = "again_hook.rs"
+bindings = [
+  { name = "game", ty = "&mut crate::game::Game<'_>", value = "&mut *self" },
+  { name = "location", ty = "&str", value = "location" }
+]
+
+[[injection]]
+id = "player-features"
+kind = "HEAD"
+target = "horizon_client_lib::mobs::render::render_visible"
+helper = "render_hook.rs"
+bindings = [
+  { name = "m", ty = "&crate::mobs::Mob", value = "m" },
+  { name = "alpha", ty = "f32", value = "alpha" },
+  { name = "base", ty = "glam::Mat4", value = "base" },
+  { name = "atlas", ty = "crate::mobs::render::Atlas<'_>", value = "atlas" },
+  { name = "light", ty = "u32", value = "light" },
+  { name = "data", ty = "&crate::mobs::MobData", value = "data" },
+  { name = "body_visible", ty = "bool", value = "body_visible" },
+  { name = "out", ty = "&mut Vec<crate::mesher::Vertex>", value = "&mut *out" }
+]
+
+[[injection]]
+id = "dummy-command"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::Game<'_>::native_command"
+helper = "command_hook.rs"
+bindings = [
+  { name = "game", ty = "&mut crate::game::Game<'_>", value = "&mut *self" },
+  { name = "command", ty = "&str", value = "command" },
+  { name = "ran", ty = "&mut bool", value = "ran" }
+]
+
+[[injection]]
+id = "dummy-command-list"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::Game<'_>::native_commands"
+helper = "commands_hook.rs"
+bindings = [{ name = "commands", ty = "&mut Vec<&'static str>", value = "commands" }]
+
+[[injection]]
+id = "first-person-features"
+kind = "HEAD"
+target = "horizon_client::game::Game<'_>::first_person_arm"
+helper = "arm_hook.rs"
+bindings = [
+ {name="game",ty="&crate::game::Game<'_>",value="self"},
+ {name="left",ty="bool",value="left"},
+ {name="m",ty="glam::Mat4",value="m"},
+ {name="light",ty="u32",value="light"},
+ {name="out",ty="&mut Vec<horizon_client::mesher::Vertex>",value="&mut *out"}
+]
+
+[[injection]]
+id = "replace-custom-cape"
+kind = "HEAD"
+cancellable = true
+target = "horizon_client::game::perspective::Game<'_>::player_cape_geometry"
+helper = "cape_hook.rs"
+bindings = [{name="m",ty="&horizon_client::mobs::Mob",value="m"}]
+
+[[injection]]
+id = "local-dummy-skins"
+kind = "HEAD"
+cancellable = true
+target = "horizon_client_render::skins::Downloader::state"
+helper = "local_hook.rs"
+bindings = [
+ {name="downloader",ty="&mut crate::skins::Downloader",value="&mut *self"},
+ {name="kind",ty="crate::skins::Kind",value="kind"},
+ {name="url",ty="&str",value="url"}
+]
+
+[[module]]
+id = "tweaks"
+file = "crates/horizon-client/src/game.rs"
+name = "strangely_charming"
+source = "tweaks.rs"
+
+[[module]]
+id = "content-bundle"
+file = "crates/horizon-mods/src/lib.rs"
+name = "strangely_charming_content"
+source = "content_bundle.rs"
+visibility = "pub"
+
+[[injection]]
+id = "fullbright-key"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::Game<'_>::native_key"
+helper = "fullbright-key.rs"
+bindings = [
+ {name="game",ty="&mut crate::game::Game<'_>",value="&mut *self"},
+ {name="key",ty="&str",value="key"},
+ {name="pressed",ty="bool",value="pressed"},
+]
+
+[[injection]]
+id = "settings-page"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::Game<'_>::native_mods"
+helper = "settings-page.rs"
+bindings = [
+ {name="mods",ty="&mut Vec<NativeMod>",value="mods"},
+]
+
+[[injection]]
+id = "poison-interact"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::Game<'_>::native_interact_entity"
+helper = "poison-interact.rs"
+bindings = [
+ {name="game",ty="&mut crate::game::Game<'_>",value="&mut *self"},
+ {name="entity",ty="i32",value="entity"},
+ {name="stack",ty="Option<&ItemStack>",value="stack"},
+ {name="claimed",ty="&mut bool",value="claimed"},
+]
+
+[[injection]]
+id = "poison-tick"
+kind = "HEAD"
+target = "horizon_client::game::Game<'_>::tick_mobs"
+helper = "poison-tick.rs"
+bindings = [{name="game",ty="&mut crate::game::Game<'_>",value="&mut *self"}]
+
+[[injection]]
+id = "content-find"
+kind = "RETURN"
+target = "horizon_mods::manifest::find"
+helper = "content-find.rs"
+bindings = [
+ {name="dir",ty="&Path",value="dir"},
+ {name="value",ty="Vec<PathBuf>",value="$value"},
+]
+
+[[injection]]
+id = "weakness-ingredient"
+kind = "HEAD"
+target = "horizon_client_lib::crafting::native_ingredient"
+helper = "weakness-ingredient.rs"
+bindings = [
+ {name="kind",ty="&str",value="kind"},
+ {name="items",ty="&mut Vec<String>",value="items"},
+]
+
+[[injection]]
+id = "weakness-match"
+kind = "HEAD"
+target = "horizon_client_lib::crafting::native_ingredient_test"
+helper = "weakness-match.rs"
+bindings = [
+ {name="kind",ty="&str",value="kind"},
+ {name="stack",ty="&ItemStack",value="stack"},
+ {name="accept",ty="&mut bool",value="accept"},
+]
+
+[[module]]
+id = "poison"
+file = "crates/horizon-client/src/mobs.rs"
+name = "strangely_charming_poison"
+source = "poison.rs"
+visibility = "pub"
+
+[[module]]
+id="settings-mods"
+file="crates/horizon-mods/src/lib.rs"
+name="evanders_config"
+source="config.rs"
+visibility="pub"
+
+[[module]]
+id="settings-world"
+file="crates/horizon-world/src/lib.rs"
+name="evanders_config"
+source="config.rs"
+visibility="pub"
+
+[[injection]]
+id="stack-limits"
+kind="HEAD"
+target="horizon_world::item_defaults::native_modify_default_components"
+helper="stack-limits.rs"
+bindings=[
+ {name="item",ty="&str",value="item"},
+ {name="components",ty="&mut Map<String, Value>",value="components"},
+]
+
+
+
+[[injection]]
+id="owned-pet"
+kind="HEAD"
+target="horizon_client::game::native_hooks::Game<'_>::native_attack_entity"
+helper="owned-pet.rs"
+bindings=[
+ {name="game",ty="&mut crate::game::Game<'_>",value="&mut *self"},
+ {name="entity",ty="i32",value="entity"},
+ {name="canceled",ty="&mut bool",value="canceled"},
+]
+
+
+[[module]]
+id="grindable"
+file="crates/horizon-client/src/stations.rs"
+name="evanders_grinding"
+source="grinding.rs"
+visibility="pub"
+
+[[injection]]
+id="grindable-slot"
+kind="RETURN"
+target="horizon_client_lib::stations::grindstone_accepts"
+helper="grindable-slot.rs"
+bindings=[
+ {name="value",ty="bool",value="$value"},
+ {name="stack",ty="&ItemStack",value="stack"},
+]
+
+[[injection]]
+id="grindable-result"
+kind="HEAD"
+target="horizon_client_lib::stations::grindstone_result"
+helper="grindable-result.rs"
+cancellable=true
+bindings=[
+ {name="input",ty="Option<&ItemStack>",value="input"},
+ {name="additional",ty="Option<&ItemStack>",value="additional"},
+]
+
+[[injection]]
+id="anvil-limit"
+kind="HEAD"
+cancellable=true
+target="horizon_client_lib::stations::anvil_result"
+helper="anvil-limit.rs"
+bindings=[
+ {name="e",ty="&Enchantments",value="e"},
+ {name="items",ty="&Items",value="items"},
+ {name="input",ty="Option<&ItemStack>",value="input"},
+ {name="addition",ty="Option<&ItemStack>",value="addition"},
+ {name="name",ty="Option<&str>",value="name"},
+ {name="hover_name",ty="&str",value="hover_name"},
+ {name="creative",ty="bool",value="creative"},
+]
+
+[[injection]]
+id="anvil-label"
+kind="HEAD"
+cancellable=true
+target="horizon_client::game::stations::Game<'_>::draw_station"
+helper="anvil-label.rs"
+bindings=[
+ {name="game",ty="&mut crate::game::Game<'_>",value="&mut *self"},
+ {name="batch",ty="&mut HudBatch",value="batch"},
+]
+
+[[module]]
+id="inventory-totem-slot"
+file="crates/horizon-client/src/game/totem.rs"
+name="strangely_charming_totem"
+source="inventory-totem.rs"
+
+[[injection]]
+id="totem-consume"
+kind="HEAD"
+cancellable=true
+target="horizon_client::game::totem::Game<'_>::apply_totem"
+helper="totem-consume.rs"
+bindings=[
+ {name="game",ty="&mut crate::game::Game<'_>",value="&mut *self"},
+]
+
+[[injection]]
+id="totem-ready"
+kind="HEAD"
+cancellable=true
+target="horizon_client::game::totem::Game<'_>::update_totem_ready"
+helper="totem-ready.rs"
+bindings=[
+ {name="game",ty="&mut crate::game::Game<'_>",value="&mut *self"},
+]
+
+[[injection]]
+id="portal-frame"
+kind="HEAD"
+cancellable=true
+target="horizon_client::game::Game<'_>::portal_shape"
+helper="portal-frame.rs"
+bindings=[
+ {name="game",ty="&crate::game::Game<'_>",value="self"},
+ {name="start",ty="[i32; 3]",value="start"},
+ {name="x_axis",ty="bool",value="x_axis"},
+]
+
+[[injection]]
+id="treasure"
+kind="HEAD"
+target="horizon_world::loot::native_loot_table_load"
+helper="treasure.rs"
+bindings=[
+ {name="id",ty="&str",value="id"},
+ {name="table",ty="&mut Value",value="table"},
+]
+
+[[injection]]
+id="ore-room"
+kind="HEAD"
+target="horizon_world::worldgen::structure::mineshaft::MineshaftPiece::room"
+helper="ore-room.rs"
+bindings=[
+ {name="piece",ty="&MineshaftPiece",value="self"},
+ {name="c",ty="&mut PieceContext<'_>",value="&mut *c"},
+]
+
+[[injection]]
+id="ore-corridor"
+kind="HEAD"
+target="horizon_world::worldgen::structure::mineshaft::MineshaftPiece::corridor"
+helper="ore-corridor.rs"
+bindings=[
+ {name="piece",ty="&MineshaftPiece",value="self"},
+ {name="c",ty="&mut PieceContext<'_>",value="&mut *c"},
+]
+
+[[injection]]
+id="captain-drop"
+kind="HEAD"
+target="horizon_client::game::raids::Game<'_>::raider_died"
+helper="captain-drop.rs"
+bindings=[
+ {name="game",ty="&mut crate::game::Game<'_>",value="&mut *self"},
+ {name="m",ty="&Mob",value="m"},
+ {name="by_player",ty="bool",value="by_player"},
+]
+
+[[injection]]
+id="pearl-target"
+kind="HEAD"
+target="horizon_client::game::consume::Game<'_>::random_teleport"
+helper="pearl-target.rs"
+cancellable=true
+bindings=[
+ {name="game",ty="&mut crate::game::Game<'_>",value="&mut *self"},
+ {name="avoid",ty="&str",value="avoid"},
+]
+
+[[injection]]
+id="kiln-container"
+kind="OVERWRITE"
+target="horizon_client_render::containers::FurnaceKind::from_block"
+helper="kiln-container.rs"
+
+bindings=[
+ {name="name",ty="&str",value="name"},
+]
+
+[[injection]]
+id="kiln-fire"
+kind="HEAD"
+target="horizon_client::game::block_entity_ticks::Game<'_>::tick_furnace"
+helper="kiln-fire.rs"
+cancellable=true
+bindings=[
+ {name="game",ty="&mut crate::game::Game<'_>",value="&mut *self"},
+ {name="pos",ty="Pos",value="pos"},
+]
+
+[[injection]]
+id="extract-price"
+kind="HEAD"
+target="horizon_client_lib::menu::Menu::may_pickup"
+helper="extract-price.rs"
+cancellable=true
+bindings=[
+ {name="menu",ty="&Menu",value="self"},
+ {name="env",ty="&Env",value="env"},
+ {name="s",ty="usize",value="s"},
+]
+
+[[injection]]
+id="extract-take"
+kind="HEAD"
+target="horizon_client_lib::menu::Menu::on_take"
+helper="extract-take.rs"
+cancellable=true
+bindings=[
+ {name="menu",ty="&mut Menu",value="&mut *self"},
+ {name="env",ty="&Env",value="env"},
+ {name="s",ty="usize",value="s"},
+]
+
+[[injection]]
+id="animal-templates"
+kind="HEAD"
+target="horizon_mods::content::Content::read_declaring"
+helper="animal-templates.rs"
+cancellable=true
+bindings=[
+ {name="path",ty="&Path",value="path"},
+ {name="manifest",ty="&Manifest",value="manifest"},
+ {name="declared",ty="&[String]",value="declared"},
+]
+
+[[injection]]
+id="animal-spawn"
+kind="HEAD"
+target="horizon_client::game::native_hooks::Game<'_>::native_mobs_joined"
+helper="animal-spawn.rs"
+bindings=[
+ {name="game",ty="&mut crate::game::Game<'_>",value="&mut *self"},
+ {name="from",ty="usize",value="from"},
+ {name="natural",ty="bool",value="natural"},
+]
+
+[[injection]]
+id="animal-body"
+kind="HEAD"
+cancellable=true
+target="horizon_client_lib::mobs::render::body"
+helper="animal-body.rs"
+bindings=[
+ {name="m",ty="&Mob",value="m"},
+]
+
+[[module]]
+id="professions"
+file="crates/horizon-client/src/mobs/villager.rs"
+name="evanders_jobs"
+source="jobs.rs"
+visibility="pub"
+
+[[injection]]
+id="job-site"
+kind="HEAD"
+target="horizon_client_lib::mobs::villager::job_site_profession"
+helper="job-site.rs"
+cancellable=true
+bindings=[
+ {name="block",ty="&str",value="block"},
+]
+
+[[injection]]
+id="job-load"
+kind="HEAD"
+target="horizon_client_lib::entity_nbt::read_villager"
+helper="job-load.rs"
+cancellable=true
+bindings=[
+ {name="m",ty="&mut Mob",value="m"},
+ {name="tag",ty="&Tag",value="tag"},
+]
+
+[[injection]]
+id="job-offers"
+kind="HEAD"
+target="horizon_client::game::trading::Game<'_>::ensure_offers"
+helper="job-offers.rs"
+cancellable=true
+bindings=[
+ {name="game",ty="&mut crate::game::Game<'_>",value="&mut *self"},
+ {name="index",ty="usize",value="index"},
+]
+
+[[injection]]
+id="job-level"
+kind="HEAD"
+target="horizon_client_lib::merchant::Trades::set_for"
+helper="job-level.rs"
+cancellable=true
+bindings=[
+ {name="profession",ty="&str",value="profession"},
+ {name="level",ty="i32",value="level"},
+]
+
+[[injection]]
+id="job-session"
+kind="HEAD"
+target="horizon_client::game::trading::Game<'_>::interact_trader"
+helper="job-session.rs"
+cancellable=true
+bindings=[
+ {name="game",ty="&mut crate::game::Game<'_>",value="&mut *self"},
+ {name="index",ty="usize",value="index"},
+ {name="item",ty="&str",value="item"},
+]
+
+[[injection]]
+id="job-clothes"
+kind="HEAD"
+target="horizon_client_lib::mobs::render::layers"
+helper="job-clothes.rs"
+cancellable=true
+bindings=[
+ {name="m",ty="&Mob",value="m"},
+ {name="age",ty="f32",value="age"},
+]
+
+[[injection]]
+id="animal-living"
+kind="HEAD"
+target="horizon_mods::content::EntityType::is_living"
+helper="animal-living.rs"
+cancellable=true
+bindings=[
+ {name="entity",ty="&EntityType",value="self"},
+]
+
+[[injection]]
+id="job-save"
+kind="HEAD"
+target="horizon_client_lib::entity_nbt::villager_data"
+helper="job-save.rs"
+cancellable=true
+bindings=[
+ {name="m",ty="&Mob",value="m"},
+]
+
+[[injection]]
+id="owned-pet-damage"
+kind="HEAD"
+target="horizon_client_lib::mobs::Mob::damage_with_player_uuid"
+helper="owned-pet-damage.rs"
+cancellable=true
+bindings=[
+ {name="m",ty="&Mob",value="self"},
+ {name="uuid",ty="[i32;4]",value="uuid"},
+]
+
+[[injection]]
+id="pet-projectile"
+kind="HEAD"
+target="horizon_client::game::creatures::Game<'_>::projectile_hit"
+helper="pet-projectile.rs"
+cancellable=true
+bindings=[
+ {name="game",ty="&mut crate::game::Game<'_>",value="&mut *self"},
+ {name="p",ty="&Projectile",value="p"},
+ {name="hit",ty="Hit",value="hit"},
+]
+
+[[injection]]
+id="fullbright-disabled"
+kind="HEAD"
+target="horizon_client::game::options::Game<'_>::apply_ui_settings"
+helper="fullbright-disabled.rs"
+bindings=[
+ {name="game",ty="&mut crate::game::Game<'_>",value="&mut *self"},
+]
+
+[[injection]]
+id="anvil-book-consume"
+kind="HEAD"
+target="horizon_client_lib::menu::Menu::anvil_take"
+helper="anvil-book-consume.rs"
+bindings=[
+ {name="menu",ty="&mut Menu",value="&mut *self"},
+]
+
+[[injection]]
+id="anvil-book-input"
+kind="HEAD"
+target="horizon_client_lib::menu::Menu::slot_max"
+helper="anvil-book-input.rs"
+cancellable=true
+bindings=[
+ {name="menu",ty="&Menu",value="self"},
+ {name="slot",ty="usize",value="s"},
+ {name="stack",ty="&ItemStack",value="stack"},
+]
+
+[[injection]]
+id="trade-registry"
+kind="HEAD"
+target="horizon_client::game::native_hooks::Game<'_>::native_data_pack_files"
+helper="trade-registry.rs"
+bindings=[
+ {name="game",ty="&crate::game::Game<'_>",value="&*self"},
+ {name="files",ty="&mut Vec<(String, Vec<u8>)>",value="files"},
+]
+
+[[module]]
+id="animal-models"
+file="crates/horizon-client/src/mobs.rs"
+name="evanders_models"
+source="animal-models.rs"
+visibility="pub"
+
+[[injection]]
+id="animal-models-client"
+kind="OVERWRITE"
+target="horizon_client_lib::mobs::MobTypes::load"
+helper="animal-models-client.rs"
+bindings=[
+ {name="root",ty="&Path",value="root"},
+]
+
+[[injection]]
+id="animal-models-document"
+kind="OVERWRITE"
+target="horizon_client_lib::mobs::MobTypes::load_with_document"
+helper="animal-models-document.rs"
+bindings=[
+ {name="root",ty="&Path",value="root"},
+ {name="document",ty="&EntityModelDocument",value="document"},
+]
+
+[[injection]]
+id="animal-models-server"
+kind="OVERWRITE"
+target="horizon_client_lib::mobs::MobTypes::load_for_server"
+helper="animal-models-server.rs"
+bindings=[
+ {name="root",ty="&Path",value="root"},
+]
+
+[[injection]]
+id="woodcutter-menu"
+kind="OVERWRITE"
+target="horizon_client::game::stations::Kind::from_block"
+helper="woodcutter-menu.rs"
+bindings=[
+ {name="name",ty="&str",value="name"},
+]
+
+[[injection]]
+id="workstation-click"
+kind="HEAD"
+target="horizon_client::game::native_hooks::Game<'_>::native_right_click_block"
+helper="workstation-click.rs"
+bindings=[
+ {name="game",ty="&mut crate::game::Game<'_>",value="&mut *self"},
+ {name="pos",ty="[i32; 3]",value="pos"},
+ {name="canceled",ty="&mut bool",value="canceled"},
+]
+
+[[injection]]
+id="job-tables"
+kind="HEAD"
+target="horizon_client_lib::merchant::walk"
+helper="job-tables.rs"
+bindings=[
+ {name="dir",ty="&Path",value="dir"},
+ {name="out",ty="&mut HashMap<String, Value>",value="out"},
+]
+
+[[injection]]
+id="job-wire-send"
+kind="HEAD"
+target="horizon_client::game::lan::mob_variant_meta"
+helper="job-wire-send.rs"
+bindings=[
+ {name="m",ty="&Mob",value="m"},
+ {name="meta",ty="&mut Vec<(u8,i32,Value)>",value="meta"},
+]
+
+[[injection]]
+id="job-wire-read"
+kind="RETURN"
+target="horizon_client::game::remote_mob_data::apply"
+helper="job-wire-read.rs"
+bindings=[
+ {name="_ret",ty="()",value="$value"},
+ {name="m",ty="&mut Mob",value="m"},
+ {name="values",ty="&[(u8,i32,Value)]",value="values"},
+]
+
+[[injection]]
+id="squid-pivot"
+kind="HEAD"
+target="horizon_client_lib::mobs::aquatic::rotations"
+helper="squid-pivot.rs"
+cancellable=true
+bindings=[
+ {name="m",ty="&Mob",value="m"},
+ {name="alpha",ty="f32",value="alpha"},
+ {name="body",ty="f32",value="body"},
+]
+
+[[injection]]
+id="portable-valid"
+kind="HEAD"
+target="horizon_client::game::lan_crafting::Game<'_>::lan_table_valid"
+helper="portable-valid.rs"
+cancellable=true
+bindings=[
+ {name="g",ty="&Guest",value="g"},
+ {name="pos",ty="[i32;3]",value="pos"},
+]
+
+[[injection]]
+id="inventory-request"
+kind="HEAD"
+target="horizon_client::game::lan_actions::Game<'_>::lan_guest_packet"
+helper="inventory-request.rs"
+cancellable=true
+bindings=[
+ {name="game",ty="&mut crate::game::Game<'_>",value="&mut *self"},
+ {name="host",ty="&mut LanHost",value="host"},
+ {name="conn",ty="u32",value="conn"},
+ {name="packet",ty="&S",value="&packet"},
+]
+
+[[injection]]
+id="controls-shortcut"
+kind="RETURN"
+target="horizon_client_render::options_ui::OptionsUi::filter_option_rows"
+helper="controls-shortcut.rs"
+bindings=[
+ {name="rows",ty="Vec<Row>",value="$value"},
+ {name="ui",ty="&OptionsUi",value="self"},
+]
+
+[[injection]]
+id="kiln-title"
+kind="HEAD"
+target="horizon_client_render::containers::default_name_key"
+helper="kiln-title.rs"
+cancellable=true
+bindings=[
+ {name="block",ty="&str",value="block"},
+]
+
+[[injection]]
+id="horn-instrument"
+kind="HEAD"
+target="horizon_items::items::instrument_id"
+helper="horn-instrument.rs"
+cancellable=true
+bindings=[
+ { name="stack", ty="&ItemStack", value="stack" },
+]
+
+[[injection]]
+id="horn-server-cooldown"
+kind="MODIFY_ARG"
+target="horizon_client::game::Game<'_>::use_instrument"
+helper="horn-server-cooldown.rs"
+selector="self.add_cooldown"
+argument=1
+require=1
+ordinal=0
+bindings=[
+ { name="value", ty="i32", value="$value" },
+ { name="stack", ty="&ItemStack", value="stack" },
+]
+
+[[injection]]
+id="horn-client-cooldown"
+kind="MODIFY_ARG"
+target="horizon_client::game::remote::Game<'_>::remote_use_instrument"
+helper="horn-client-cooldown.rs"
+selector="self.add_cooldown"
+argument=1
+require=1
+ordinal=0
+bindings=[
+ { name="value", ty="i32", value="$value" },
+ { name="held", ty="&ItemStack", value="held" },
+]
+
+[[injection]]
+id="horn-player-pose"
+kind="HEAD"
+target="horizon_client_lib::mobs::body_anim::anim"
+helper="horn-player-pose.rs"
+cancellable=true
+bindings=[
+ { name="m", ty="&Mob", value="m" },
+ { name="s", ty="&State", value="s" },
+ { name="p", ty="&mut Poses", value="p" },
+ { name="a", ty="&Animations", value="a" },
+]
+
+[[module]]
+id="horn-client"
+file="crates/horizon-client/src/game/remote.rs"
+name="evanders_raid_horn"
+source="horn-client.rs"
+visibility="pub"
+
+[[injection]]
+id="use-horn"
+kind="HEAD"
+target="horizon_client::game::item_use::Game<'_>::start_mod_use"
+helper="use-horn.rs"
+cancellable=true
+bindings=[
+ { name="game", ty="&mut crate::game::Game<'_>", value="&mut *self" },
+ { name="stack", ty="&ItemStack", value="stack" },
+]
+
+[[injection]]
+id="horn-vanilla-tick"
+kind="RETURN"
+target="horizon_client::game::item_use::Game<'_>::mod_use"
+helper="horn-vanilla-tick.rs"
+bindings=[
+ { name="value", ty="bool", value="$value" },
+ { name="stack", ty="&ItemStack", value="stack" },
+]
+
+[[module]]
+id="saw-recipes"
+file="crates/horizon-client/src/stations.rs"
+name="evanders_saw"
+source="table-saw-recipes.rs"
+visibility="pub"
+
+[[module]]
+id="saw-screen"
+file="crates/horizon-client/src/game/stations.rs"
+name="evanders_saw"
+source="table-saw-screen.rs"
+visibility="pub"
+
+[[module]]
+id="saw-menu"
+file="crates/horizon-client/src/menu.rs"
+name="evanders_saw"
+source="saw-menu.rs"
+visibility="pub"
+
+[[injection]]
+id="saw-title"
+kind="MODIFY_VARIABLE"
+target="horizon_client::game::lan_stations::Game<'_>::lan_open_station"
+helper="saw-title.rs"
+variable={name="title", ordinal=0, at="STORE"}
+require=1
+ordinal=0
+bindings=[
+ {name="value",ty="horizon_world::nbt::Tag",value="$value"},
+ {name="game",ty="&crate::game::Game<'_>",value="&*self"},
+ {name="station",ty="&Station",value="station"},
+]
+
+[[injection]]
+id="saw-server-menu"
+kind="MODIFY_VARIABLE"
+target="horizon_client::game::lan_stations::Game<'_>::lan_open_station"
+helper="saw-server-menu.rs"
+variable={name="menu", ordinal=0, at="STORE"}
+require=1
+ordinal=0
+bindings=[
+ {name="value",ty="Box<Menu>",value="$value"},
+ {name="game",ty="&crate::game::Game<'_>",value="&*self"},
+ {name="station",ty="&Station",value="station"},
+]
+
+# menu_session asks which screen the acting player has before building their transient Menu.
+[[injection]]
+id="saw-local-menu"
+kind="HEAD"
+target="horizon_client::game::Game<'_>::creative_tab_open"
+helper="saw-local-menu.rs"
+bindings=[{name="game",ty="&crate::game::Game<'_>",value="&*self"}]
+
+[[injection]]
+id="saw-init"
+kind="HEAD"
+target="horizon_client_lib::menu::Menu::with_initial_data"
+helper="saw-init.rs"
+bindings=[{name="menu",ty="&mut Menu",value="&mut self"}]
+
+[[injection]]
+id="saw-stone-changed"
+kind="HEAD"
+target="horizon_client_lib::menu::Menu::stone_changed"
+helper="saw-stone-changed.rs"
+cancellable=true
+bindings=[
+ {name="menu",ty="&mut Menu",value="&mut *self"},
+ {name="env",ty="&Env",value="env"},
+]
+
+[[injection]]
+id="saw-stone-setup-result"
+kind="HEAD"
+target="horizon_client_lib::menu::Menu::stone_setup_result"
+helper="saw-stone-setup-result.rs"
+cancellable=true
+bindings=[
+ {name="menu",ty="&mut Menu",value="&mut *self"},
+ {name="env",ty="&Env",value="env"},
+ {name="index",ty="i32",value="index"},
+]
+
+[[injection]]
+id="saw-quick-move"
+kind="HEAD"
+target="horizon_client_lib::menu::Menu::quick_move"
+helper="saw-quick-move.rs"
+cancellable=true
+bindings=[
+ {name="menu",ty="&mut Menu",value="&mut *self"},
+ {name="env",ty="&Env",value="env"},
+ {name="index",ty="usize",value="index"},
+]
+
+[[injection]]
+id="saw-on-take"
+kind="HEAD"
+target="horizon_client_lib::menu::Menu::on_take"
+helper="saw-on-take.rs"
+cancellable=true
+bindings=[
+ {name="menu",ty="&mut Menu",value="&mut *self"},
+ {name="env",ty="&Env",value="env"},
+ {name="s",ty="usize",value="s"},
+ {name="taken",ty="&mut ItemStack",value="&mut *taken"},
+]
+
+[[injection]]
+id="saw-info"
+kind="HEAD"
+cancellable=true
+target="horizon_client::game::stations::Game<'_>::station_info"
+helper="saw-info.rs"
+bindings=[{name="game",ty="&crate::game::Game<'_>",value="&*self"}]
+
+[[injection]]
+id="horn-retry"
+kind="HEAD"
+target="horizon_client::game::Game<'_>::play_mouse"
+helper="horn-retry.rs"
+
+bindings=[
+ {name="game",ty="&mut crate::game::Game<'_>",value="&mut *self"},
+ {name="button",ty="MouseButton",value="button"},
+ {name="pressed",ty="bool",value="pressed"},
+]
+
+[[module]]
+id="horn-remaining"
+file="crates/horizon-items/src/cooldowns.rs"
+name="evanders_horn"
+source="horn-remaining.rs"
+visibility="pub"
+
+[[module]]
+id="book-recipe-files"
+file="crates/horizon-client/src/recipe_book.rs"
+name="evanders_recipe_files"
+source="book-recipe-files.rs"
+visibility="pub"
+
+[[injection]]
+id="book-screen-index"
+kind="WRAP_OPERATION"
+target="horizon_client_lib::stations::StationData::load"
+selector="crate::recipe_book::RecipeIndex::load"
+require=1
+ordinal=0
+helper="book-recipe-index.rs"
+bindings=[
+ {name="root", ty="&std::path::Path", value="$arg0"},
+ {name="overlay", ty="&horizon_world::loot::PackOverlay", value="$arg1"},
+ {name="original", ty="impl FnOnce(&std::path::Path, &horizon_world::loot::PackOverlay) -> crate::recipe_book::RecipeIndex", value="$operation"},
+]
+
+[[module]]
+id="sc_items"
+file="crates/horizon-client/src/game.rs"
+name="sc_items"
+source="strange-items.rs"
+
+[[module]]
+id="sc_quests"
+file="crates/horizon-client/src/game.rs"
+name="sc_quests"
+source="quests.rs"
+
+[[injection]]
+id="sc-use"
+kind="HEAD"
+target="horizon_client::game::native_hooks::Game<'_>::native_use_item"
+helper="sc-use.rs"
+bindings=[
+ {name="game",ty="&mut crate::game::Game<'_>",value="&mut *self"},
+ {name="stack",ty="&ItemStack",value="stack"},
+ {name="claimed",ty="&mut bool",value="claimed"},
+]
+
+[[module]]
+id="moonstone-culling"
+file="crates/horizon-world/src/block_render.rs"
+name="sc_moonstone"
+source="moonstone-faces.rs"
+visibility="pub"
+
+[[injection]]
+id="moonstone-faces"
+kind="HEAD"
+cancellable=true
+target="horizon_client_render::models::load_visibility"
+helper="moonstone-visibility.rs"
+bindings=[
+ {name="root",ty="&Path",value="root"},
+ {name="registry",ty="&BlockRegistry",value="registry"},
+]
+
+[[injection]]
+id="moonstone-fog"
+kind="RETURN"
+target="horizon_client::game::render_tick::Game<'_>::native_fog_color_now"
+helper="moonstone-fog.rs"
+bindings=[
+ {name="value",ty="[f32;4]",value="$value"},
+ {name="game",ty="&crate::game::Game<'_>",value="self"},
+ {name="camera",ty="[f64;3]",value="camera"},
+]
+
+[[injection]]
+id="quest-craft"
+kind="HEAD"
+target="horizon_client::game::native_hooks::Game<'_>::native_item_crafted"
+helper="quest-craft.rs"
+bindings=[
+ {name="game",ty="&mut crate::game::Game<'_>",value="&mut *self"},
+ {name="stack",ty="&ItemStack",value="stack"},
+]
+
+[[injection]]
+id="quest-hunt"
+kind="HEAD"
+target="horizon_client::game::creatures::Game<'_>::credit_kill"
+helper="quest-hunt.rs"
+bindings=[
+ {name="game",ty="&mut crate::game::Game<'_>",value="&mut *self"},
+ {name="mob",ty="&Mob",value="m"},
+]
+
+[[injection]]
+id="keeper-death"
+kind="HEAD"
+target="horizon_client::game::creatures::Game<'_>::mob_died"
+helper="keeper-death.rs"
+bindings=[
+ {name="game",ty="&mut crate::game::Game<'_>",value="&mut *self"},
+ {name="mob",ty="&Mob",value="m"},
+]
+
+[[injection]]
+id="old-namespace"
+kind="HEAD"
+cancellable=true
+target="horizon_world::nbt::modified_utf8"
+helper="old-namespace.rs"
+bindings=[{name="bytes",ty="&[u8]",value="bytes"}]
+
+[[injection]]
+id="quest-mining"
+kind="HEAD"
+target="horizon_client::game::stats::Game<'_>::award_stat"
+helper="quest-ore.rs"
+bindings=[
+ {name="game",ty="&mut crate::game::Game<'_>",value="&mut *self"},
+ {name="ty",ty="&str",value="ty"},
+ {name="key",ty="&str",value="key"},
+ {name="amount",ty="i32",value="n"},
+]
+
+[[injection]]
+id="quest-local-click"
+kind="HEAD"
+target="horizon_client::game::dialogs::Game<'_>::run_dialog_action"
+helper="quest-local-click.rs"
+bindings=[
+ {name="game",ty="&mut crate::game::Game<'_>",value="&mut *self"},
+ {name="click",ty="&Option<Click>",value="&click"},
+]
+
+[[injection]]
+id="quest-inventory"
+kind="HEAD"
+target="horizon_client::game::Game<'_>::draw_inventory_slots"
+helper="quest-inventory.rs"
+bindings=[
+ {name="game",ty="&mut crate::game::Game<'_>",value="&mut *self"},
+ {name="batch",ty="&mut HudBatch",value="batch"},
+ {name="ox",ty="f32",value="ox"},
+ {name="oy",ty="f32",value="oy"},
+]
+
+[[injection]]
+id="quest-badges-packet"
+kind="HEAD"
+target="horizon_client::game::native_hooks::Game<'_>::native_client_packet"
+helper="quest-badges-packet.rs"
+bindings=[{name="game",ty="&mut crate::game::Game<'_>",value="&mut *self"},{name="packet",ty="&ClientboundPlayPacket",value="packet"}]
+
+[[injection]]
+id="quest-disconnect"
+kind="HEAD"
+target="horizon_client::game::native_hooks::Game<'_>::native_client_disconnecting"
+helper="quest-disconnect.rs"
+
+[[injection]]
+id="job-name"
+kind="HEAD"
+cancellable=true
+target="horizon_client_lib::mobs::Mob::command_name"
+helper="job-name.rs"
+bindings=[{name="mob",ty="&Mob",value="self"}]
+
+[[module]]
+id="sc-alerts"
+file="crates/horizon-client/src/game.rs"
+name="sc_alerts"
+source="alerts.rs"
+
+[[injection]]
+id="alert-draw"
+kind="HEAD"
+target="horizon_client::game::native_hooks::Game<'_>::native_gui_render_post"
+helper="alert-draw.rs"
+bindings=[{name="game",ty="&crate::game::Game<'_>",value="self"},{name="batch",ty="&mut HudBatch",value="batch"},{name="hidden",ty="bool",value="gui_hidden"}]
+
+[[injection]]
+id="quest-ready"
+kind="HEAD"
+target="horizon_client::game::native_hooks::Game<'_>::native_player_tick"
+helper="quest-ready.rs"
+bindings=[{name="game",ty="&mut crate::game::Game<'_>",value="&mut *self"}]
+
+[[injection]]
+id="rune-mining"
+kind="HEAD"
+cancellable=true
+target="horizon_client::game::hand::Game<'_>::destroy_progress"
+helper="rune-mining.rs"
+bindings=[
+ {name="game",ty="&mut crate::game::Game<'_>",value="&mut *self"},
+ {name="pos",ty="[i32;3]",value="pos"},
+]
+
+[[injection]]
+id="rune-click"
+kind="HEAD"
+target="horizon_client::game::native_hooks::Game<'_>::native_left_click_block"
+helper="rune-click.rs"
+bindings=[
+ {name="game",ty="&mut crate::game::Game<'_>",value="&mut *self"},
+ {name="pos",ty="[i32;3]",value="pos"},
+ {name="canceled",ty="&mut bool",value="canceled"},
+]
+
+[[injection]]
+id="rune-break"
+kind="HEAD"
+target="horizon_client::game::native_hooks::Game<'_>::native_destroy_block"
+helper="rune-break.rs"
+bindings=[
+ {name="game",ty="&mut crate::game::Game<'_>",value="&mut *self"},
+ {name="pos",ty="[i32;3]",value="pos"},
+ {name="canceled",ty="&mut bool",value="canceled"},
+]
+
+[[injection]]
+id="rune-creative-client"
+kind="HEAD"
+cancellable=true
+target="horizon_client::game::remote::Game<'_>::remote_mining"
+helper="rune-creative-client.rs"
+bindings=[
+ {name="game",ty="&mut crate::game::Game<'_>",value="&mut *self"},
+ {name="start",ty="bool",value="start"},
+]
+
+[[injection]]
+id="structure-site"
+kind="HEAD"
+cancellable=true
+target="horizon_world::worldgen::structure::start_checks::StartChecks::pass"
+helper="structure-site.rs"
+bindings=[{name="checks",ty="&StartChecks",value="self"},{name="queries",ty="&mut impl CheckQueries",value="queries"},{name="chunk",ty="ChunkPos",value="chunk"},{name="y",ty="i32",value="y"},{name="biomes",ty="&BTreeSet<BiomeId>",value="biomes"}]
+
+[[injection]]
+id="rune-finish"
+kind="HEAD"
+cancellable=true
+target="horizon_client::game::lan_actions::Game<'_>::guest_stop_digging"
+helper="rune-finish.rs"
+bindings=[{name="game",ty="&mut crate::game::Game<'_>",value="&mut *self"},{name="host",ty="&mut LanHost",value="host"},{name="conn",ty="u32",value="conn"},{name="pos",ty="[i32;3]",value="pos"}]

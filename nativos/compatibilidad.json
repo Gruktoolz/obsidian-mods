@@ -1,0 +1,961 @@
+[
+ {
+  "id": "accurate_block_placement",
+  "archivo": "accurate_block_placement-1.0.0.hnmod",
+  "estado": "encaja",
+  "motivo": "",
+  "revision_pedida": "aa27eca326db26e999d4e59d7899576016764b1e"
+ },
+ {
+  "id": "ae2",
+  "archivo": "ae2-15.4.17.hnmod",
+  "estado": "no encaja",
+  "motivo": "E_TARGET_NOT_FOUND: no source function 'horizon_client::game::Game<'_>::clicked_outside'; use an exact crate::module::function, Type::method or <Type as Trait>::method ID",
+  "revision_pedida": "6560641ba51a452f6bc2407baa4eb1b3be517ca8"
+ },
+ {
+  "id": "appleskin",
+  "archivo": "appleskin-0.1.3.hnmod",
+  "estado": "encaja",
+  "motivo": "",
+  "revision_pedida": "02c8607ee8ebd216f2f535c1eb7b62b572830df2"
+ },
+ {
+  "id": "appleskin_horizon",
+  "archivo": "appleskin_horizon-1.0.0.hnmod",
+  "estado": "no encaja",
+  "motivo": "E_TARGET_NOT_FOUND: no source function 'horizon_client::game::titles::Game<'_>::draw_titles'; use an exact crate::module::function, Type::method or <Type as Trait>::method ID",
+  "revision_pedida": "ba6344a59cb9e755b730dcf02285fc0d33b97d3c"
+ },
+ {
+  "id": "armor_status",
+  "archivo": "armor_status-1.0.0.hnmod",
+  "estado": "encaja",
+  "motivo": "",
+  "revision_pedida": "ba6344a59cb9e755b730dcf02285fc0d33b97d3c"
+ },
+ {
+  "id": "armorhud",
+  "archivo": "armorhud-1.0.0.hnmod",
+  "estado": "encaja",
+  "motivo": "",
+  "revision_pedida": "c9d474dd9116e84c243f8992d75c11314df56f06"
+ },
+ {
+  "id": "astral_cruiser",
+  "archivo": "astral_cruiser-0.1.0.hnmod",
+  "estado": "no encaja",
+  "motivo": "E_TARGET_NOT_FOUND: no source function 'horizon_client::game::Game<'_>::terrain_distance'; use an exact crate::module::function, Type::method or <Type as Trait>::method ID",
+  "revision_pedida": "68ac6f647e7022b2c696e81863d7cface28c9416"
+ },
+ {
+  "id": "atlas",
+  "archivo": "atlas-0.2.0.hnmod",
+  "estado": "no compila en Android",
+  "motivo": "firma/campo cambiado (lote 2026-11-12)",
+  "revision_pedida": "f319701e8c9ab657ff562250b3ba07b2d654e3bc"
+ },
+ {
+  "id": "ayynoxs_map_pack",
+  "archivo": "ayynoxs_map_pack-0.4.2.hnmod",
+  "estado": "encaja",
+  "motivo": "",
+  "revision_pedida": "6475f62f3c834b7489e1816bf47f47ea5eb2b879"
+ },
+ {
+  "id": "baritone",
+  "archivo": "baritone-1.1.52.hnmod",
+  "estado": "encaja",
+  "motivo": "",
+  "revision_pedida": "6475f62f3c834b7489e1816bf47f47ea5eb2b879"
+ },
+ {
+  "id": "basic_hud",
+  "archivo": "basic_hud-0.5.0.hnmod",
+  "estado": "no encaja",
+  "motivo": "E_INVALID_BINDING: binding 'own' must be a target parameter or its explicit borrow/reborrow; no calls or locals",
+  "revision_pedida": "68ac6f647e7022b2c696e81863d7cface28c9416"
+ },
+ {
+  "id": "betterf3",
+  "archivo": "betterf3-1.0.0.hnmod",
+  "estado": "no compila en Android",
+  "motivo": "firma/campo cambiado (lote 2026-11-12)",
+  "revision_pedida": "2ebf00a0281c592f79191e76fce0e7d522c6f425"
+ },
+ {
+  "id": "big_nukes_native",
+  "archivo": "big_nukes_native-0.1.3.hnmod",
+  "estado": "no compila en Android",
+  "motivo": "content_root con firma antigua",
+  "revision_pedida": "6560641ba51a452f6bc2407baa4eb1b3be517ca8"
+ },
+ {
+  "id": "biomecompass",
+  "archivo": "biomecompass-0.2.2.hnmod",
+  "estado": "no encaja",
+  "motivo": "E_TARGET_NOT_FOUND: no source function 'horizon_client::game::Game<'_>::craft_recipe'; use an exact crate::module::function, Type::method or <Type as Trait>::method ID",
+  "revision_pedida": "142388e1c136e622652ec7505af15d8ad195e041"
+ },
+ {
+  "id": "blockscope",
+  "archivo": "blockscope-0.3.1.hnmod",
+  "estado": "encaja",
+  "motivo": "",
+  "revision_pedida": "4aa6854a886183440256f4f4a4a9d1ed853227a1"
+ },
+ {
+  "id": "blood_particles",
+  "archivo": "blood_particles-1.2.0.hnmod",
+  "estado": "encaja",
+  "motivo": "",
+  "revision_pedida": "2ebf00a0281c592f79191e76fce0e7d522c6f425"
+ },
+ {
+  "id": "carryblock",
+  "archivo": "carryblock-0.1.2.hnmod",
+  "estado": "no encaja",
+  "motivo": "E_TARGET_NOT_FOUND: no source function 'horizon_client::game::Game<'_>::use_item'; use an exact crate::module::function, Type::method or <Type as Trait>::method ID",
+  "revision_pedida": "142388e1c136e622652ec7505af15d8ad195e041"
+ },
+ {
+  "id": "chat_animation",
+  "archivo": "chat_animation-0.1.3.hnmod",
+  "estado": "encaja",
+  "motivo": "",
+  "revision_pedida": "fdc87aecdbd116bf1e08adcd062fcbaea8c2e2ca"
+ },
+ {
+  "id": "chat_heads_rust",
+  "archivo": "chat_heads_rust-1.0.2.hnmod",
+  "estado": "encaja",
+  "motivo": "",
+  "revision_pedida": "4aa6854a886183440256f4f4a4a9d1ed853227a1"
+ },
+ {
+  "id": "chatheads",
+  "archivo": "chatheads-0.1.1.hnmod",
+  "estado": "encaja",
+  "motivo": "",
+  "revision_pedida": "4aa6854a886183440256f4f4a4a9d1ed853227a1"
+ },
+ {
+  "id": "chop",
+  "archivo": "chop-1.0.1.hnmod",
+  "estado": "no compila en Android",
+  "motivo": "firma/campo cambiado (lote 2026-11-12)",
+  "revision_pedida": "c9d474dd9116e84c243f8992d75c11314df56f06"
+ },
+ {
+  "id": "cinematic_interactions",
+  "archivo": "cinematic_interactions-0.12.2.hnmod",
+  "estado": "no encaja",
+  "motivo": "E_TARGET_NOT_FOUND: no source function 'horizon_client::game::Game<'_>::hand_geometry'; use an exact crate::module::function, Type::method or <Type as Trait>::method ID",
+  "revision_pedida": "fdc87aecdbd116bf1e08adcd062fcbaea8c2e2ca"
+ },
+ {
+  "id": "classic_zoom",
+  "archivo": "classic_zoom-2.0.0.hnmod",
+  "estado": "encaja",
+  "motivo": "",
+  "revision_pedida": "6f8c7a0e5d531d3834c4d0be4659a1db8e7e5c2a"
+ },
+ {
+  "id": "clientsort",
+  "archivo": "clientsort-1.2.0.hnmod",
+  "estado": "no compila en Android",
+  "motivo": "firma/campo cambiado (lote 2026-11-12)",
+  "revision_pedida": "fdc87aecdbd116bf1e08adcd062fcbaea8c2e2ca"
+ },
+ {
+  "id": "connected_textures",
+  "archivo": "connected_textures-0.1.7.hnmod",
+  "estado": "encaja",
+  "motivo": "",
+  "revision_pedida": "fdc87aecdbd116bf1e08adcd062fcbaea8c2e2ca"
+ },
+ {
+  "id": "context_tools",
+  "archivo": "context_tools-1.3.0.hnmod",
+  "estado": "no encaja",
+  "motivo": "E_TARGET_NOT_FOUND: no source function 'horizon_client::game::Game<'_>::play_mouse'; use an exact crate::module::function, Type::method or <Type as Trait>::method ID",
+  "revision_pedida": "6475f62f3c834b7489e1816bf47f47ea5eb2b879"
+ },
+ {
+  "id": "coords_hud",
+  "archivo": "coords_hud-2.0.0.hnmod",
+  "estado": "encaja",
+  "motivo": "",
+  "revision_pedida": "4baa571566e39bfd6594988d3bb2bc85440c30e7"
+ },
+ {
+  "id": "cpm",
+  "archivo": "cpm-0.1.2.hnmod",
+  "estado": "no encaja",
+  "motivo": "E_MANIFEST: TOML parse error at line 14, column 2\n   |\n14 | [api]\n   |  ^^^\nunknown field `api`, expected one of `mod`, `compatibility`, `injection`, `bridge`, `module`, `state`, `crate`, `post_build`\n",
+  "revision_pedida": "02c8607ee8ebd216f2f535c1eb7b62b572830df2"
+ },
+ {
+  "id": "create",
+  "archivo": "create-0.7.0-alpha.2.hnmod",
+  "estado": "no encaja",
+  "motivo": "E_UNSUPPORTED_MACRO: no source function 'horizon_client::game::load_resources'; use an exact crate::module::function, Type::method or <Type as Trait>::method ID",
+  "revision_pedida": "9c7f9b2215dfed497aba5522c44f38926628648d"
+ },
+ {
+  "id": "crosshair_indicator",
+  "archivo": "crosshair_indicator-1.0.0.hnmod",
+  "estado": "encaja",
+  "motivo": "",
+  "revision_pedida": "ba6344a59cb9e755b730dcf02285fc0d33b97d3c"
+ },
+ {
+  "id": "crossversion",
+  "archivo": "crossversion-0.8.0.hnmod",
+  "estado": "encaja",
+  "motivo": "",
+  "revision_pedida": "07b7ea30d02973e7bc7579ea1e914dac2a9eca01"
+ },
+ {
+  "id": "customhud",
+  "archivo": "customhud-1.7.0.hnmod",
+  "estado": "no encaja",
+  "motivo": "E_TARGET_NOT_FOUND: no source function 'horizon_client::game::<Game<'_> as ApplicationHandler>::window_event'; use an exact crate::module::function, Type::method or <Type as Trait>::method ID",
+  "revision_pedida": "c9d474dd9116e84c243f8992d75c11314df56f06"
+ },
+ {
+  "id": "deepbore_quarry_native",
+  "archivo": "deepbore_quarry_native-0.1.2.hnmod",
+  "estado": "no compila en Android",
+  "motivo": "content_root con firma antigua",
+  "revision_pedida": "67dad0d1a5adca139b426c8114e74a33b376ba64"
+ },
+ {
+  "id": "distant_horizons",
+  "archivo": "distant_horizons-0.1.0.hnmod",
+  "estado": "no encaja",
+  "motivo": "E_TARGET_NOT_FOUND: no source function 'horizon_client::game::Game<'_>::terrain_distance'; use an exact crate::module::function, Type::method or <Type as Trait>::method ID",
+  "revision_pedida": "d009ebd140476b5bdc958c00f56a75e82abec691"
+ },
+ {
+  "id": "dynamic_fps_for_rust",
+  "archivo": "dynamic_fps_for_rust-0.1.0.hnmod",
+  "estado": "no encaja",
+  "motivo": "E_TARGET_NOT_FOUND: no source function 'horizon_client::game::Game<'_>::handle_window_event'; use an exact crate::module::function, Type::method or <Type as Trait>::method ID",
+  "revision_pedida": "998b1d8301928c0559a0f368809860a30d6d9e53"
+ },
+ {
+  "id": "dynamiclights",
+  "archivo": "dynamiclights-1.0.3.hnmod",
+  "estado": "no compila en Android",
+  "motivo": "firma/campo cambiado (lote 2026-11-12)",
+  "revision_pedida": "fdc87aecdbd116bf1e08adcd062fcbaea8c2e2ca"
+ },
+ {
+  "id": "eatinganimation",
+  "archivo": "eatinganimation-0.2.0.hnmod",
+  "estado": "no compila en Android",
+  "motivo": "content_root con firma antigua",
+  "revision_pedida": "6d99e14ff0c70ae60bc56b67829b526409fa068e"
+ },
+ {
+  "id": "elytratrails",
+  "archivo": "elytratrails-0.1.2.hnmod",
+  "estado": "encaja",
+  "motivo": "",
+  "revision_pedida": "02c8607ee8ebd216f2f535c1eb7b62b572830df2"
+ },
+ {
+  "id": "enchantmenthints",
+  "archivo": "enchantmenthints-0.1.0.hnmod",
+  "estado": "encaja",
+  "motivo": "",
+  "revision_pedida": "142388e1c136e622652ec7505af15d8ad195e041"
+ },
+ {
+  "id": "fair_freecam",
+  "archivo": "fair_freecam-1.2.0.hnmod",
+  "estado": "no encaja",
+  "motivo": "E_TARGET_NOT_FOUND: no source function 'horizon_client::game::Game<'_>::hand_geometry'; use an exact crate::module::function, Type::method or <Type as Trait>::method ID",
+  "revision_pedida": "aa27eca326db26e999d4e59d7899576016764b1e"
+ },
+ {
+  "id": "fast_items",
+  "archivo": "fast_items-0.1.0.hnmod",
+  "estado": "encaja",
+  "motivo": "",
+  "revision_pedida": "998b1d8301928c0559a0f368809860a30d6d9e53"
+ },
+ {
+  "id": "fast_trading",
+  "archivo": "fast_trading-1.0.0.hnmod",
+  "estado": "encaja",
+  "motivo": "",
+  "revision_pedida": "3fb4c3138e0c5d8fdd2fdb555cf31368e8897497"
+ },
+ {
+  "id": "fence_perch",
+  "archivo": "fence_perch-1.0.0.hnmod",
+  "estado": "encaja",
+  "motivo": "",
+  "revision_pedida": "2ebf00a0281c592f79191e76fce0e7d522c6f425"
+ },
+ {
+  "id": "first_person_body",
+  "archivo": "first_person_body-1.0.0.hnmod",
+  "estado": "no encaja",
+  "motivo": "E_TARGET_NOT_FOUND: no source function 'horizon_client::game::cosmetics::Game<'_>::cosmetics_geometry'; use an exact crate::module::function, Type::method or <Type as Trait>::method ID",
+  "revision_pedida": "fdc87aecdbd116bf1e08adcd062fcbaea8c2e2ca"
+ },
+ {
+  "id": "firstpersonmodel",
+  "archivo": "firstpersonmodel-1.0.0.hnmod",
+  "estado": "no compila en Android",
+  "motivo": "firma/campo cambiado (lote 2026-11-12)",
+  "revision_pedida": "2ebf00a0281c592f79191e76fce0e7d522c6f425"
+ },
+ {
+  "id": "flair",
+  "archivo": "flair-1.0.1.hnmod",
+  "estado": "no encaja",
+  "motivo": "E_TARGET_NOT_FOUND: no source function 'horizon_client::game::<Game<'_> as ApplicationHandler>::window_event'; use an exact crate::module::function, Type::method or <Type as Trait>::method ID",
+  "revision_pedida": "66f3981f522b24c250b21523a70080965b940424"
+ },
+ {
+  "id": "fly_speed",
+  "archivo": "fly_speed-0.2.0.hnmod",
+  "estado": "encaja",
+  "motivo": "",
+  "revision_pedida": "9d979caa48a3bb58203319b9ea044db58c38e0d8"
+ },
+ {
+  "id": "fps_overlay",
+  "archivo": "fps_overlay-2.0.0.hnmod",
+  "estado": "encaja",
+  "motivo": "",
+  "revision_pedida": "6f8c7a0e5d531d3834c4d0be4659a1db8e7e5c2a"
+ },
+ {
+  "id": "freecam",
+  "archivo": "freecam-0.1.0.hnmod",
+  "estado": "no encaja",
+  "motivo": "E_TARGET_NOT_FOUND: no source function 'horizon_client::game::Game<'_>::mapped_key'; use an exact crate::module::function, Type::method or <Type as Trait>::method ID",
+  "revision_pedida": "af55a734865da4f1b11836164a979ff06a1f0449"
+ },
+ {
+  "id": "freecam_plus",
+  "archivo": "freecam_plus-1.0.1.hnmod",
+  "estado": "no encaja",
+  "motivo": "E_TARGET_NOT_FOUND: no source function 'horizon_client::game::<Game<'_> as ApplicationHandler>::window_event'; use an exact crate::module::function, Type::method or <Type as Trait>::method ID",
+  "revision_pedida": "66f3981f522b24c250b21523a70080965b940424"
+ },
+ {
+  "id": "freecam_yannis",
+  "archivo": "freecam_yannis-1.0.1.hnmod",
+  "estado": "encaja",
+  "motivo": "",
+  "revision_pedida": "2ebf00a0281c592f79191e76fce0e7d522c6f425"
+ },
+ {
+  "id": "freelook",
+  "archivo": "freelook-0.3.1.hnmod",
+  "estado": "no encaja",
+  "motivo": "E_TARGET_NOT_FOUND: no source function 'horizon_client::game::Game<'_>::apply_mouse_look'; use an exact crate::module::function, Type::method or <Type as Trait>::method ID",
+  "revision_pedida": "a4911819616385e3e8296b8957e7f60e8a217949"
+ },
+ {
+  "id": "fullbright",
+  "archivo": "fullbright-1.0.0.hnmod",
+  "estado": "encaja",
+  "motivo": "",
+  "revision_pedida": "41672b1221db24ea60d48a16a9f5af337df27155"
+ },
+ {
+  "id": "fullbright_horizon",
+  "archivo": "fullbright_horizon-1.0.0.hnmod",
+  "estado": "encaja",
+  "motivo": "",
+  "revision_pedida": "ba6344a59cb9e755b730dcf02285fc0d33b97d3c"
+ },
+ {
+  "id": "fullbright_nofog",
+  "archivo": "fullbright_nofog-1.0.0.hnmod",
+  "estado": "encaja",
+  "motivo": "",
+  "revision_pedida": "c9d474dd9116e84c243f8992d75c11314df56f06"
+ },
+ {
+  "id": "gyro",
+  "archivo": "gyro-1.4.1.hnmod",
+  "estado": "no encaja",
+  "motivo": "E_TARGET_NOT_FOUND: no source function 'horizon_client::game::Game<'_>::apply_mouse_look'; use an exact crate::module::function, Type::method or <Type as Trait>::method ID",
+  "revision_pedida": "ba6344a59cb9e755b730dcf02285fc0d33b97d3c"
+ },
+ {
+  "id": "held_item_info",
+  "archivo": "held_item_info-0.1.0.hnmod",
+  "estado": "encaja",
+  "motivo": "",
+  "revision_pedida": "3db53df3bde39da07aabddec9a5fa850204fd32a"
+ },
+ {
+  "id": "hitbox_plus",
+  "archivo": "hitbox_plus-1.3.0.hnmod",
+  "estado": "no compila en Android",
+  "motivo": "falta crate::official_hitbox_plus",
+  "revision_pedida": "68ac6f647e7022b2c696e81863d7cface28c9416"
+ },
+ {
+  "id": "horizon_physics",
+  "archivo": "horizon_physics-0.20.7.hnmod",
+  "estado": "no encaja",
+  "motivo": "E_TARGET_NOT_FOUND: no source function 'horizon_client::game::Game<'_>::attack'; use an exact crate::module::function, Type::method or <Type as Trait>::method ID",
+  "revision_pedida": "fdc87aecdbd116bf1e08adcd062fcbaea8c2e2ca"
+ },
+ {
+  "id": "horizonmatica",
+  "archivo": "horizonmatica-0.3.2.hnmod",
+  "estado": "no compila en Android",
+  "motivo": "firma/campo cambiado (lote 2026-11-12)",
+  "revision_pedida": "fdc87aecdbd116bf1e08adcd062fcbaea8c2e2ca"
+ },
+ {
+  "id": "hud_plus",
+  "archivo": "hud_plus-4.hnmod",
+  "estado": "encaja",
+  "motivo": "",
+  "revision_pedida": "f42ef42ef6ceccb3c6a20bea2481d87949a51c81"
+ },
+ {
+  "id": "imfast",
+  "archivo": "imfast.hnmod",
+  "estado": "encaja",
+  "motivo": "",
+  "revision_pedida": "1d63e0a5a37a7a708eb0b32b49bf0dfeb28ed8a9"
+ },
+ {
+  "id": "inferium_lab",
+  "archivo": "inferium_lab-0.1.0.hnmod",
+  "estado": "encaja",
+  "motivo": "",
+  "revision_pedida": "66f3981f522b24c250b21523a70080965b940424"
+ },
+ {
+  "id": "inventory_profiles",
+  "archivo": "inventory_profiles-1.0.0.hnmod",
+  "estado": "no compila en Android",
+  "motivo": "firma/campo cambiado (lote 2026-11-12)",
+  "revision_pedida": "ba6344a59cb9e755b730dcf02285fc0d33b97d3c"
+ },
+ {
+  "id": "inventory_wizard",
+  "archivo": "inventory_wizard-2.3.3.hnmod",
+  "estado": "encaja",
+  "motivo": "",
+  "revision_pedida": "f99f8feaaab3be2f0309ffdf4efe03227357cfb6"
+ },
+ {
+  "id": "invisible_frames",
+  "archivo": "invisible_frames-0.1.1.hnmod",
+  "estado": "encaja",
+  "motivo": "",
+  "revision_pedida": "3db53df3bde39da07aabddec9a5fa850204fd32a"
+ },
+ {
+  "id": "itemnew",
+  "archivo": "itemnew-0.1.1.hnmod",
+  "estado": "encaja",
+  "motivo": "",
+  "revision_pedida": "142388e1c136e622652ec7505af15d8ad195e041"
+ },
+ {
+  "id": "jade",
+  "archivo": "jade-26.3.8.hnmod",
+  "estado": "no compila en Android",
+  "motivo": "firma/campo cambiado (lote 2026-11-12)",
+  "revision_pedida": "6560641ba51a452f6bc2407baa4eb1b3be517ca8"
+ },
+ {
+  "id": "jei",
+  "archivo": "jei-0.2.1.hnmod",
+  "estado": "encaja",
+  "motivo": "",
+  "revision_pedida": "6560641ba51a452f6bc2407baa4eb1b3be517ca8"
+ },
+ {
+  "id": "justenoughitems",
+  "archivo": "justenoughitems-1.1.0.hnmod",
+  "estado": "encaja",
+  "motivo": "",
+  "revision_pedida": "fdc87aecdbd116bf1e08adcd062fcbaea8c2e2ca"
+ },
+ {
+  "id": "keystrokes",
+  "archivo": "keystrokes-2.0.0.hnmod",
+  "estado": "encaja",
+  "motivo": "",
+  "revision_pedida": "6f8c7a0e5d531d3834c4d0be4659a1db8e7e5c2a"
+ },
+ {
+  "id": "killc",
+  "archivo": "killc-5.1.0.hnmod",
+  "estado": "encaja",
+  "motivo": "",
+  "revision_pedida": "d91cab68ded29bd2b004f7050c468fb98c41a00b"
+ },
+ {
+  "id": "kotost_body",
+  "archivo": "kotost_body-0.4.0.hnmod",
+  "estado": "no encaja",
+  "motivo": "E_TARGET_NOT_FOUND: no source function 'horizon_client::game::cosmetics::Game<'_>::cosmetics_geometry'; use an exact crate::module::function, Type::method or <Type as Trait>::method ID",
+  "revision_pedida": "fdc87aecdbd116bf1e08adcd062fcbaea8c2e2ca"
+ },
+ {
+  "id": "kotost_chest",
+  "archivo": "kotost_chest-0.1.0.hnmod",
+  "estado": "encaja",
+  "motivo": "",
+  "revision_pedida": "fdc87aecdbd116bf1e08adcd062fcbaea8c2e2ca"
+ },
+ {
+  "id": "kotost_firstperson",
+  "archivo": "kotost_firstperson-0.1.0.hnmod",
+  "estado": "no encaja",
+  "motivo": "E_TARGET_NOT_FOUND: no source function 'horizon_client::game::cosmetics::fx::Game<'_>::cosmetics_fx_geometry'; use an exact crate::module::function, Type::method or <Type as Trait>::method ID",
+  "revision_pedida": "fdc87aecdbd116bf1e08adcd062fcbaea8c2e2ca"
+ },
+ {
+  "id": "kotost_roulette",
+  "archivo": "kotost_roulette-0.1.0.hnmod",
+  "estado": "encaja",
+  "motivo": "",
+  "revision_pedida": "fdc87aecdbd116bf1e08adcd062fcbaea8c2e2ca"
+ },
+ {
+  "id": "light_overlay",
+  "archivo": "light_overlay-1.0.0.hnmod",
+  "estado": "encaja",
+  "motivo": "",
+  "revision_pedida": "ba6344a59cb9e755b730dcf02285fc0d33b97d3c"
+ },
+ {
+  "id": "living_camera",
+  "archivo": "living_camera-1.1.0.hnmod",
+  "estado": "encaja",
+  "motivo": "",
+  "revision_pedida": "fdc87aecdbd116bf1e08adcd062fcbaea8c2e2ca"
+ },
+ {
+  "id": "livingmotion",
+  "archivo": "livingmotion-1.2.0.hnmod",
+  "estado": "encaja",
+  "motivo": "",
+  "revision_pedida": "f319701e8c9ab657ff562250b3ba07b2d654e3bc"
+ },
+ {
+  "id": "lookat",
+  "archivo": "lookat-0.2.1.hnmod",
+  "estado": "no compila en Android",
+  "motivo": "firma/campo cambiado (lote 2026-11-12)",
+  "revision_pedida": "142388e1c136e622652ec7505af15d8ad195e041"
+ },
+ {
+  "id": "map_preview",
+  "archivo": "map_preview-1.0.0.hnmod",
+  "estado": "no compila en Android",
+  "motivo": "firma/campo cambiado (lote 2026-11-12)",
+  "revision_pedida": "fdc87aecdbd116bf1e08adcd062fcbaea8c2e2ca"
+ },
+ {
+  "id": "minelights",
+  "archivo": "minelights-2.4.0.hnmod",
+  "estado": "no encaja",
+  "motivo": "E_TARGET_NOT_FOUND: no source function 'horizon_client::game::Game<'_>::save_for_exit'; use an exact crate::module::function, Type::method or <Type as Trait>::method ID",
+  "revision_pedida": "67dad0d1a5adca139b426c8114e74a33b376ba64"
+ },
+ {
+  "id": "minimap",
+  "archivo": "minimap-2.0.0.hnmod",
+  "estado": "encaja",
+  "motivo": "",
+  "revision_pedida": "6f8c7a0e5d531d3834c4d0be4659a1db8e7e5c2a"
+ },
+ {
+  "id": "minimap_worldmap_waypoints_reworked",
+  "archivo": "minimap_worldmap_waypoints_reworked-0.4.1.hnmod",
+  "estado": "no encaja",
+  "motivo": "E_TARGET_NOT_FOUND: no source function 'horizon_client::game::<Game<'_> as ApplicationHandler>::exiting'; use an exact crate::module::function, Type::method or <Type as Trait>::method ID",
+  "revision_pedida": "2ebf00a0281c592f79191e76fce0e7d522c6f425"
+ },
+ {
+  "id": "mod_menu",
+  "archivo": "mod_menu-0.3.5.hnmod",
+  "estado": "no compila en Android",
+  "motivo": "firma/campo cambiado (lote 2026-11-12)",
+  "revision_pedida": "fdc87aecdbd116bf1e08adcd062fcbaea8c2e2ca"
+ },
+ {
+  "id": "modmenu",
+  "archivo": "modmenu-1.1.2.hnmod",
+  "estado": "no encaja",
+  "motivo": "E_INVALID_BINDING: binding 'split' must be a target parameter or its explicit borrow/reborrow; no calls or locals",
+  "revision_pedida": "fdc87aecdbd116bf1e08adcd062fcbaea8c2e2ca"
+ },
+ {
+  "id": "motion_blur",
+  "archivo": "motion_blur-0.1.0.hnmod",
+  "estado": "encaja",
+  "motivo": "",
+  "revision_pedida": "c9d474dd9116e84c243f8992d75c11314df56f06"
+ },
+ {
+  "id": "mousetricks",
+  "archivo": "mousetricks-0.2.0.hnmod",
+  "estado": "no encaja",
+  "motivo": "E_TARGET_NOT_FOUND: no source function 'horizon_client::game::Game<'_>::inventory_drag_move'; use an exact crate::module::function, Type::method or <Type as Trait>::method ID",
+  "revision_pedida": "142388e1c136e622652ec7505af15d8ad195e041"
+ },
+ {
+  "id": "mousetweaks",
+  "archivo": "mousetweaks-1.1.0.hnmod",
+  "estado": "no encaja",
+  "motivo": "E_TARGET_NOT_FOUND: no source function 'horizon_client::game::Game<'_>::inventory_drag_move'; use an exact crate::module::function, Type::method or <Type as Trait>::method ID",
+  "revision_pedida": "fdc87aecdbd116bf1e08adcd062fcbaea8c2e2ca"
+ },
+ {
+  "id": "movement_status",
+  "archivo": "movement_status-0.1.1.hnmod",
+  "estado": "encaja",
+  "motivo": "",
+  "revision_pedida": "fdc87aecdbd116bf1e08adcd062fcbaea8c2e2ca"
+ },
+ {
+  "id": "orbital",
+  "archivo": "orbital-0.5.10.hnmod",
+  "estado": "no compila en Android",
+  "motivo": "content_root con firma antigua",
+  "revision_pedida": "e57b1d34bb0dcf6bf081c19fe6d2e7f69b60cdf4"
+ },
+ {
+  "id": "pickupnotifier",
+  "archivo": "pickupnotifier-1.1.0.hnmod",
+  "estado": "encaja",
+  "motivo": "",
+  "revision_pedida": "fdc87aecdbd116bf1e08adcd062fcbaea8c2e2ca"
+ },
+ {
+  "id": "projecte_core",
+  "archivo": "projecte_core-0.1.0.hnmod",
+  "estado": "encaja",
+  "motivo": "",
+  "revision_pedida": "66f3981f522b24c250b21523a70080965b940424"
+ },
+ {
+  "id": "pvp_music",
+  "archivo": "pvp-music-1.2.0.hnmod",
+  "estado": "encaja",
+  "motivo": "",
+  "revision_pedida": "3fb4c3138e0c5d8fdd2fdb555cf31368e8897497"
+ },
+ {
+  "id": "rarity_borders",
+  "archivo": "rarity_borders-0.1.1.hnmod",
+  "estado": "encaja",
+  "motivo": "",
+  "revision_pedida": "2ebf00a0281c592f79191e76fce0e7d522c6f425"
+ },
+ {
+  "id": "recipes",
+  "archivo": "recipes-2.0.0.hnmod",
+  "estado": "encaja",
+  "motivo": "",
+  "revision_pedida": "4baa571566e39bfd6594988d3bb2bc85440c30e7"
+ },
+ {
+  "id": "resourcify",
+  "archivo": "resourcify-0.1.2.hnmod",
+  "estado": "encaja",
+  "motivo": "",
+  "revision_pedida": "fdc87aecdbd116bf1e08adcd062fcbaea8c2e2ca"
+ },
+ {
+  "id": "rider_hud",
+  "archivo": "rider_hud-0.1.0.hnmod",
+  "estado": "encaja",
+  "motivo": "",
+  "revision_pedida": "2ebf00a0281c592f79191e76fce0e7d522c6f425"
+ },
+ {
+  "id": "right_click_crops",
+  "archivo": "right_click_crops-1.0.1.hnmod",
+  "estado": "no compila en Android",
+  "motivo": "firma/campo cambiado (lote 2026-11-12)",
+  "revision_pedida": "66f3981f522b24c250b21523a70080965b940424"
+ },
+ {
+  "id": "rightharvest",
+  "archivo": "rightharvest-0.1.1.hnmod",
+  "estado": "no encaja",
+  "motivo": "E_TARGET_NOT_FOUND: no source function 'horizon_client::game::Game<'_>::use_hand'; use an exact crate::module::function, Type::method or <Type as Trait>::method ID",
+  "revision_pedida": "4aa6854a886183440256f4f4a4a9d1ed853227a1"
+ },
+ {
+  "id": "rmotd",
+  "archivo": "rmotd-1.0.0.hnmod",
+  "estado": "encaja",
+  "motivo": "",
+  "revision_pedida": "d91cab68ded29bd2b004f7050c468fb98c41a00b"
+ },
+ {
+  "id": "roughlyenoughitems",
+  "archivo": "roughlyenoughitems-1.1.0.hnmod",
+  "estado": "no compila en Android",
+  "motivo": "firma con 7 argumentos",
+  "revision_pedida": "fdc87aecdbd116bf1e08adcd062fcbaea8c2e2ca"
+ },
+ {
+  "id": "schematics",
+  "archivo": "schematics-1.0.0.hnmod",
+  "estado": "encaja",
+  "motivo": "",
+  "revision_pedida": "c9d474dd9116e84c243f8992d75c11314df56f06"
+ },
+ {
+  "id": "seedcrackerx",
+  "archivo": "seedcrackerx-0.2.3.hnmod",
+  "estado": "encaja",
+  "motivo": "",
+  "revision_pedida": "6475f62f3c834b7489e1816bf47f47ea5eb2b879"
+ },
+ {
+  "id": "server_browser",
+  "archivo": "server_browser-2.2.1.hnmod",
+  "estado": "no encaja",
+  "motivo": "E_TARGET_NOT_FOUND: no source function 'horizon_client::game::<Game<'_> as ApplicationHandler>::window_event'; use an exact crate::module::function, Type::method or <Type as Trait>::method ID",
+  "revision_pedida": "6475f62f3c834b7489e1816bf47f47ea5eb2b879"
+ },
+ {
+  "id": "server_flags",
+  "archivo": "server_flags-1.0.1.hnmod",
+  "estado": "encaja",
+  "motivo": "",
+  "revision_pedida": "fdc87aecdbd116bf1e08adcd062fcbaea8c2e2ca"
+ },
+ {
+  "id": "serverify",
+  "archivo": "serverify-0.1.0.hnmod",
+  "estado": "encaja",
+  "motivo": "",
+  "revision_pedida": "6f8c7a0e5d531d3834c4d0be4659a1db8e7e5c2a"
+ },
+ {
+  "id": "shulker_peek",
+  "archivo": "shulker_peek-0.1.0.hnmod",
+  "estado": "no compila en Android",
+  "motivo": "firma con 7 argumentos",
+  "revision_pedida": "5e391eb67392941734df7ddd648728c4ed5302f6"
+ },
+ {
+  "id": "shulkerboxtooltip",
+  "archivo": "shulkerboxtooltip-1.0.1.hnmod",
+  "estado": "no encaja",
+  "motivo": "E_TARGET_NOT_FOUND: no source function 'horizon_client::game::Game<'_>::slot_at'; use an exact crate::module::function, Type::method or <Type as Trait>::method ID",
+  "revision_pedida": "fdc87aecdbd116bf1e08adcd062fcbaea8c2e2ca"
+ },
+ {
+  "id": "simple_voice_chat",
+  "archivo": "simple_voice_chat-1.0.0.hnmod",
+  "estado": "encaja",
+  "motivo": "",
+  "revision_pedida": "3fb4c3138e0c5d8fdd2fdb555cf31368e8897497"
+ },
+ {
+  "id": "skins_3d",
+  "archivo": "skins_3d-1.1.0.hnmod",
+  "estado": "no encaja",
+  "motivo": "E_TARGET_NOT_FOUND: no source function 'horizon_client::game::Game<'_>::first_person_arm'; use an exact crate::module::function, Type::method or <Type as Trait>::method ID",
+  "revision_pedida": "66f3981f522b24c250b21523a70080965b940424"
+ },
+ {
+  "id": "smartf3",
+  "archivo": "smartf3-0.1.0.hnmod",
+  "estado": "no compila en Android",
+  "motivo": "firma/campo cambiado (lote 2026-11-12)",
+  "revision_pedida": "142388e1c136e622652ec7505af15d8ad195e041"
+ },
+ {
+  "id": "smoothie_capes",
+  "archivo": "smoothie_capes-0.5.1.hnmod",
+  "estado": "encaja",
+  "motivo": "",
+  "revision_pedida": "298f16555756077684eef42631dcd0315c499ef6"
+ },
+ {
+  "id": "smoothswapping",
+  "archivo": "smoothswapping-1.1.0.hnmod",
+  "estado": "no encaja",
+  "motivo": "E_TARGET_NOT_FOUND: no source function 'horizon_client::game::Game<'_>::draw_inventory_slots'; use an exact crate::module::function, Type::method or <Type as Trait>::method ID",
+  "revision_pedida": "2ebf00a0281c592f79191e76fce0e7d522c6f425"
+ },
+ {
+  "id": "speedrun_timer",
+  "archivo": "speedrun_timer-1.0.1.hnmod",
+  "estado": "encaja",
+  "motivo": "",
+  "revision_pedida": "6f8c7a0e5d531d3834c4d0be4659a1db8e7e5c2a"
+ },
+ {
+  "id": "spider_man",
+  "archivo": "spider_man-0.2.0.hnmod",
+  "estado": "no compila en Android",
+  "motivo": "firma/campo cambiado (lote 2026-11-12)",
+  "revision_pedida": "294448014fba585f8d5d09dd8886f482493b6417"
+ },
+ {
+  "id": "spotify_hud",
+  "archivo": "spotify_hud-1.0.0.hnmod",
+  "estado": "no compila en Android",
+  "motivo": "usa arboard (portapapeles de escritorio)",
+  "revision_pedida": "20186e404479c70791d8376f3d5187d9bb2e6f01"
+ },
+ {
+  "id": "status_effect_hud",
+  "archivo": "status_effect_hud-1.0.0.hnmod",
+  "estado": "encaja",
+  "motivo": "",
+  "revision_pedida": "ba6344a59cb9e755b730dcf02285fc0d33b97d3c"
+ },
+ {
+  "id": "strangely_charming",
+  "archivo": "strangely_charming-0.2.11.hnmod",
+  "estado": "no encaja",
+  "motivo": "E_TARGET_NOT_FOUND: no source function 'horizon_client::game::Game<'_>::first_person_arm'; use an exact crate::module::function, Type::method or <Type as Trait>::method ID",
+  "revision_pedida": "2ebf00a0281c592f79191e76fce0e7d522c6f425"
+ },
+ {
+  "id": "stuck",
+  "archivo": "stuck-1.0.0.hnmod",
+  "estado": "encaja",
+  "motivo": "",
+  "revision_pedida": "d91cab68ded29bd2b004f7050c468fb98c41a00b"
+ },
+ {
+  "id": "tectonic_horizon",
+  "archivo": "tectonic_horizon-0.3.4.hnmod",
+  "estado": "encaja",
+  "motivo": "",
+  "revision_pedida": "8dbbde43501924d16497d251e6e9d08f812eafcd"
+ },
+ {
+  "id": "toggle_sprint",
+  "archivo": "toggle_sprint-1.0.0.hnmod",
+  "estado": "encaja",
+  "motivo": "",
+  "revision_pedida": "ba6344a59cb9e755b730dcf02285fc0d33b97d3c"
+ },
+ {
+  "id": "trails",
+  "archivo": "trails-1.0.0.hnmod",
+  "estado": "encaja",
+  "motivo": "",
+  "revision_pedida": "2ebf00a0281c592f79191e76fce0e7d522c6f425"
+ },
+ {
+  "id": "treefall",
+  "archivo": "treefall-0.3.0.hnmod",
+  "estado": "no encaja",
+  "motivo": "E_TARGET_NOT_FOUND: no source function 'horizon_client::game::Game<'_>::break_block'; use an exact crate::module::function, Type::method or <Type as Trait>::method ID",
+  "revision_pedida": "142388e1c136e622652ec7505af15d8ad195e041"
+ },
+ {
+  "id": "veinminer",
+  "archivo": "veinminer-0.3.2.hnmod",
+  "estado": "no encaja",
+  "motivo": "E_TARGET_NOT_FOUND: no source function 'horizon_client::game::Game<'_>::break_block'; use an exact crate::module::function, Type::method or <Type as Trait>::method ID",
+  "revision_pedida": "d91cab68ded29bd2b004f7050c468fb98c41a00b"
+ },
+ {
+  "id": "viahorizon",
+  "archivo": "viahorizon-0.8.8-dev.hnmod",
+  "estado": "no encaja",
+  "motivo": "E_TARGET_NOT_FOUND: no source function 'horizon_client::game::Game<'_>::hand_geometry'; use an exact crate::module::function, Type::method or <Type as Trait>::method ID",
+  "revision_pedida": "fdc87aecdbd116bf1e08adcd062fcbaea8c2e2ca"
+ },
+ {
+  "id": "visuality_horizon",
+  "archivo": "visuality_horizon-1.0.2.hnmod",
+  "estado": "no encaja",
+  "motivo": "E_TARGET_NOT_FOUND: no source function 'horizon_client::game::remote::Game<'_>::remove_entity'; use an exact crate::module::function, Type::method or <Type as Trait>::method ID",
+  "revision_pedida": "c9d474dd9116e84c243f8992d75c11314df56f06"
+ },
+ {
+  "id": "voicechat",
+  "archivo": "voicechat-1.0.0.hnmod",
+  "estado": "no compila en Android",
+  "motivo": "remote_entity_position no existe",
+  "revision_pedida": "c9d474dd9116e84c243f8992d75c11314df56f06"
+ },
+ {
+  "id": "voltz_core",
+  "archivo": "voltz_core-0.3.0.hnmod",
+  "estado": "encaja",
+  "motivo": "",
+  "revision_pedida": "66f3981f522b24c250b21523a70080965b940424"
+ },
+ {
+  "id": "wayfarer_stones_native",
+  "archivo": "wayfarer_stones_native-0.6.3.hnmod",
+  "estado": "no compila en Android",
+  "motivo": "content_root con firma antigua",
+  "revision_pedida": "67dad0d1a5adca139b426c8114e74a33b376ba64"
+ },
+ {
+  "id": "waymap",
+  "archivo": "waymap-0.2.1.hnmod",
+  "estado": "encaja",
+  "motivo": "",
+  "revision_pedida": "6475f62f3c834b7489e1816bf47f47ea5eb2b879"
+ },
+ {
+  "id": "waypoints",
+  "archivo": "waypoints-1.1.0.hnmod",
+  "estado": "encaja",
+  "motivo": "",
+  "revision_pedida": "c9d474dd9116e84c243f8992d75c11314df56f06"
+ },
+ {
+  "id": "worldedit",
+  "archivo": "worldedit-1.2.1.hnmod",
+  "estado": "no encaja",
+  "motivo": "E_MODULE: module destination must be an indexed Rust source file",
+  "revision_pedida": "83f15fa276c44711276b6ceb5f0fe0c9c534dc66"
+ },
+ {
+  "id": "worldmap",
+  "archivo": "worldmap-0.7.1.hnmod",
+  "estado": "no encaja",
+  "motivo": "E_UNSUPPORTED_CONTROL_FLOW: calls beneath a reference may change temporary lifetimes",
+  "revision_pedida": "fdc87aecdbd116bf1e08adcd062fcbaea8c2e2ca"
+ },
+ {
+  "id": "xtoxray",
+  "archivo": "xtoxray-2026.29.0.hnmod",
+  "estado": "no compila en Android",
+  "motivo": "MeshTables: campos nuevos sin inicializar",
+  "revision_pedida": "942e3b2dedf2f3a84964010dde4e5fc3b6ffdc4a"
+ },
+ {
+  "id": "zoom",
+  "archivo": "zoom-2.0.0.hnmod",
+  "estado": "encaja",
+  "motivo": "",
+  "revision_pedida": "6f8c7a0e5d531d3834c4d0be4659a1db8e7e5c2a"
+ },
+ {
+  "id": "zoomify",
+  "archivo": "zoomify-1.1.1.hnmod",
+  "estado": "encaja",
+  "motivo": "",
+  "revision_pedida": "fdc87aecdbd116bf1e08adcd062fcbaea8c2e2ca"
+ }
+]

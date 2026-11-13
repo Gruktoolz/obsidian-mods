@@ -1,0 +1,8 @@
+// The HUD hook: the box, drawn by the glue.
+fn blockscope_hud(
+    game: &mut crate::game::Game<'_>,
+    batch: &mut horizon_client::hud::HudBatch,
+    corners: &mut horizon_client::extras_hud::Corners,
+) {
+    crate::game::native_blockscope_glue::hud(game, batch, corners);
+}

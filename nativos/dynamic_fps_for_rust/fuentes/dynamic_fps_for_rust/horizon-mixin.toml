@@ -1,0 +1,53 @@
+[mod]
+id = "dynamic_fps_for_rust"
+version = "0.1.0"
+priority = 100
+[compatibility]
+
+[[module]]
+id = "runtime"
+file = "crates/horizon-client/src/game.rs"
+name = "dynamic_fps_runtime"
+source = "runtime.rs"
+
+[[module]]
+id = "adapter"
+file = "crates/horizon-client/src/game.rs"
+name = "dynamic_fps_adapter"
+source = "adapter.rs"
+
+[[injection]]
+id = "window-state"
+kind = "HEAD"
+target = "horizon_client::game::Game<'_>::handle_window_event"
+helper = "events.rs"
+bindings = [
+ { name = "game", ty = "&crate::game::Game<'_>", value = "&*self" },
+ { name = "id", ty = "winit::window::WindowId", value = "id" },
+ { name = "event", ty = "&winit::event::WindowEvent", value = "&event" },
+]
+
+[[injection]]
+id = "loop-limit"
+kind = "RETURN"
+target = "horizon_client::game::options::Game<'_>::framerate_limit"
+helper = "limit.rs"
+bindings = [
+ { name = "value", ty = "i32", value = "$value" },
+ { name = "game", ty = "&crate::game::Game<'_>", value = "&*self" },
+]
+
+[[injection]]
+id = "render-budget"
+kind = "HEAD"
+cancellable = true
+target = "horizon_client::game::Game<'_>::render"
+helper = "render.rs"
+bindings = [{ name = "game", ty = "&crate::game::Game<'_>", value = "&*self" }]
+
+[[injection]]
+id = "audio-budget"
+kind = "HEAD"
+target = "horizon_client::game::music::Game<'_>::tick_sound_engine"
+helper = "audio.rs"
+bindings = [{ name = "game", ty = "&mut crate::game::Game<'_>", value = "&mut *self" }]

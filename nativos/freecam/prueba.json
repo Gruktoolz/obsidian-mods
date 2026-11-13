@@ -1,0 +1,88 @@
+{
+ "id": "freecam",
+ "estado": "sin probar",
+ "necesita": {
+  "companeros": [],
+  "mundo": "creativo, plano o nuevo"
+ },
+ "entradas": [
+  {
+   "tipo": "tecla",
+   "accion": "(fija en el código)",
+   "tecla": "key.keyboard.1",
+   "efecto_esperado": null
+  },
+  {
+   "tipo": "tecla",
+   "accion": "(fija en el código)",
+   "tecla": "key.keyboard.2",
+   "efecto_esperado": null
+  },
+  {
+   "tipo": "tecla",
+   "accion": "(fija en el código)",
+   "tecla": "key.keyboard.3",
+   "efecto_esperado": null
+  },
+  {
+   "tipo": "tecla",
+   "accion": "(fija en el código)",
+   "tecla": "key.keyboard.4",
+   "efecto_esperado": null
+  },
+  {
+   "tipo": "tecla",
+   "accion": "(fija en el código)",
+   "tecla": "key.keyboard.5",
+   "efecto_esperado": null
+  },
+  {
+   "tipo": "tecla",
+   "accion": "(fija en el código)",
+   "tecla": "key.keyboard.6",
+   "efecto_esperado": null
+  },
+  {
+   "tipo": "tecla",
+   "accion": "(fija en el código)",
+   "tecla": "key.keyboard.7",
+   "efecto_esperado": null
+  },
+  {
+   "tipo": "tecla",
+   "accion": "(fija en el código)",
+   "tecla": "key.keyboard.8",
+   "efecto_esperado": null
+  },
+  {
+   "tipo": "tecla",
+   "accion": "(fija en el código)",
+   "tecla": "key.keyboard.9",
+   "efecto_esperado": null
+  },
+  {
+   "tipo": "tecla",
+   "accion": "(fija en el código)",
+   "tecla": "key.keyboard.a",
+   "efecto_esperado": null
+  },
+  {
+   "tipo": "tecla",
+   "accion": "(fija en el código)",
+   "tecla": "key.keyboard.d",
+   "efecto_esperado": null
+  },
+  {
+   "tipo": "tecla",
+   "accion": "(fija en el código)",
+   "tecla": "key.keyboard.f4",
+   "efecto_esperado": null
+  }
+ ],
+ "comprobaciones": [
+  "el juego arranca con el mod activado",
+  "sin panic ni ANR durante 30 s",
+  "cada entrada no produce error en el registro"
+ ],
+ "funcional": false
+}

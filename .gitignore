@@ -1,0 +1,14 @@
+# Fuera del repo: pesado o sensible
+/herramientas/
+/apk/
+/certificados/
+/certificados.json
+/controles/
+/incidencias/
+target/
+node_modules/
+*.keystore
+*.jks
+*.pem
+*.key
+.env

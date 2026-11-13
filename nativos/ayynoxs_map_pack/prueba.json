@@ -1,0 +1,83 @@
+{
+ "id": "ayynoxs_map_pack",
+ "estado": "falla",
+ "necesita": {
+  "companeros": [],
+  "mundo": "creativo, plano o nuevo"
+ },
+ "entradas": [
+  {
+   "tipo": "tecla",
+   "accion": "(fija en el código)",
+   "tecla": "key.keyboard.a",
+   "efecto_esperado": null
+  },
+  {
+   "tipo": "tecla",
+   "accion": "(fija en el código)",
+   "tecla": "key.keyboard.b",
+   "efecto_esperado": null
+  },
+  {
+   "tipo": "tecla",
+   "accion": "(fija en el código)",
+   "tecla": "key.keyboard.d",
+   "efecto_esperado": null
+  },
+  {
+   "tipo": "tecla",
+   "accion": "(fija en el código)",
+   "tecla": "key.keyboard.equal",
+   "efecto_esperado": null
+  },
+  {
+   "tipo": "tecla",
+   "accion": "(fija en el código)",
+   "tecla": "key.keyboard.i",
+   "efecto_esperado": null
+  },
+  {
+   "tipo": "tecla",
+   "accion": "(fija en el código)",
+   "tecla": "key.keyboard.m",
+   "efecto_esperado": null
+  },
+  {
+   "tipo": "tecla",
+   "accion": "(fija en el código)",
+   "tecla": "key.keyboard.minus",
+   "efecto_esperado": null
+  },
+  {
+   "tipo": "tecla",
+   "accion": "(fija en el código)",
+   "tecla": "key.keyboard.o",
+   "efecto_esperado": null
+  },
+  {
+   "tipo": "tecla",
+   "accion": "(fija en el código)",
+   "tecla": "key.keyboard.s",
+   "efecto_esperado": null
+  },
+  {
+   "tipo": "tecla",
+   "accion": "(fija en el código)",
+   "tecla": "key.keyboard.w",
+   "efecto_esperado": null
+  }
+ ],
+ "comprobaciones": [
+  "el juego arranca con el mod activado",
+  "sin panic ni ANR durante 30 s",
+  "cada entrada no produce error en el registro"
+ ],
+ "funcional": false,
+ "resultado": "falla",
+ "errores": [
+  "key.keyboard.a: el canal de control se cerró (El juego cerró el canal de control al ejecutar «key key.keyboard.a tap» (¿se cerró?))",
+  "el juego murió"
+ ],
+ "entradas_ok": 0,
+ "probado": "2026-11-11 21:20:58"
+}

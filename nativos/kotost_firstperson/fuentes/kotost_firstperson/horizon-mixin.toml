@@ -1,0 +1,125 @@
+# Kotost First Person: your own body, legs and both arms in first person, the items held in the model's
+# 3D hands, eating and drinking with the game's own hands before the face (or the 3D arm).
+# Works alone or with Kotost Bust (kotost_body): whatever draws on the player model shows on the body too.
+# Native mod for Horizon nightly-2026-11-08-fdc87ae (docs/native-mods.md, horizon-mixins).
+[mod]
+id = "kotost_firstperson"
+version = "0.1.0"
+# Below Kotost Bust (100): where both hook one function, the bust's hook runs first.
+priority = 90
+
+[compatibility]
+
+# State and settings, in horizon-client-lib's root so both crates reach it (horizon_client::kotost_fp).
+[[module]]
+id = "fp-runtime"
+file = "crates/horizon-client/src/client_lib.rs"
+name = "kotost_fp"
+source = "runtime.rs"
+visibility = "pub"
+
+# The model being posed: is it the own first-person body eating or drinking?
+[[injection]]
+id = "fp-eat-begin"
+kind = "HEAD"
+target = "horizon_client_lib::mobs::anim::setup"
+helper = "fp_eat_begin.rs"
+bindings = [
+  { name = "m", ty = "&Mob", value = "m" },
+  { name = "s", ty = "&State", value = "s" },
+]
+
+# First person: the arm eating or drinking brings the item up before the face and works it (the game's own
+# flat-hand animation is gone with the model's 3D arms).
+[[injection]]
+id = "fp-eat"
+kind = "HEAD"
+target = "horizon_client_lib::mobs::anim::bob"
+helper = "fp_eat.rs"
+bindings = [
+  { name = "p", ty = "&mut Poses", value = "&mut *p" },
+  { name = "n", ty = "&str", value = "n" },
+]
+
+# --- first person ---------------------------------------------------------------------------------
+# The game's own first-person model (shadow pass only): the head alone.
+[[injection]]
+id = "fp-shadow-head"
+kind = "HEAD"
+cancellable = true
+target = "horizon_client::game::perspective::Game<'_>::player_model_geometry"
+helper = "fp_shadow_head.rs"
+bindings = [
+  { name = "game", ty = "&crate::game::Game<'_>", value = "self" },
+  { name = "camera", ty = "glam::DVec3", value = "camera" },
+  { name = "alpha", ty = "f64", value = "alpha" },
+  { name = "out", ty = "&mut Vec<horizon_client::mesher::Vertex>", value = "&mut *out" },
+]
+
+# The visible body, after the shadow-only span: its own player span, drawn by the camera.
+[[injection]]
+id = "fp-body"
+kind = "HEAD"
+target = "horizon_client::game::cosmetics::fx::Game<'_>::cosmetics_fx_geometry"
+helper = "fp_body.rs"
+bindings = [
+  { name = "game", ty = "&crate::game::Game<'_>", value = "self" },
+  { name = "camera", ty = "DVec3", value = "camera" },
+  { name = "out", ty = "&mut Vec<Vertex>", value = "&mut *out" },
+]
+
+[[injection]]
+id = "fp-shown"
+kind = "HEAD"
+cancellable = true
+target = "horizon_client::game::perspective::Game<'_>::player_model_shown"
+helper = "fp_shown.rs"
+bindings = [{ name = "game", ty = "&crate::game::Game<'_>", value = "self" }]
+
+[[injection]]
+id = "fp-visibility"
+kind = "HEAD"
+cancellable = true
+target = "horizon_client_lib::mobs::anim::player_model_visibility"
+helper = "fp_visibility.rs"
+bindings = [
+  { name = "p", ty = "&mut Poses", value = "&mut *p" },
+  { name = "hidden", ty = "u8", value = "hidden" },
+  { name = "spectator", ty = "bool", value = "spectator" },
+]
+
+[[injection]]
+id = "fp-covered"
+kind = "HEAD"
+cancellable = true
+target = "horizon_client::game::cosmetics::covered"
+helper = "fp_covered.rs"
+bindings = [{ name = "slot", ty = "Slot", value = "slot" }]
+
+[[injection]]
+id = "fp-held"
+kind = "HEAD"
+cancellable = true
+target = "horizon_client::game::mob_blocks::Game<'_>::held_item_geometry"
+helper = "fp_held.rs"
+bindings = []
+
+[[injection]]
+id = "fp-hand"
+kind = "HEAD"
+cancellable = true
+hook = "render_hand"
+hook_version = 1
+helper = "fp_hand.rs"
+bindings = [
+  { name = "game", ty = "&crate::game::Game<'_>", value = "self" },
+  { name = "canceled", ty = "&mut bool", value = "&mut *canceled" },
+]
+
+[[injection]]
+id = "fp-head-item"
+kind = "HEAD"
+cancellable = true
+target = "horizon_client::game::mob_blocks::Game<'_>::head_item_geometry"
+helper = "fp_head_item.rs"
+bindings = []

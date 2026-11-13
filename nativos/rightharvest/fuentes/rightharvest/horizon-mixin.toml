@@ -1,0 +1,38 @@
+[mod]
+id = "rightharvest"
+version = "0.1.1"
+priority = 100
+
+# The commit it was tested on.
+[compatibility]
+
+[[module]]
+id = "runtime"
+file = "crates/horizon-client/src/game.rs"
+name = "native_rightharvest"
+source = "runtime.rs"
+
+[[injection]]
+id = "listed"
+kind = "HEAD"
+hook = "mods"
+hook_version = 1
+helper = "listed.rs"
+bindings = [
+  { name = "mods", ty = "&mut Vec<crate::game::native_hooks::NativeMod>", value = "&mut *mods" },
+]
+
+# Game::use_hand is one hand's turn of a right click: the block's own use and
+# then the item's, on the game that owns the world (a LAN host's, the single
+# player server's, a dedicated server's) — never the client's dry prediction.
+# Cancellable, so a harvest ends the click like a vanilla use would.
+[[injection]]
+id = "use-hand"
+kind = "HEAD"
+cancellable = true
+target = "horizon_client::game::Game<'_>::use_hand"
+helper = "harvest.rs"
+bindings = [
+  { name = "game", ty = "&mut crate::game::Game<'_>", value = "&mut *self" },
+  { name = "block_hit", ty = "Option<&Hit>", value = "block_hit" },
+]

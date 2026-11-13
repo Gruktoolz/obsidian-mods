@@ -1,0 +1,59 @@
+[mod]
+id = "inferium_lab"
+version = "0.1.0"
+
+[compatibility]
+
+[[injection]]
+id = "declare_crop"
+target = "horizon_client::game::native_hooks::Game<'_>::native_blocks"
+kind = "HEAD"
+helper = "blocks.rs"
+bindings = [{ name = "blocks", ty = "&mut Vec<horizon_mods::content::Block>", value = "&mut *blocks" }]
+
+[[injection]]
+id = "declare_items"
+target = "horizon_client::game::native_hooks::Game<'_>::native_items"
+kind = "HEAD"
+helper = "items.rs"
+bindings = [{ name = "items", ty = "&mut Vec<horizon_mods::content::Item>", value = "&mut *items" }]
+
+[[injection]]
+id = "harvest_table"
+target = "horizon_client::game::native_hooks::Game<'_>::native_data_pack_files"
+kind = "HEAD"
+helper = "loot.rs"
+bindings = [{ name = "files", ty = "&mut Vec<(String, Vec<u8>)>", value = "&mut *files" }]
+
+[[injection]]
+id = "refuse_bone_meal"
+target = "horizon_client::game::native_hooks::GameLevel<'_>::native_is_valid_bonemeal_target"
+kind = "HEAD"
+helper = "bone_meal.rs"
+bindings = [
+  { name = "level", ty = "&crate::game::GameLevel<'_>", value = "self" },
+  { name = "state", ty = "horizon_world::registry::BlockStateId", value = "state" },
+  { name = "valid", ty = "&mut Option<bool>", value = "&mut *valid" },
+]
+
+# Fill the block-to-item link in the pinned Nightly's generated gameplay rows.
+[[injection]]
+id = "crop_seed"
+target = "horizon_client_lib::mod_content::Plan<'_>::override_gameplay"
+kind = "HEAD"
+helper = "crop_seed.rs"
+bindings = [
+  { name = "block", ty = "&NewBlock", value = "b" },
+  { name = "row", ty = "&mut J", value = "&mut *row" },
+]
+
+# The seed's BlockItem row must point back to the new crop.
+[[injection]]
+id = "seed_crop"
+target = "horizon_client_lib::mod_content::J::rename"
+kind = "HEAD"
+helper = "placement.rs"
+bindings = [
+  { name = "row", ty = "&mut J", value = "&mut *self" },
+  { name = "rename", ty = "&Rename", value = "r" },
+]

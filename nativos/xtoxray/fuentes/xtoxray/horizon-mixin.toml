@@ -1,0 +1,61 @@
+[mod]
+id = "xtoxray"
+version = "2026.29.0"
+priority = 100
+
+# Hooks the mesher directly, so it builds only on this commit.
+[compatibility]
+
+[[module]]
+id = "runtime"
+file = "crates/horizon-client-render/src/mesher.rs"
+name = "xtoxray"
+source = "runtime.rs"
+visibility = "pub"
+
+[[injection]]
+id = "tables"
+kind = "HEAD"
+target = "horizon_client_render::mesher::MeshTables::new"
+helper = "tables.rs"
+bindings = [
+  { name = "facts", ty = "&BlockFacts", value = "facts" },
+]
+
+[[injection]]
+id = "filter"
+kind = "HEAD"
+target = "horizon_client_render::mesher::Mesher<'_>::mesh"
+helper = "filter.rs"
+bindings = [
+  { name = "mesher", ty = "&mut Mesher<'_>", value = "&mut *self" },
+]
+
+[[injection]]
+id = "key"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::Game<'_>::native_key"
+helper = "key.rs"
+bindings = [
+  { name = "game", ty = "&mut crate::game::Game<'_>", value = "&mut *self" },
+  { name = "key", ty = "&str", value = "key" },
+  { name = "pressed", ty = "bool", value = "pressed" },
+]
+
+[[injection]]
+id = "frame"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::Game<'_>::native_frame"
+helper = "frame.rs"
+bindings = [
+  { name = "game", ty = "&mut crate::game::Game<'_>", value = "&mut *self" },
+]
+
+[[injection]]
+id = "list"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::Game<'_>::native_mods"
+helper = "list.rs"
+bindings = [
+  { name = "mods", ty = "&mut Vec<crate::game::native_hooks::NativeMod>", value = "&mut *mods" },
+]

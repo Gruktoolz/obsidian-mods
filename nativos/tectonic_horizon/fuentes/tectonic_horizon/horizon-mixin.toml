@@ -1,0 +1,138 @@
+[mod]
+id = "tectonic_horizon"
+version = "0.3.4"
+priority = 100
+
+[compatibility]
+
+[[injection]]
+id = "mod-menu-entry"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::Game<'_>::native_mods"
+helper = "menu.rs"
+bindings = [{ name = "mods", ty = "&mut Vec<NativeMod>", value = "&mut *mods" }]
+
+[[module]]
+id = "terrain"
+file = "crates/horizon-world/src/worldgen/overrides.rs"
+name = "tectonic_terrain"
+source = "terrain.rs"
+
+[[module]]
+id = "runtime"
+file = "crates/horizon-world/src/worldgen/overrides.rs"
+name = "tectonic_horizon"
+visibility = "pub"
+source = "runtime.rs"
+
+[[module]]
+id = "decoration"
+file = "crates/horizon-world/src/worldgen/generator.rs"
+name = "tectonic_decoration"
+source = "decoration.rs"
+
+[[injection]]
+id = "worldgen-registries"
+kind = "HEAD"
+target = "horizon_world::worldgen::overrides::WorldgenOverrides::apply"
+helper = "registries.rs"
+bindings = [
+  { name = "overrides", ty = "&WorldgenOverrides", value = "self" },
+  { name = "bundle", ty = "&str", value = "bundle" },
+  { name = "base", ty = "&mut BTreeMap<String, String>", value = "&mut base" },
+]
+
+[[injection]]
+id = "parameter-seeds"
+kind = "HEAD"
+cancellable = true
+target = "horizon_core::random::hash::seed_from_hash"
+helper = "seeds.rs"
+bindings = [{ name = "name", ty = "&str", value = "name" }]
+
+[[injection]]
+id = "snow-height"
+kind = "MODIFY_VARIABLE"
+target = "horizon_world::worldgen::biome_temperature::BiomeTemperatureSettings::height_adjusted"
+variable = { name = "start", ordinal = 0, at = "STORE" }
+require = 1
+ordinal = 0
+helper = "snow.rs"
+bindings = [{ name = "value", ty = "i32", value = "$value" }]
+
+[[injection]]
+id = "monument-depth"
+kind = "RETURN"
+target = "horizon_world::worldgen::structure::legacy::make_bounding_box"
+helper = "monuments.rs"
+bindings = [
+  { name = "value", ty = "BoundingBox", value = "$value" },
+  { name = "y", ty = "i32", value = "y" },
+  { name = "width", ty = "i32", value = "width" },
+  { name = "height", ty = "i32", value = "height" },
+  { name = "depth", ty = "i32", value = "depth" },
+]
+
+[[injection]]
+id = "increased-build-height"
+kind = "HEAD"
+cancellable = true
+target = "horizon_world::worldgen::overrides::WorldgenOverrides::level_height"
+helper = "height.rs"
+bindings = [
+  { name = "overrides", ty = "&WorldgenOverrides", value = "self" },
+  { name = "level", ty = "&str", value = "level" },
+]
+
+[[injection]]
+id = "river-decoration"
+kind = "HEAD"
+target = "horizon_world::worldgen::generator_decoration::Decoration::decorate"
+helper = "river_features.rs"
+bindings = [
+  { name = "data", ty = "&Arc<GeneratorData>", value = "data" },
+  { name = "seed", ty = "i64", value = "seed" },
+  { name = "worker", ty = "&WorkerState", value = "&*worker" },
+  { name = "region", ty = "&mut [ProtoChunk; 9]", value = "&mut *region" },
+]
+
+[[injection]]
+id = "activate-world"
+kind = "HEAD"
+target = "horizon_client_lib::vanillagen::shared_data_with"
+helper = "activate.rs"
+bindings = [{ name = "overrides", ty = "&WorldgenOverrides", value = "overrides" }]
+
+[[module]]
+id = "world-selection-compat"
+file = "crates/horizon-world/src/worldgen/overrides.rs"
+name = "tectonic_selection"
+visibility = "pub"
+source = "selection.rs"
+
+[[module]]
+id = "config-menu"
+file = "crates/horizon-world/src/worldgen/overrides.rs"
+name = "tectonic_config_menu"
+visibility = "pub"
+source = "config_menu.rs"
+
+[[injection]]
+id = "settings"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::Game<'_>::native_settings"
+helper = "settings.rs"
+bindings = [
+  { name = "mod_id", ty = "&str", value = "mod_id" },
+  { name = "buttons", ty = "&mut Vec<String>", value = "&mut *buttons" },
+]
+
+[[injection]]
+id = "settings-click"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::Game<'_>::native_settings_click"
+helper = "settings_click.rs"
+bindings = [
+  { name = "mod_id", ty = "&str", value = "mod_id" },
+  { name = "button", ty = "usize", value = "button" },
+]

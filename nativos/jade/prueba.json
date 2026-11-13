@@ -1,0 +1,64 @@
+{
+ "id": "jade",
+ "estado": "sin probar",
+ "necesita": {
+  "companeros": [],
+  "mundo": "creativo, plano o nuevo"
+ },
+ "entradas": [
+  {
+   "tipo": "tecla",
+   "accion": "(fija en el código)",
+   "tecla": "key.keyboard.keypad.0",
+   "efecto_esperado": null
+  },
+  {
+   "tipo": "tecla",
+   "accion": "(fija en el código)",
+   "tecla": "key.keyboard.keypad.1",
+   "efecto_esperado": null
+  },
+  {
+   "tipo": "tecla",
+   "accion": "(fija en el código)",
+   "tecla": "key.keyboard.keypad.2",
+   "efecto_esperado": null
+  },
+  {
+   "tipo": "tecla",
+   "accion": "(fija en el código)",
+   "tecla": "key.keyboard.keypad.3",
+   "efecto_esperado": null
+  },
+  {
+   "tipo": "tecla",
+   "accion": "(fija en el código)",
+   "tecla": "key.keyboard.keypad.4",
+   "efecto_esperado": null
+  },
+  {
+   "tipo": "tecla",
+   "accion": "(fija en el código)",
+   "tecla": "key.keyboard.keypad.5",
+   "efecto_esperado": null
+  },
+  {
+   "tipo": "tecla",
+   "accion": "(fija en el código)",
+   "tecla": "key.keyboard.r",
+   "efecto_esperado": null
+  },
+  {
+   "tipo": "tecla",
+   "accion": "(fija en el código)",
+   "tecla": "key.keyboard.u",
+   "efecto_esperado": null
+  }
+ ],
+ "comprobaciones": [
+  "el juego arranca con el mod activado",
+  "sin panic ni ANR durante 30 s",
+  "cada entrada no produce error en el registro"
+ ],
+ "funcional": false
+}
