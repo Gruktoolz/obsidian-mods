@@ -1,6 +1,6 @@
 {
  "schema": 1,
- "generado": "2026-11-13T00:41:56+00:00",
+ "generado": "2026-11-13T01:22:54+00:00",
  "nativos": [
   {
    "id": "accurate_block_placement",
@@ -17,7 +17,10 @@
     "port"
    ],
    "icon": "https://horizon-rust.github.io/horizon-mods/icons/accurate_block_placement.png",
-   "version": "1.0.0"
+   "version": "1.0.0",
+   "file": "accurate_block_placement-1.0.0.hnmod",
+   "size": 10091,
+   "sha256": "e631745f6d267360de6eb51995ee995bf1ab3d64393d287b7b93c332b85939ce"
   },
   {
    "id": "appleskin",
@@ -35,7 +38,10 @@
     "port"
    ],
    "icon": "https://horizon-rust.github.io/horizon-mods/icons/appleskin.png",
-   "version": "0.1.3"
+   "version": "0.1.3",
+   "file": "appleskin-0.1.3.hnmod",
+   "size": 9857,
+   "sha256": "2dac91d4c4c4ab65684f41a3279c6b27beffa7407e5362b0d7a97c28c07914a6"
   },
   {
    "id": "armor_status",
@@ -52,7 +58,10 @@
     "inventory-hud"
    ],
    "icon": "https://horizon-rust.github.io/horizon-mods/icons/armor_status.png",
-   "version": "1.0.0"
+   "version": "1.0.0",
+   "file": "armor_status-1.0.0.hnmod",
+   "size": 7207,
+   "sha256": "82c8672fa2c43d7946a26a560fd56fdd8f34beecf4bcb459c2d508b3d09eeee6"
   },
   {
    "id": "armorhud",
@@ -68,7 +77,10 @@
     "durability"
    ],
    "icon": "https://horizon-rust.github.io/horizon-mods/icons/armorhud.png",
-   "version": "1.0.0"
+   "version": "1.0.0",
+   "file": "armorhud-1.0.0.hnmod",
+   "size": 11493,
+   "sha256": "8bd85e1584f307201bce5de2e60466d603b61d4807803d4ebc02772b4f6b704b"
   },
   {
    "id": "ayynoxs_map_pack",
@@ -86,7 +98,10 @@
     "multiplayer"
    ],
    "icon": "https://horizon-rust.github.io/horizon-mods/icons/ayynoxs_map_pack.png",
-   "version": "0.4.2"
+   "version": "0.4.2",
+   "file": "ayynoxs_map_pack-0.4.2.hnmod",
+   "size": 39338,
+   "sha256": "d5cef20531720a594969b7b7acfd20d2d32d644d7b0ae230dd68a46f98172371"
   },
   {
    "id": "blockscope",
@@ -103,7 +118,10 @@
     "waila"
    ],
    "icon": "https://horizon-rust.github.io/horizon-mods/icons/blockscope.png",
-   "version": "0.3.1"
+   "version": "0.3.1",
+   "file": "blockscope-0.3.1.hnmod",
+   "size": 13776,
+   "sha256": "4fea94e5337aa82df3d981fc6231fecc80161262add577b596bb6661e0e303d1"
   },
   {
    "id": "chat_animation",
@@ -120,7 +138,10 @@
     "port"
    ],
    "icon": "https://horizon-rust.github.io/horizon-mods/icons/chat_animation.png",
-   "version": "0.1.3"
+   "version": "0.1.3",
+   "file": "chat_animation-0.1.3.hnmod",
+   "size": 16204,
+   "sha256": "39b9e2bbf296d69cc43824035f2afcc9d1e8c59e479716230262ee097297f543"
   },
   {
    "id": "chat_heads_rust",
@@ -135,7 +156,10 @@
     "display"
    ],
    "icon": "https://horizon-rust.github.io/horizon-mods/icons/chat_heads_rust.png",
-   "version": "1.0.2"
+   "version": "1.0.2",
+   "file": "chat_heads_rust-1.0.2.hnmod",
+   "size": 12696,
+   "sha256": "b4dd7f7b8e5689dc0718821d7926ff3e3c9107fc11737903c195aed19c6cb7a1"
   },
   {
    "id": "chatheads",
@@ -151,7 +175,10 @@
     "skins"
    ],
    "icon": "https://horizon-rust.github.io/horizon-mods/icons/chatheads.png",
-   "version": "0.1.1"
+   "version": "0.1.1",
+   "file": "chatheads-0.1.1.hnmod",
+   "size": 8440,
+   "sha256": "16f5e1db33255c550c087fcf3ed982a4be9abf61b547b470a08f471d309ad1fe"
   },
   {
    "id": "connected_textures",
@@ -168,7 +195,10 @@
     "port"
    ],
    "icon": "https://horizon-rust.github.io/horizon-mods/icons/connected_textures.png",
-   "version": "0.1.7"
+   "version": "0.1.7",
+   "file": "connected_textures-0.1.7.hnmod",
+   "size": 13022,
+   "sha256": "47fd568c4e2969122da80550efd9305b527484168541a6bbea44e1fdff16cab1"
   },
   {
    "id": "coords_hud",
@@ -184,7 +214,10 @@
     "position"
    ],
    "icon": "https://horizon-rust.github.io/horizon-mods/icons/coords_hud.png",
-   "version": "2.0.0"
+   "version": "2.0.0",
+   "file": "coords_hud-2.0.0.hnmod",
+   "size": 4932,
+   "sha256": "432376fad3062b3517e274d3b8c0d0b52fc5d6de2aee20a0b340c8cab5a8cf08"
   },
   {
    "id": "crosshair_indicator",
@@ -202,7 +235,10 @@
     "port"
    ],
    "icon": "https://horizon-rust.github.io/horizon-mods/icons/crosshair_indicator.png",
-   "version": "1.0.0"
+   "version": "1.0.0",
+   "file": "crosshair_indicator-1.0.0.hnmod",
+   "size": 5898,
+   "sha256": "96beba1f7c94fca492b552fb12af0d20047dc1799f0801607841d56b12786226"
   },
   {
    "id": "crossversion",
@@ -219,7 +255,10 @@
     "old-servers"
    ],
    "icon": "https://horizon-rust.github.io/horizon-mods/icons/crossversion.png",
-   "version": "0.8.0"
+   "version": "0.8.0",
+   "file": "crossversion-0.8.0.hnmod",
+   "size": 18758,
+   "sha256": "5b371f1b7b3582e0c92aa1dc22b491b50c024fe95833aa2bd9457189631caafd"
   },
   {
    "id": "elytratrails",
@@ -237,7 +276,10 @@
     "port"
    ],
    "icon": "https://horizon-rust.github.io/horizon-mods/icons/elytratrails.png",
-   "version": "0.1.2"
+   "version": "0.1.2",
+   "file": "elytratrails-0.1.2.hnmod",
+   "size": 13570,
+   "sha256": "ad6758f1ff0fa1b50750764bf2eb1f78ea94af8ecc84d75a7cc6ec5dcffb31a6"
   },
   {
    "id": "enchantmenthints",
@@ -253,7 +295,10 @@
     "descriptions"
    ],
    "icon": "https://horizon-rust.github.io/horizon-mods/icons/enchantmenthints.png",
-   "version": "0.1.0"
+   "version": "0.1.0",
+   "file": "enchantmenthints-0.1.0.hnmod",
+   "size": 18659,
+   "sha256": "6f1b80a7c22e02b086d5eea2ed6f7c5481b3e40d6a974bf9e382a3df4a2de9df"
   },
   {
    "id": "fast_items",
@@ -271,7 +316,10 @@
     "port"
    ],
    "icon": "https://horizon-rust.github.io/horizon-mods/icons/fast_items.png",
-   "version": "0.1.0"
+   "version": "0.1.0",
+   "file": "fast_items-0.1.0.hnmod",
+   "size": 6636,
+   "sha256": "c3acd8adfeac6450c3a13b5172c8abb298cb3ceb355dfc539b4bdd653ef15502"
   },
   {
    "id": "fast_trading",
@@ -288,7 +336,10 @@
     "qol"
    ],
    "icon": "https://horizon-rust.github.io/horizon-mods/icons/fast_trading.png",
-   "version": "1.0.0"
+   "version": "1.0.0",
+   "file": "fast_trading-1.0.0.hnmod",
+   "size": 12648,
+   "sha256": "0e215cd7eab59d37d235d8a97dd26608aa8a77c087df703143f0ef3c0bc40938"
   },
   {
    "id": "fence_perch",
@@ -305,7 +356,10 @@
     "farming"
    ],
    "icon": "https://horizon-rust.github.io/horizon-mods/icons/fence_perch.png",
-   "version": "1.0.0"
+   "version": "1.0.0",
+   "file": "fence_perch-1.0.0.hnmod",
+   "size": 9395,
+   "sha256": "d4b3cef31bc299deb5ea1910ed25059ec5a48bd4eff7af36262c216d278bb266"
   },
   {
    "id": "fly_speed",
@@ -322,7 +376,10 @@
     "commands"
    ],
    "icon": "https://horizon-rust.github.io/horizon-mods/icons/fly_speed.png",
-   "version": "0.2.0"
+   "version": "0.2.0",
+   "file": "fly_speed-0.2.0.hnmod",
+   "size": 6030,
+   "sha256": "4d50b18d86371b2bf4b43726b506278d7e404a8227609a33165f7aa83ba0cda0"
   },
   {
    "id": "fps_overlay",
@@ -339,7 +396,10 @@
     "frame-time"
    ],
    "icon": "https://horizon-rust.github.io/horizon-mods/icons/fps_overlay.png",
-   "version": "2.0.0"
+   "version": "2.0.0",
+   "file": "fps_overlay-2.0.0.hnmod",
+   "size": 4647,
+   "sha256": "bedb670e2490ce8239906c86eabd3a0c131ef5037b2937607231bdbdba38c171"
   },
   {
    "id": "freecam_yannis",
@@ -357,7 +417,10 @@
     "client"
    ],
    "icon": "https://horizon-rust.github.io/horizon-mods/icons/freecam_yannis.png",
-   "version": "1.0.1"
+   "version": "1.0.1",
+   "file": "freecam_yannis-1.0.1.hnmod",
+   "size": 10954,
+   "sha256": "97b727405c8aeef6d7865701fc7fda4f52fe61549a47125e6b6244c7872e161c"
   },
   {
    "id": "fullbright",
@@ -374,7 +437,10 @@
     "night-vision"
    ],
    "icon": "https://horizon-rust.github.io/horizon-mods/icons/fullbright.png",
-   "version": "1.0.0"
+   "version": "1.0.0",
+   "file": "fullbright-1.0.0.hnmod",
+   "size": 6899,
+   "sha256": "573c5e04188e0b1a26eb42a8aeaeeefeb6fb334a096afaa834e71b8efa353ad7"
   },
   {
    "id": "fullbright_horizon",
@@ -390,7 +456,10 @@
     "brightness"
    ],
    "icon": "https://horizon-rust.github.io/horizon-mods/icons/fullbright_horizon.png",
-   "version": "1.0.0"
+   "version": "1.0.0",
+   "file": "fullbright_horizon-1.0.0.hnmod",
+   "size": 7690,
+   "sha256": "db6175eec1711dbc5ab2a2edc40eee9cbc4080ec1d706a3cef688e54ba9cb017"
   },
   {
    "id": "fullbright_nofog",
@@ -408,7 +477,10 @@
     "no-fog"
    ],
    "icon": "https://horizon-rust.github.io/horizon-mods/icons/fullbright_nofog.png",
-   "version": "1.0.0"
+   "version": "1.0.0",
+   "file": "fullbright_nofog-1.0.0.hnmod",
+   "size": 7369,
+   "sha256": "07a13abd8af2405343241f8985db7595a03bfb8ced2f1dfab8a105848eb1b7d7"
   },
   {
    "id": "held_item_info",
@@ -425,7 +497,10 @@
     "held-item"
    ],
    "icon": "https://horizon-rust.github.io/horizon-mods/icons/held_item_info.png",
-   "version": "0.1.0"
+   "version": "0.1.0",
+   "file": "held_item_info-0.1.0.hnmod",
+   "size": 4527,
+   "sha256": "37a11d98f0afabe37f8ffa9982dc710ad2985817db6b5e094d807c24d30a6a6a"
   },
   {
    "id": "imfast",
@@ -443,7 +518,10 @@
     "elytra"
    ],
    "icon": "https://horizon-rust.github.io/horizon-mods/icons/imfast.png",
-   "version": "0.1.0"
+   "version": "0.1.0",
+   "file": "imfast.hnmod",
+   "size": 3782,
+   "sha256": "bf94eba0b926eae25b782b84f3c0f97de1dcb4c60200b2be15b640e80374a347"
   },
   {
    "id": "inferium_lab",
@@ -459,7 +537,10 @@
     "inferium"
    ],
    "icon": "https://horizon-rust.github.io/horizon-mods/icons/inferium_lab.png",
-   "version": "0.1.0"
+   "version": "0.1.0",
+   "file": "inferium_lab-0.1.0.hnmod",
+   "size": 5107,
+   "sha256": "e05c584fdb5f9caeb67f6a53eb62c71cbc137b4c463c6ee01902509d9624f027"
   },
   {
    "id": "inventory_wizard",
@@ -475,7 +556,10 @@
     "port"
    ],
    "icon": "https://horizon-rust.github.io/horizon-mods/icons/inventory_wizard.png",
-   "version": "2.3.3"
+   "version": "2.3.3",
+   "file": "inventory_wizard-2.3.3.hnmod",
+   "size": 20135,
+   "sha256": "03a7c8a528148611e5f309f3d05294a97b6766ca5e3bda9b3f1f79458fe65a42"
   },
   {
    "id": "invisible_frames",
@@ -492,7 +576,10 @@
     "server-side"
    ],
    "icon": "https://horizon-rust.github.io/horizon-mods/icons/invisible_frames.png",
-   "version": "0.1.1"
+   "version": "0.1.1",
+   "file": "invisible_frames-0.1.1.hnmod",
+   "size": 6062,
+   "sha256": "76128b48ce5c826007379c85634b934ae6bad51c134fbaead7c46b36fecd9274"
   },
   {
    "id": "itemnew",
@@ -509,7 +596,10 @@
     "hotbar"
    ],
    "icon": "https://horizon-rust.github.io/horizon-mods/icons/itemnew.png",
-   "version": "0.1.1"
+   "version": "0.1.1",
+   "file": "itemnew-0.1.1.hnmod",
+   "size": 19794,
+   "sha256": "cdc68c9911736703ebc4b8b81895a719edd74ba9d08fe01ddb34fe09b8d490e9"
   },
   {
    "id": "jei",
@@ -527,7 +617,10 @@
     "port"
    ],
    "icon": "https://horizon-rust.github.io/horizon-mods/icons/jei.png",
-   "version": "0.2.1"
+   "version": "0.2.1",
+   "file": "jei-0.2.1.hnmod",
+   "size": 31495,
+   "sha256": "d0a840069ff9fb877021829584df72441928a9283feb27df30d244837bc7f2af"
   },
   {
    "id": "keystrokes",
@@ -544,7 +637,10 @@
     "pvp"
    ],
    "icon": "https://horizon-rust.github.io/horizon-mods/icons/keystrokes.png",
-   "version": "2.0.0"
+   "version": "2.0.0",
+   "file": "keystrokes-2.0.0.hnmod",
+   "size": 5999,
+   "sha256": "bed34d2f8049e92c52cd7c91c0c4c8c9d165faaf0183500cf4021d9e04783a7d"
   },
   {
    "id": "kotost_chest",
@@ -560,7 +656,10 @@
     "quality-of-life"
    ],
    "icon": "https://horizon-rust.github.io/horizon-mods/icons/kotost_chest.png",
-   "version": "0.1.0"
+   "version": "0.1.0",
+   "file": "kotost_chest-0.1.0.hnmod",
+   "size": 4114,
+   "sha256": "e19ec3d7c922661610b07a751ad7dd3218d781a7887cadd2ecf5bd00c0566601"
   },
   {
    "id": "kotost_roulette",
@@ -577,7 +676,10 @@
     "luck"
    ],
    "icon": "https://horizon-rust.github.io/horizon-mods/icons/kotost_roulette.png",
-   "version": "0.1.0"
+   "version": "0.1.0",
+   "file": "kotost_roulette-0.1.0.hnmod",
+   "size": 31381,
+   "sha256": "df27032d1c05c0e8f7a23c783f4494209374520f1782523ce87be5e526e79105"
   },
   {
    "id": "light_overlay",
@@ -595,7 +697,10 @@
     "port"
    ],
    "icon": "https://horizon-rust.github.io/horizon-mods/icons/light_overlay.png",
-   "version": "1.0.0"
+   "version": "1.0.0",
+   "file": "light_overlay-1.0.0.hnmod",
+   "size": 8691,
+   "sha256": "b4aeb56b13d9c73df267a1dc7b1f588f4db39bfd55f7beaef97a014fffb5b076"
   },
   {
    "id": "living_camera",
@@ -614,7 +719,10 @@
     "view-bobbing"
    ],
    "icon": "https://horizon-rust.github.io/horizon-mods/icons/living_camera.png",
-   "version": "1.1.0"
+   "version": "1.1.0",
+   "file": "living_camera-1.1.0.hnmod",
+   "size": 17019,
+   "sha256": "b813a3231263d2f32511247375f2cd0e220c33afd6fd510509a910a0440d3ef0"
   },
   {
    "id": "livingmotion",
@@ -630,7 +738,10 @@
     "3rdperson"
    ],
    "icon": "https://horizon-rust.github.io/horizon-mods/icons/livingmotion.png",
-   "version": "1.2.0"
+   "version": "1.2.0",
+   "file": "livingmotion-1.2.0.hnmod",
+   "size": 34429,
+   "sha256": "9aa388f9fe2a776cd4104b89c72c48489641583a8c8e9d427bb0195c5bd64eed"
   },
   {
    "id": "minimap",
@@ -647,7 +758,10 @@
     "hud"
    ],
    "icon": "https://horizon-rust.github.io/horizon-mods/icons/minimap.png",
-   "version": "2.0.0"
+   "version": "2.0.0",
+   "file": "minimap-2.0.0.hnmod",
+   "size": 4859,
+   "sha256": "6f5dbca0699562b088a04b3f5abdc1b7faf8da51257a96da0a4ed639c6644ed9"
   },
   {
    "id": "motion_blur",
@@ -664,7 +778,10 @@
     "visual"
    ],
    "icon": "https://horizon-rust.github.io/horizon-mods/icons/motion_blur.png",
-   "version": "0.1.0"
+   "version": "0.1.0",
+   "file": "motion_blur-0.1.0.hnmod",
+   "size": 13875,
+   "sha256": "4cdaa6369fffea8116b013edfc618358ca989f48ed65c83306d2102f0e506c47"
   },
   {
    "id": "movement_status",
@@ -675,7 +792,10 @@
     "Unidex101"
    ],
    "icon": "https://horizon-rust.github.io/horizon-mods/icons/movement_status.png",
-   "version": "0.1.1"
+   "version": "0.1.1",
+   "file": "movement_status-0.1.1.hnmod",
+   "size": 3753,
+   "sha256": "2684d7f5646ea39651ca7731c0aa27160431035c5e50ac6177e957e89c12f8cf"
   },
   {
    "id": "projecte_core",
@@ -692,7 +812,10 @@
     "tools"
    ],
    "icon": "https://horizon-rust.github.io/horizon-mods/icons/projecte_core.png",
-   "version": "0.1.0"
+   "version": "0.1.0",
+   "file": "projecte_core-0.1.0.hnmod",
+   "size": 48217,
+   "sha256": "ea0cd9cdb85cb8f3bd9f35a99d7b2c8e4f95ea2c0ba321509be02ee8f4b3df85"
   },
   {
    "id": "pvp_music",
@@ -709,7 +832,10 @@
     "qol"
    ],
    "icon": "https://horizon-rust.github.io/horizon-mods/icons/pvp_music.png",
-   "version": "1.2.0"
+   "version": "1.2.0",
+   "file": "pvp-music-1.2.0.hnmod",
+   "size": 9842,
+   "sha256": "21e2e7768a5b4f89bee05453ae83e8130ab8b9019431eb5ecb10b2d7326e5be7"
   },
   {
    "id": "rarity_borders",
@@ -729,7 +855,10 @@
     "client-side"
    ],
    "icon": "https://horizon-rust.github.io/horizon-mods/icons/rarity_borders.png",
-   "version": "0.1.1"
+   "version": "0.1.1",
+   "file": "rarity_borders-0.1.1.hnmod",
+   "size": 10278,
+   "sha256": "664de3d6ac432c375ab52c26d1dc2ab0b0f2ebe1f1b94a681375ae9e44158089"
   },
   {
    "id": "recipes",
@@ -746,7 +875,10 @@
     "search"
    ],
    "icon": "https://horizon-rust.github.io/horizon-mods/icons/recipes.png",
-   "version": "2.0.0"
+   "version": "2.0.0",
+   "file": "recipes-2.0.0.hnmod",
+   "size": 10772,
+   "sha256": "51fddf300709404170061355afdf0b407f28eb928bcc0a9133c241cd63f4a0ed"
   },
   {
    "id": "resourcify",
@@ -763,7 +895,10 @@
     "download"
    ],
    "icon": "https://horizon-rust.github.io/horizon-mods/icons/resourcify.png",
-   "version": "0.1.2"
+   "version": "0.1.2",
+   "file": "resourcify-0.1.2.hnmod",
+   "size": 29309,
+   "sha256": "3afe8dd3d2ada0cfd1932e1675283f68ee202152c26281aac1e8787b3707aad9"
   },
   {
    "id": "rider_hud",
@@ -782,7 +917,10 @@
     "client-side"
    ],
    "icon": "https://horizon-rust.github.io/horizon-mods/icons/rider_hud.png",
-   "version": "0.1.0"
+   "version": "0.1.0",
+   "file": "rider_hud-0.1.0.hnmod",
+   "size": 7378,
+   "sha256": "2f8121390f87672ff023ad1933503248d19b3092b2f5a27debc8612a7f520b10"
   },
   {
    "id": "rmotd",
@@ -801,7 +939,10 @@
     "port"
    ],
    "icon": "https://horizon-rust.github.io/horizon-mods/icons/rmotd.png",
-   "version": "1.0.0"
+   "version": "1.0.0",
+   "file": "rmotd-1.0.0.hnmod",
+   "size": 4692,
+   "sha256": "68d43b760e95178a67bc1c7d54fbde004eee4bb764d9891d83bd4e4fa4bd8ce5"
   },
   {
    "id": "schematics",
@@ -820,7 +961,10 @@
     "material-list"
    ],
    "icon": "https://horizon-rust.github.io/horizon-mods/icons/schematics.png",
-   "version": "1.0.0"
+   "version": "1.0.0",
+   "file": "schematics-1.0.0.hnmod",
+   "size": 94736,
+   "sha256": "04c0cb5d1fbddf92327cf3456b33070a515af6b51b37109cd43f058ee1b78642"
   },
   {
    "id": "seedcrackerx",
@@ -831,7 +975,10 @@
     "luhnox (this port); SeedCrackerX by 19MisterX98 and the SeedCrackerX contributors; the SeedFinding libraries by KaptainWutax and Neil and Matthew Bolan"
    ],
    "icon": "https://horizon-rust.github.io/horizon-mods/icons/seedcrackerx.png",
-   "version": "0.2.3"
+   "version": "0.2.3",
+   "file": "seedcrackerx-0.2.3.hnmod",
+   "size": 367413,
+   "sha256": "6646fd05f28251ca6ccd935027376fbb27a79ff92ac9980f20b3689964a0be9a"
   },
   {
    "id": "server_flags",
@@ -849,7 +996,10 @@
     "client-side"
    ],
    "icon": "https://horizon-rust.github.io/horizon-mods/icons/server_flags.png",
-   "version": "1.0.1"
+   "version": "1.0.1",
+   "file": "server_flags-1.0.1.hnmod",
+   "size": 15358,
+   "sha256": "470d97afdbf8d954a50aec4e7ec38c2934766825c47f0955a968a1dacc3fa640"
   },
   {
    "id": "serverify",
@@ -866,7 +1016,10 @@
     "browser"
    ],
    "icon": "https://horizon-rust.github.io/horizon-mods/icons/serverify.png",
-   "version": "0.1.0"
+   "version": "0.1.0",
+   "file": "serverify-0.1.0.hnmod",
+   "size": 22867,
+   "sha256": "f9ad0777f8fc7ea532f799da8a9eb72df2348c8d6bb5dc104f81b6ab47209501"
   },
   {
    "id": "simple_voice_chat",
@@ -883,7 +1036,10 @@
     "multiplayer"
    ],
    "icon": "https://horizon-rust.github.io/horizon-mods/icons/simple_voice_chat.png",
-   "version": "1.0.0"
+   "version": "1.0.0",
+   "file": "simple_voice_chat-1.0.0.hnmod",
+   "size": 842649,
+   "sha256": "daab67ade4a5d22f922a681a792d449cea9b91c1d7da0bd710d52c9e7b07f855"
   },
   {
    "id": "speedrun_timer",
@@ -900,7 +1056,10 @@
     "hud"
    ],
    "icon": "https://horizon-rust.github.io/horizon-mods/icons/speedrun_timer.png",
-   "version": "1.0.1"
+   "version": "1.0.1",
+   "file": "speedrun_timer-1.0.1.hnmod",
+   "size": 12094,
+   "sha256": "884efd123b6e3a99e783603fd18f94b4fe6cf4b2ce6297e8e58fbb81c699c22e"
   },
   {
    "id": "status_effect_hud",
@@ -918,7 +1077,10 @@
     "port"
    ],
    "icon": "https://horizon-rust.github.io/horizon-mods/icons/status_effect_hud.png",
-   "version": "1.0.0"
+   "version": "1.0.0",
+   "file": "status_effect_hud-1.0.0.hnmod",
+   "size": 6667,
+   "sha256": "afa30125bb8b402892f1719e550b66d4eb4d7264895f71bb9c98a4caf5c7b432"
   },
   {
    "id": "toggle_sprint",
@@ -936,7 +1098,10 @@
     "pvp"
    ],
    "icon": "https://horizon-rust.github.io/horizon-mods/icons/toggle_sprint.png",
-   "version": "1.0.0"
+   "version": "1.0.0",
+   "file": "toggle_sprint-1.0.0.hnmod",
+   "size": 7377,
+   "sha256": "b2a4190f9c19adbceae4a639342b7630bfc3047339eabf57673b7807db5edc6a"
   },
   {
    "id": "voltz_core",
@@ -954,7 +1119,10 @@
     "reactor"
    ],
    "icon": "https://horizon-rust.github.io/horizon-mods/icons/voltz_core.png",
-   "version": "0.3.0"
+   "version": "0.3.0",
+   "file": "voltz_core-0.3.0.hnmod",
+   "size": 43131,
+   "sha256": "07671d2d8267871a88c4a78ebe890b7b3f63210345f1d889c7f348d317e8d5cf"
   }
  ]
 }
