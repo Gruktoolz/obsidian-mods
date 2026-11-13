@@ -1,0 +1,21 @@
+#!/usr/bin/env python3
+"""Genera index.json: los mods nativos que SÍ están compilados en el APK de Obsidian.
+Fuente de verdad: herramientas/lote.json ("vivos") + metadatos del catálogo de Horizon.
+Uso: python3 generar-indice.py   (luego git add index.json; commit; push)"""
+import json, urllib.request, pathlib, datetime
+raiz = pathlib.Path(__file__).parent
+vivos = json.load(open(raiz / "herramientas/lote.json"))["vivos"]
+compat = {x["id"]: x for x in json.load(open(raiz / "nativos/compatibilidad.json"))}
+hz = json.load(urllib.request.urlopen("https://horizon-rust.github.io/horizon-mods/index.json"))
+meta = {p["id"]: p for p in hz["projects"] if p.get("kind") == "native-mod"}
+out = []
+for i in sorted(vivos):
+    p = meta.get(i)
+    if not p or compat.get(i, {}).get("estado") != "encaja":
+        continue
+    v = p["versions"][0]
+    out.append({k: p[k] for k in ("id", "name", "summary", "description", "authors", "tags", "icon_url", "icon") if k in p}
+               | {"version": v.get("version", "")})
+json.dump({"schema": 1, "generado": datetime.datetime.now(datetime.UTC).isoformat(timespec="seconds"), "nativos": out},
+          open(raiz / "index.json", "w"), ensure_ascii=False, indent=1)
+print(len(out), "nativos en index.json")

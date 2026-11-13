@@ -1,0 +1,960 @@
+{
+ "schema": 1,
+ "generado": "2026-11-13T00:41:56+00:00",
+ "nativos": [
+  {
+   "id": "accurate_block_placement",
+   "name": "Accurate Block Placement",
+   "summary": "Hold right click with a block and every new spot you look at gets one, however fast you move.",
+   "description": "Placing blocks fast is all about timing: vanilla places a block every four ticks while you hold right click, so moving fast skips spots and moving slowly stacks extra blocks. **Accurate Block Placement** times it for you: hold right click and every *new* spot you look at gets a block at once.\n\n- **A new spot, a block**: bridging, building walls and floors, or sweeping along a row; no spot skipped, however fast you move.\n- **No extra blocks**: staring at one spot places nothing more.\n- **A single click stays a single block**: right after the click it waits as vanilla does, unless you turn the view.\n- **Building backwards**: walking backwards while placing toward yourself places one block per step.\n- Doors, chests, buttons and other blocks you click still work as usual.\n\n**Settings** (Options > Mods > Accurate Block Placement): turn it on or off, bind a key to toggle it (unbound by default), and choose whether it works on servers.\n\nSome servers see fast, accurate placing as a cheat: check their rules, or turn \"Allowed on servers\" off.\n\nA port of [Accurate Block Placement: Reborn](https://modrinth.com/mod/accurate-block-placement-reborn) (MIT) by Clayborn, Flourick, schwar and KadTheHunter, rewritten in Rust for Horizon.",
+   "authors": [
+    "Lutziano888"
+   ],
+   "tags": [
+    "building",
+    "block-placement",
+    "bridging",
+    "port"
+   ],
+   "icon": "https://horizon-rust.github.io/horizon-mods/icons/accurate_block_placement.png",
+   "version": "1.0.0"
+  },
+  {
+   "id": "appleskin",
+   "name": "AppleSkin",
+   "summary": "Shows how much HP, hunger, and saturation will be restored.",
+   "description": "A port of [AppleSkin](https://github.com/squeek502/AppleSkin) by squeek502 for Horizon, as a native mod. It\ndraws the hunger details AppleSkin shows over the food bar:\n\n- **Saturation**: how much saturation you have, as food icons over the food bar.\n- **Exhaustion**: a thin strip showing how close you are to losing the next food point.\n- **Held food preview**: the food in your hand, with how much food and saturation it would restore.\n- **Animation**: fade in, pulse, or both (the default).\n\nEach part can be turned on or off, and the animation changed, in the mod's settings (Options > Mods > AppleSkin).\n\nBased on AppleSkin by squeek502. See the LICENSE in the source for the original copyright and licence notices.",
+   "authors": [
+    "sillysoufi"
+   ],
+   "tags": [
+    "hud",
+    "hunger",
+    "saturation",
+    "food",
+    "port"
+   ],
+   "icon": "https://horizon-rust.github.io/horizon-mods/icons/appleskin.png",
+   "version": "0.1.3"
+  },
+  {
+   "id": "armor_status",
+   "name": "Armor Status",
+   "summary": "Displays equipped armor & held items with authentic Java durability colors.",
+   "description": "An ArmorStatusHUD-style overlay for Horizon, as a native mod: your armor and the items in your hands, with\ntheir durability, on the HUD.\n\n- **All four armor slots** (helmet, chestplate, leggings, boots) plus the main hand and the off hand.\n- **Durability colours** as in Java Edition: green above 50%, yellow from 25%, orange from 10%, red below 10%.\n- **Stack counts** for held items that don't wear out (food, blocks, torches).\n\n**Settings** (Options > Mods > Armor Status): position (bottom right by default; hotbar left or right, top left or\nright, bottom left), durability as the remaining value, a percentage or a fraction, which hand items to show (both,\nmain hand, off hand or armor only), and a translucent background box.",
+   "authors": [
+    "CayMac"
+   ],
+   "tags": [
+    "hud",
+    "armor",
+    "durability",
+    "inventory-hud"
+   ],
+   "icon": "https://horizon-rust.github.io/horizon-mods/icons/armor_status.png",
+   "version": "1.0.0"
+  },
+  {
+   "id": "armorhud",
+   "name": "Armor HUD",
+   "summary": "Your worn armor and its durability in a column left to the off-hand slot.",
+   "description": "Your worn armor and its durability in a column of four slots left of the hotbar's off-hand slot, as a\nnative mod for Horizon.\n\n- **Durability numbers**: press **K** (rebindable in Options > Mods) to show or hide them; a notice above the\n  hotbar says which. Off by default.\n- **Low-durability alerts**: a piece about to break pulses so you notice it in time. On by default.\n\nBoth switches are also on the mod's settings page (Options > Mods > Armor HUD).",
+   "authors": [
+    "Thomas9950"
+   ],
+   "tags": [
+    "hud",
+    "armor",
+    "durability"
+   ],
+   "icon": "https://horizon-rust.github.io/horizon-mods/icons/armorhud.png",
+   "version": "1.0.0"
+  },
+  {
+   "id": "ayynoxs_map_pack",
+   "name": "ayynoxs map pack",
+   "summary": "Minimap and full-screen world map with waypoints, cave layers and opt-in map sharing between players.",
+   "description": "A **minimap** and a **full-screen world map** for Horizon, written from scratch as a native mod. Inspired by the well-known Java map mods, but no code or graphics are taken from them.\n\n## ayynoxs minimap\n- Built on Horizon's own minimap renderer, with coordinates and facing direction below it\n- Square or round, north-up or rotating, 4 sizes, zoom with `I` / `O`\n- **Waypoints:** `B` opens a window for the name, `Backspace` removes the one you aim at. They show on the minimap, on the world map and in the world with their distance in metres.\n- Automatic death point\n- Chat commands: `/wp add|del|rename|share|sync|list|clear|help`\n\n## ayynoxs world map\n- Full-screen map on `M`: drag or WASD to pan, wheel to zoom\n- Drawn like a vanilla map item, one block per cell\n- Saves every chunk you explore, per world/server, dimension and layer\n- Same layers as the minimap: the surface outside, your head height in caves and in the Nether\n\n## Sharing (off by default)\n- `/wp share <nr> <player>` sends a waypoint as a private message, on any server. Only private messages to you can add waypoints.\n- Live map sharing is **off by default** and chosen per server with `/wp sync on|off`. When on, explored chunks and new waypoints go to the other players who turned it on, through a Horizon host (co-op/LAN, Horizon servers) or the AyynoxsMapSync plugin on Paper servers.\n- What arrives is limited: only your current level, within 2048 blocks of you, at most 1000 waypoints per world.\n\nLanguages: English (default), Deutsch, Français, Italiano, Русский.\n\n## What it does and doesn't\n- **Hooks:** the native hook points (frame, tick, HUD, keys, commands, minimap, settings, mods list, screen keys and characters, mod messages, player join/leave), plus the Advancements screen's draw, mouse, scroll and close (the world map is drawn in its place), `extras_connecting` (the server address, for the map's folder) and the chat HUD's `add` / `add_signed` (to hide shared-waypoint private messages).\n- **Files:** writes only under `horizon-mods/.horizon-mod-data/ayynoxs_minimap/` (settings, waypoints) and `ayynoxs_worldmap/` (map tiles).\n- **Network:** no internet access. It only sends Horizon mod messages on `ayynoxs_map:sync` to the server you play on (shares only after `/wp sync on`), and `/msg` commands you start yourself with `/wp share <nr> <player>`.\n- Pinned to nightly `6475f62` (2026-11-04).",
+   "authors": [
+    "DenoxyYT (Ayynox)"
+   ],
+   "tags": [
+    "minimap",
+    "world",
+    "map",
+    "waypoints",
+    "multiplayer"
+   ],
+   "icon": "https://horizon-rust.github.io/horizon-mods/icons/ayynoxs_map_pack.png",
+   "version": "0.4.2"
+  },
+  {
+   "id": "blockscope",
+   "name": "Blockscope",
+   "summary": "The block under your crosshair: its name, id, distance and icon, plus hardness, states and a container's slots.",
+   "description": "A Jade-style tooltip for Horizon: the block under your crosshair, in a small box you can place where you\nwant.\n\n- Its name in your language, its block id and its distance, with its icon.\n- Its hardness and the tool it wants, and whether what you hold harvests it.\n- Its state properties, a crop's growth, and a container's slots laid out as its own screen has them.\n- Its coordinates on request, and a creature's name and health when you look at one.\n\nNothing shows when you look at no block within reach, while a screen is open, or with the HUD hidden (F1). Ten\nswitches on its settings page (Options > Mods > Blockscope > Settings) choose what the box shows.",
+   "authors": [
+    "Domanffe"
+   ],
+   "tags": [
+    "tooltip",
+    "hud",
+    "block-info",
+    "waila"
+   ],
+   "icon": "https://horizon-rust.github.io/horizon-mods/icons/blockscope.png",
+   "version": "0.3.1"
+  },
+  {
+   "id": "chat_animation",
+   "name": "ChatAnimationHorizon",
+   "summary": "ChatAnimation for Horizon",
+   "description": "Smooth chat for Horizon, recreating Ezzenix's Chat Animation mod as a native mod.\n\n- **New messages slide up**: the chat starts one line lower and eases into place while the new message fades in.\n- **The input field slides up** from the bottom of the screen when you open the chat.\n- **The indicator line** (the coloured bar left of some messages) can be hidden.\n\n**Settings**: \"Chat Animation Settings...\" on the Options screen, or Options > Mods > Chat Animation: animate\nmessages (150 ms by default), hide the indicator line, animate opacity, animate the input field (170 ms), each with\na reset button.\n\nBased on Ezzenix's Chat Animation (MIT), recreated for Horizon.",
+   "authors": [
+    "tariksabanuz"
+   ],
+   "tags": [
+    "chat",
+    "animation",
+    "ui",
+    "port"
+   ],
+   "icon": "https://horizon-rust.github.io/horizon-mods/icons/chat_animation.png",
+   "version": "0.1.3"
+  },
+  {
+   "id": "chat_heads_rust",
+   "name": "Chat Heads Horizon",
+   "summary": "Chat Heads displays player heads in the chat before the players name making it easier to see who is writing",
+   "description": "Chat Heads displays player heads in the chat before the players name making it easier to see who is writing. with options being to turn off your own head display ",
+   "authors": [
+    "Demerobit"
+   ],
+   "tags": [
+    "optimization",
+    "display"
+   ],
+   "icon": "https://horizon-rust.github.io/horizon-mods/icons/chat_heads_rust.png",
+   "version": "1.0.2"
+  },
+  {
+   "id": "chatheads",
+   "name": "ChatHeads",
+   "summary": "A player's head left of every chat line they wrote.",
+   "description": "A player's 8x8 skin face left of every chat line they wrote, as a native mod for Horizon.\n\n- The face comes from the skin the game resolved for that player; with none, a default skin picked by the name, so a\n  player always keeps the same head.\n- System messages, `/me` lines and wrapped continuations get no head, and the head fades with its line.\n- F1 hides it as it hides the chat.\n\nTurn it on or off in Options > Mods > ChatHeads > Settings.",
+   "authors": [
+    "Domanffe"
+   ],
+   "tags": [
+    "chat",
+    "player-heads",
+    "skins"
+   ],
+   "icon": "https://horizon-rust.github.io/horizon-mods/icons/chatheads.png",
+   "version": "0.1.1"
+  },
+  {
+   "id": "connected_textures",
+   "name": "ContinuityHorizon",
+   "summary": "Continuity for Horizon",
+   "description": "Continuity-style connected textures for Horizon, as a native mod: blocks of the same kind join up into one\nsurface instead of showing a border on every block. It works with the game's own textures; no resource pack needed.\n\n- **Glass and stained glass** (all 16 colours and tinted glass): the frame between two blocks of the same glass goes\n  away, so a window is one pane with one frame round it.\n- **Glass panes**: the same, between panes of the same colour.\n- **Bookshelves, cut and chiseled sandstone** (red too): joined left and right into one long shelf or band.\n- **Sandstone and red sandstone**: a wall or pillar loses the band between its blocks; the top row keeps it.\n\nOptions > Mods > Connected Textures turns it on and off, and each part on its own; the world is redrawn at once.\n\nInspired by Continuity (MIT), recreated for Horizon.",
+   "authors": [
+    "tariksabanuz"
+   ],
+   "tags": [
+    "connected-textures",
+    "glass",
+    "visual",
+    "port"
+   ],
+   "icon": "https://horizon-rust.github.io/horizon-mods/icons/connected_textures.png",
+   "version": "0.1.7"
+  },
+  {
+   "id": "coords_hud",
+   "name": "Coordinates HUD",
+   "summary": "Your coordinates and facing in a corner of the screen.",
+   "description": "Your block position and the direction you face in the top-left corner of the screen.\n\n- `/where` puts your coordinates and dimension in chat.\n- `/coords` hides or shows the box, and the game keeps your choice (also Options > Mods > Coordinates HUD > Settings).\n\nIt reads the player's position, draws on the HUD and writes to chat: nothing else.\n\nNow a native mod (2.0.0): built into the game by the launcher, on the Horizon you play, like any native mod\n(install it on the launcher's Mods page, then press Build there). The time of\nday line is gone, since Horizon's hook points don't give the game's clock yet. Turn it off in Options > Mods: it\nrests at once, and the next build leaves it out. Its source is\n[horizon-mods/native/coords-hud](https://github.com/horizon-rust/horizon-mods/tree/main/native/coords-hud).\n",
+   "authors": [
+    "Horizon"
+   ],
+   "tags": [
+    "coordinates",
+    "hud",
+    "position"
+   ],
+   "icon": "https://horizon-rust.github.io/horizon-mods/icons/coords_hud.png",
+   "version": "2.0.0"
+  },
+  {
+   "id": "crosshair_indicator",
+   "name": "Crosshair Indicator",
+   "summary": "Dynamic target reach awareness: visual feedback on your crosshair when hovering over an entity in attack range.",
+   "description": "A port of the Java Crosshair Indicator mod (AmerDz01) for Horizon, as a native mod: your crosshair tells you\nwhen the mob or player you aim at is within attack reach (3 blocks).\n\n- **Four styles**: corner brackets around the crosshair (the default), a centre dot, diamond pips, or a chevron above\n  it.\n- **Colour themes**: classic white, dynamic (green when your weapon is fully charged, orange while it charges), combat\n  red, pink, diamond cyan and gold.\n- **Cooldown bar**: an optional thin weapon-cooldown bar below the crosshair.\n\nSettings are in Options > Mods > Crosshair Indicator; a key to turn it on or off can be bound there (unbound by\ndefault).",
+   "authors": [
+    "CayMac"
+   ],
+   "tags": [
+    "crosshair",
+    "pvp",
+    "combat",
+    "hud",
+    "port"
+   ],
+   "icon": "https://horizon-rust.github.io/horizon-mods/icons/crosshair_indicator.png",
+   "version": "1.0.0"
+  },
+  {
+   "id": "crossversion",
+   "name": "Cross Version",
+   "summary": "Allows version hopping offline.",
+   "description": "Join servers that speak an older Minecraft protocol from Horizon (which speaks only 26.3's), as a native\nmod.\n\nWhen you join, it asks the server which version it speaks. If it isn't 26.3, it starts a\n[ViaProxy](https://github.com/ViaVersion/ViaProxy) on a loopback port and sends the join through it: the proxy speaks\n26.3 to Horizon and the server's own version to the server. A join to a 26.3 server starts nothing.\n\n- **Offline-mode servers only**: online-mode servers can't be joined.\n- The server list shows such servers as joinable, with their own version, instead of \"Incompatible version!\".\n- **Edit Server** and **Direct Connect** get a line to choose the version yourself (auto, 1.8 to 1.21.4, 26.3), for\n  servers whose status reports the wrong one.\n- Needs Java 17 or later on your computer. On first use it downloads ViaProxy (GPL-3.0), checked against a SHA-256\n  pinned in its source.",
+   "authors": [
+    "JustKarkat"
+   ],
+   "tags": [
+    "multiplayer",
+    "viaproxy",
+    "protocol",
+    "old-servers"
+   ],
+   "icon": "https://horizon-rust.github.io/horizon-mods/icons/crossversion.png",
+   "version": "0.8.0"
+  },
+  {
+   "id": "elytratrails",
+   "name": "ElytraTrails",
+   "summary": "A Horizon mod that adds elytra trails with additional features.",
+   "description": "A native mod for Horizon. The idea comes from [ElytraTrails](https://github.com/dbrighthd/elytratrails) by dbrighthd.\n\nWhat it does\n\nLines stream from the outer tip of each wing while you glide and fade out over time. Only players get trails.\n\n- Colors: ice, gold, rose, violet, white, rainbow, or speed (cold blue when slow, orange and thicker when fast).\n- Patterns: solid, dashed or wavy. Built in only.\n- Pulse: gently breathing brightness.\n- Night: lines are brighter at night and dimmer in the day.\n- Boost: a sudden speed jump, such as a firework, lights the whole trail up for two seconds.\n- Formation: gliding players close to each other are joined by white lines between their wingtips.\n- Lines taper toward the tail, the wingtip has a soft glow, and fading eases in and out.\n- Singleplayer: without LAN or a server, all code for other players is skipped.\n- Sharing: your color and pattern are sent through the server, so other players see them (single player, LAN and servers). (Untested, I don't have friends)\n\nSettings\n\nOpen Options > Mods > ElytraTrails:\n\n- **Trails**: turns every line on or off.\n- **Your trail**: your own lines.\n- **Your trail in first person**: on by default. Turn it off to see your lines only in third person (F5).\n- **Other players' trails**: the lines of other players within 48 blocks.\n- **Color**: see the list above.\n- **Duration**: how long a line lasts, 1 to 12 seconds (default 5).\n- **Width**: thin, normal or wide.\n- **Pattern**: solid, dashed or wavy.\n- **Pulse**: on or off.\n- **Day/night brightness**: off by default (same brightness at any time). On: lines are brighter at night and dimmer in the day.\n- **Optimization** (submenu):\n  - **Your wings**: dynamic (the lines follow the real wing movement) or fixed (the line is computed once when gliding starts and then only moves with your body, which is cheaper).\n  - **Other players' wings**: dynamic or fixed, the same for other players.\n  - **Line detail**: full or half (half draws every second segment, about half the lines).\n  - **Other players' range**: 24, 48 or 96 blocks.\n  - **Formation lines**: on or off.\n  - **Boost flash**: on or off.\n\n## Credits\n\n- ElytraTrails by [dbrighthd](https://github.com/dbrighthd/elytratrails) (MPL-2.0), the original mod. The idea of wing trails comes from it.\n- This is a separate implementation for Horizon, written from scratch in Rust. It does not contain code from the original mod.\n\nLicense\n\nMIT. See LICENSE.",
+   "authors": [
+    "soufi"
+   ],
+   "tags": [
+    "elytra",
+    "trails",
+    "flying",
+    "cosmetic",
+    "port"
+   ],
+   "icon": "https://horizon-rust.github.io/horizon-mods/icons/elytratrails.png",
+   "version": "0.1.2"
+  },
+  {
+   "id": "enchantmenthints",
+   "name": "Enchantment Hints",
+   "summary": "A short description under every enchantment in item tooltips, in English and Russian.",
+   "description": "**A native Horizon mod**: the launcher builds it into the game (install it on the launcher's Mods page, then press Build there). Native mods are not sandboxed and run with your account's rights, so read the source before you build it. Pinned to Horizon 142388e and horizon-mixins 0d6b103.\n\nEvery enchantment on books and gear gets a one-line description in its tooltip: what it does, in plain words. Our own text for every 26.3 enchantment, in English and Russian.\n\n- Always, or only while Shift is held (with a reminder line).\n- Colour and line width are settings.\n\nSettings: Options → Mods → Enchantment Hints. Inspired by [Enchantment Descriptions](https://modrinth.com/mod/enchantment-descriptions); not affiliated, no code or text from it.",
+   "authors": [
+    "d3grando"
+   ],
+   "tags": [
+    "enchantments",
+    "tooltip",
+    "descriptions"
+   ],
+   "icon": "https://horizon-rust.github.io/horizon-mods/icons/enchantmenthints.png",
+   "version": "0.1.0"
+  },
+  {
+   "id": "fast_items",
+   "name": "Fast Items for Horizon",
+   "summary": "Optimize item rendering by transforming item entities to 2D",
+   "description": "Flat, camera-facing dropped items for Horizon, as a native mod inspired by Noryea's\n[Fast Items](https://modrinth.com/mod/fast-items) (independently written; no code from it).\n\n- **Flat items** (potions, tools...): the sprite's edges and hidden back face are dropped, so each layer is one flat\n  quad. Multi-layer textures, tint, lighting and glint stay.\n- **Block items** keep their 3D model and turn to face the camera, as in Lunar Client and Badlion.\n- Item bobbing, stacks, pickup animation, culling and glow outlines work as before.\n- Optionally turns off dropped items' blob shadows.\n\nOnly dropped items change: inventory icons, held items, item frames and servers stay as they are. Settings are in\n`config/fast-items.json` in the game folder, created on first use; restart the game after editing it.",
+   "authors": [
+    "Lyvt (dc: _.lyvt)"
+   ],
+   "tags": [
+    "items",
+    "rendering",
+    "performance",
+    "2d-items",
+    "port"
+   ],
+   "icon": "https://horizon-rust.github.io/horizon-mods/icons/fast_items.png",
+   "version": "0.1.0"
+  },
+  {
+   "id": "fast_trading",
+   "name": "Fast Trading",
+   "summary": "A speed-trade button on the merchant screen repeats the selected trade as fast as the settings allow.",
+   "description": "**A native Horizon mod**: the launcher builds it into the game (install it on the launchers Mods page, then press Build there). Native mods are not sandboxed and run with your accounts rights, so read the source before you build it. Pinned to the Horizon tree this was built against.\n\n- Speed trade button on the merchant screen repeats the selected trade quickly.\n- Settings control how fast it repeats; a command opens the controls.\n\nPort of [FastTrading](https://github.com/bendy1234/FastTrading) by bendy1234 (MIT); credited upstream, original license preserved. Feature gaps vs upstream are documented in the port README and tracked on horizon-rust/horizon.\n",
+   "authors": [
+    "sparticle62ops"
+   ],
+   "tags": [
+    "trading",
+    "villagers",
+    "gui",
+    "qol"
+   ],
+   "icon": "https://horizon-rust.github.io/horizon-mods/icons/fast_trading.png",
+   "version": "1.0.0"
+  },
+  {
+   "id": "fence_perch",
+   "name": "Fence Perch",
+   "summary": "Jump onto fences, walls and closed gates from a standstill, stand on top, step off.",
+   "description": "Jump onto fences, walls and closed fence gates from a standstill, stand on top, and step off either side.\n\n### Features\n- Walk up to a fence, wall or closed fence gate and jump while stepping forward: you land on top, no run-up needed.\n- Stand on it, walk along a connected line, then step off on either side.\n- Gates stay closed, so animals stay in the pen while you climb in and out.\n\n### How it works\nFor the player only, supported barriers collide like a one-block-high block instead of one and a half. Your jump is not stronger: a 1.5-block ledge stays out of reach and low ceilings still block you. On top of a barrier you stand half a block lower than on a full post. Animals, mobs, open gates and all other blocks keep their normal collision.\n\nSupported: vanilla blocks whose IDs end in `_fence`, `_wall` or `_fence_gate` (gates only while closed).\n\n### Multiplayer\nThe host's server checks movement with the same barrier shape, so the mod works in single-player and on LAN games hosted with it. Every player needs the mod. Joining a world or server without it, and dedicated servers, are not supported.\n\n### Compatibility\nFor Minecraft 26.3. Each version is built and gameplay-tested on one exact Horizon Nightly; the launcher warns when a newer Nightly breaks it. Tested revisions and results: [Validation](https://github.com/AyanoKaito/horizon-fence-perch/blob/main/VALIDATION.md).\n\nThis is a native mod: install only if you trust its source and accept the launcher's native-code warning.\n\n[Watch the demo](https://youtu.be/MNl9MMPWeIY) · [Installation](https://github.com/AyanoKaito/horizon-fence-perch/blob/main/docs/installation.md)",
+   "authors": [
+    "AyanoKaito"
+   ],
+   "tags": [
+    "fences",
+    "movement",
+    "parkour",
+    "farming"
+   ],
+   "icon": "https://horizon-rust.github.io/horizon-mods/icons/fence_perch.png",
+   "version": "1.0.0"
+  },
+  {
+   "id": "fly_speed",
+   "name": "Fly Speed",
+   "summary": "Allows you to change your flight speed",
+   "description": "Fly Speed\n\nA native Horizon mod: /flyspeed changes how fast you fly, from chat or from Options > Mods > Fly Speed > Settings.\nCommands\nCommand \tWhat it does\n/flyspeed \tSays the current multiplier\n/flyspeed 2 \tFlies twice as fast\n/flyspeed 1.5 \tAny multiplier from 0.1 to 20\n/flyspeed +1 / /flyspeed -0.5 \tSteps from the current one\n/flyspeed reset \tBack to the game's own speed (1x)\n/flyspeed-help \tShows the command help\n/flyspeed-reset \tBack to the game's own speed (1x)\n\nHorizon chat autocomplete lists /flyspeed, /flyspeed-help and /flyspeed-reset when the mod is enabled. Numeric and relative arguments are entered after /flyspeed as shown above.\n\nThe settings page has one button that steps through 0.5x, 1x, 2x, 4x, 8x and 16x. The choice is kept per mod in %APPDATA%\\horizon\\horizon-mods\\.horizon-mod-data\\fly_speed\\multiplier.",
+   "authors": [
+    "ImmortalDev"
+   ],
+   "tags": [
+    "flying",
+    "speed",
+    "creative",
+    "commands"
+   ],
+   "icon": "https://horizon-rust.github.io/horizon-mods/icons/fly_speed.png",
+   "version": "0.2.0"
+  },
+  {
+   "id": "fps_overlay",
+   "name": "FPS Counter",
+   "summary": "Frames per second in a corner of the screen, with the minimum and the 1% low.",
+   "description": "Horizon's own FPS counter, formerly an extra in Options > Horizon Extras.\n\n- Frames in the last second, in a small box in the corner you pick.\n- Optionally the slowest frame and the 1% low of the last 5 seconds.\n- Settings: Options > Mods > FPS Counter > Settings (corner; minimum and 1% low).\n\nIt reads the game's own frame counter and draws on the HUD: nothing else.\n\nNow a native mod (2.0.0): built into the game by the launcher, on the Horizon you play, like any native mod\n(install it on the launcher's Mods page, then press Build there). Your settings carry over from 1.0.0. Turn it off in\nOptions > Mods: it rests at once, and the next build leaves it out. Its source is\n[horizon-mods/native/fps-overlay](https://github.com/horizon-rust/horizon-mods/tree/main/native/fps-overlay).\n",
+   "authors": [
+    "Horizon"
+   ],
+   "tags": [
+    "fps",
+    "hud",
+    "performance",
+    "frame-time"
+   ],
+   "icon": "https://horizon-rust.github.io/horizon-mods/icons/fps_overlay.png",
+   "version": "2.0.0"
+  },
+  {
+   "id": "freecam_yannis",
+   "name": "FreeCam",
+   "summary": "Free camera, F6 follow view and nine tripod positions for Horizon.",
+   "description": "## FreeCam by Yannis_\n\nFree flight, a high and wide follow view, and nine tripod positions — now native to Horizon.\n\n### Controls\n\n- **F4:** toggle free camera. Move with your movement keys, Jump/Sneak and Sprint. Mouse look is independent of the player.\n- **F6:** follow your player while continuing to play normally. The crosshair is hidden while following. Toggle again to restore your previous camera.\n- **Hold F4 + 1–9:** save or return to a tripod for the current world.\n- **Options → Mods → FreeCam:** rebind keys and adjust camera speed, follow distance and height. Default follow distance: 28 blocks; height: 18 blocks.\n\n### Original Modrinth project\n\nThis is the native Rust edition of [FreeCam by Yannis_ on Modrinth](https://modrinth.com/mod/freecam_yannis_) (project ID: `zHbMgWKx`). Use the Modrinth edition with Java/Fabric and this native edition with Horizon. Both use the same existing FreeCam artwork.\n\nThe Java edition originated from [MinecraftFreecam/Freecam](https://github.com/MinecraftFreecam/Freecam) and its contributors. Original MIT notices are retained in the repository and bundle. This is an independently maintained port, not an official release of MinecraftFreecam or Horizon.\n\n### Compatibility and scope\n\nFor Minecraft 26.3 and Horizon commit `2ebf00a0281c592f79191e76fce0e7d522c6f425`. Two internal hooks provide independent mouse look and player-body visibility, so this release requires that pinned Horizon revision.\n\nThe camera only shows chunks already loaded around the player. Free flight passes through blocks and suppresses player movement input and block interactions; follow mode leaves player controls active. World unload and disconnect clear camera state.\n\nNo networking, telemetry, background threads, obstruction hiding, block scanning or chunk rebuilding. Settings use Horizon’s local storage. Optional Java collision, fullbright, fog and hand-display settings are not included in this first port.\n\n### Validation\n\n13 distinct core/adapter tests, the full Horizon native build check, and official package validation pass. GitHub CI also passes. Interactive Horizon-world testing and performance measurements remain pending; this is a preview release. [Validation details](https://github.com/yan6678yan-design/freecam-horizon/blob/main/VALIDATION.md).\n\nNot an official Minecraft product. Not approved by or associated with Mojang or Microsoft.",
+   "authors": [
+    "Yannis_"
+   ],
+   "tags": [
+    "camera",
+    "freecam",
+    "follow-camera",
+    "screenshots",
+    "client"
+   ],
+   "icon": "https://horizon-rust.github.io/horizon-mods/icons/freecam_yannis.png",
+   "version": "1.0.1"
+  },
+  {
+   "id": "fullbright",
+   "name": "MoreGamma",
+   "summary": "Brightness past 100%: set your own gamma with /gamma, or toggle full brightness with /fullbright.",
+   "description": "A native Horizon mod: the launcher builds it into the game (install it on the launcher's Mods page, then press Build there). Native mods are not sandboxed and run with your account's rights, so read the source before you build it. Uses only Horizon's native hook points (hooks 1); tested on Horizon 41672b1 and horizon-mixins 0d6b103.\n\nSee in the dark without torches or night vision. MoreGamma lets you set the brightness (gamma) far past the video settings' 100% \"Bright\" limit, with a chat command, and switch full brightness on and off.\n\n- `/gamma <value>`: your own gamma. `1` is vanilla's \"Bright\", `15` is fullbright, up to `100`; `/gamma 1500%` works too.\n- `/gamma` shows the gamma in effect.\n- `/gamma reset` (or `off`) goes back to your video settings slider; `/gamma on` turns your last custom gamma on again.\n- `/fullbright` toggles full brightness (gamma 15).\n- Options → Mods → Fullbright: an on/off button, a button cycling 100/200/500/1000/1500%, and a toggle key you can bind.\n\nClient-side: the commands are handled by your game before anything reaches a server, so it works in single player, on LAN and on servers. Your brightness slider and `options.txt` are never changed, so turning it off gives your own brightness back. Settings are remembered between sessions.",
+   "authors": [
+    "bezi5kt"
+   ],
+   "tags": [
+    "fullbright",
+    "gamma",
+    "brightness",
+    "night-vision"
+   ],
+   "icon": "https://horizon-rust.github.io/horizon-mods/icons/fullbright.png",
+   "version": "1.0.0"
+  },
+  {
+   "id": "fullbright_horizon",
+   "name": "Fullbright",
+   "summary": "Toggle maximum 1000% gamma cave and night brightness with smooth fade via keybind G.",
+   "description": "Full brightness in caves and at night, as a native mod for Horizon.\n\n- Press **G** (rebindable in Options > Mods > Fullbright) to turn maximum brightness (1000% gamma) on or off.\n- A smooth 250 ms fade, and a notice on the HUD saying which way it went.\n- Client-side only: it changes your lightmap, nothing sent to a server.",
+   "authors": [
+    "CayMac"
+   ],
+   "tags": [
+    "fullbright",
+    "gamma",
+    "brightness"
+   ],
+   "icon": "https://horizon-rust.github.io/horizon-mods/icons/fullbright_horizon.png",
+   "version": "1.0.0"
+  },
+  {
+   "id": "fullbright_nofog",
+   "name": "Fullbright & NoFog",
+   "summary": "Toggle full brightness and the world's fog with a key (G / N), /fullbright or /nofog.",
+   "description": "A native Horizon mod: the launcher builds it into the game (install it on the launcher's Mods page, then press Build there). Native mods are not sandboxed and run with your account's rights, so read the source before you build it. Uses only Horizon's native hook points (hooks 80, for `render_fog`); tested on Nightly 2026-11-01 (c9d474d) and horizon-mixins 0d6b103.\n\n- **Fullbright**: press G (or `/fullbright`, `/fb`) to toggle full brightness (gamma 1500%). Your brightness slider and `options.txt` are never changed; turning it off gives your own brightness back.\n- **NoFog**: press N (or `/nofog`) to remove the world's fog. `/nofog fluids` also clears water, lava and powder snow fog.\n- `/fullbright on|off` and `/nofog on|off` set them directly.\n- Options → Mods → Fullbright & NoFog: a button for each toggle and both keys, rebindable.\n\nToggling is silent (no chat messages). Client-side: works in single player, on LAN and on servers. Settings are remembered between sessions.",
+   "authors": [
+    "Nirokx"
+   ],
+   "tags": [
+    "fullbright",
+    "gamma",
+    "brightness",
+    "fog",
+    "no-fog"
+   ],
+   "icon": "https://horizon-rust.github.io/horizon-mods/icons/fullbright_nofog.png",
+   "version": "1.0.0"
+  },
+  {
+   "id": "held_item_info",
+   "name": "Held Item Info",
+   "summary": "Selected-item durability, count and enchantment names above the hotbar.",
+   "description": "Minimal client-only selected-item text HUD for Horizon 26.3. Displays remaining/maximum durability, stack count and up to six translated enchantment names; long strings are shortened to GUI width. Original MIT implementation inspired by A5b84/held-item-info; no LGPL source was read or included. Potion details, layout options and fading are not implemented. Existing Armor Status covers equipped-item icons/durability; this mod focuses on selected-item text and enchantment names. See the source for validation and exact engine/mixin pins.",
+   "authors": [
+    "AltMugen"
+   ],
+   "tags": [
+    "hud",
+    "durability",
+    "enchantments",
+    "held-item"
+   ],
+   "icon": "https://horizon-rust.github.io/horizon-mods/icons/held_item_info.png",
+   "version": "0.1.0"
+  },
+  {
+   "id": "imfast",
+   "name": "I'm Fast",
+   "summary": "Removes Minecraft's server-side player and elytra movement limits.",
+   "description": "A port of [I'm Fast](https://github.com/Gabriel-Hiss/Im-Fast) by Gabriel Hiss for\nHorizon: it lifts the server-side movement checks that pull a player back for\n\"moved too quickly\".\n\n**Implemented so far**\n\n- `player_movement_check` and `elytra_movement_check` are switched off once per\n  open world, so long jumps and fast elytra flight are not refused.\n- Verified with a real LAN guest: a 200-block move is kept while the rules are\n  off and refused when they are back on.\n\n**Not yet ported**\n\n- The two \"moved wrongly\" thresholds (player and vehicle) and the vehicle speed\n  limit: Horizon has no rule for them, and the hooks that could patch them are\n  not stamped yet.\n\nOriginal copyright and licence notices are kept in this repository. Pinned to\nHorizon 1d63e0a and horizon-mixins 5a64af93. Help with the remaining thresholds\nis welcome.\n",
+   "authors": [
+    "Gabriel Hiss",
+    "AdLf0208"
+   ],
+   "tags": [
+    "port",
+    "movement",
+    "server",
+    "elytra"
+   ],
+   "icon": "https://horizon-rust.github.io/horizon-mods/icons/imfast.png",
+   "version": "0.1.0"
+  },
+  {
+   "id": "inferium_lab",
+   "name": "Inferium Lab",
+   "summary": "Grow Inferium on farmland and harvest its essence in Horizon 26.3.",
+   "description": "An experimental native crop mod inspired by [Mystical Agriculture](https://github.com/BlakeBr0/MysticalAgriculture) by BlakeBr0.\n\nPlant Inferium Seeds on ordinary farmland. A young crop drops one seed. At age 7 it drops one seed and one Inferium Essence. Ordinary bone meal is refused.\n\nBuild the instance with this native mod in Horizon Launcher. In a new world, use `/give @s inferium_lab:inferium_seeds` to get the first seeds. Tested on Horizon 26.3 Nightly `66f3981` with Horizon Mixins `e8cd0aa`. The bundle credits the MIT-licensed reference in its `NOTICE`.",
+   "authors": [
+    "pehe1"
+   ],
+   "tags": [
+    "agriculture",
+    "crops",
+    "inferium"
+   ],
+   "icon": "https://horizon-rust.github.io/horizon-mods/icons/inferium_lab.png",
+   "version": "0.1.0"
+  },
+  {
+   "id": "inventory_wizard",
+   "name": "InventoryWizard",
+   "summary": "InventoryWizard's one-click sorting as a native mod for Horizon",
+   "description": "## Features\n\n- **Smart sorting** by category (stone, earth, wood, ores, blocks, tools, weapons, armor, food, redstone,\n  transportation, decoration), from item tags and components, so other mods' items are sorted too\n- **Survival-friendly hotbar**: weapons, tools, food, building blocks, utility items, then the rest\n- **Stacks merged**, but enchanted or named items are never combined\n- **Three modes**: Default, Alphabetical and Stack-based\n- **Sort buttons** by the inventory and container titles, plus a mode button (it shows the mode's letter)\n- **Locked slots**: **Alt+Click** a hotbar or inventory slot to lock it, and sorting leaves it alone\n- **Keys**: **R** (or **Shift+Right Click**) sorts the part under the cursor: the hotbar sorts everything, the\n  inventory the inventory, a container the container. Outside a screen, R sorts the whole inventory.\n  **Shift+Right Click** on the middle hotbar slot cycles the mode. The mode also has its own key, unbound by default.\n- **Commands**: `/iwiz [hotbar|inventory|all|mode]` (also `/inventorywizard`)\n- **Works on** the inventory, hotbar, chests, barrels, shulker boxes and ender chests, **in singleplayer and on any\n  server**: every sort is made of ordinary left clicks, as a player could click them, so a vanilla server accepts it",
+   "authors": [
+    "VanishingTacos"
+   ],
+   "tags": [
+    "inventory",
+    "sorting",
+    "port"
+   ],
+   "icon": "https://horizon-rust.github.io/horizon-mods/icons/inventory_wizard.png",
+   "version": "2.3.3"
+  },
+  {
+   "id": "invisible_frames",
+   "name": "Invisible Frames",
+   "summary": "Sneak-right-click a filled frame to hide and lock it, or restore it.",
+   "description": "Hide the frame of a filled item frame, so only the item shows, as a native mod for Horizon.\n\n- **Sneak and right-click** a filled item frame or glow item frame: its frame disappears and it is locked, so ordinary\n  right-clicks no longer turn or take the item.\n- **Sneak and right-click it again** to show the frame and unlock it.\n- Empty frames stay visible.\n\nIt runs where the world is hosted (single player, or a world you open to LAN) and uses the game's own entity data, so\nplayers who join need nothing installed. It is not a protection system: breaking the block behind a frame, and\ncreative mode, work as usual. Inspired by [InvisibleFrames](https://github.com/ADHDMC/InvisibleFrames); an original\nimplementation.",
+   "authors": [
+    "AltMugen"
+   ],
+   "tags": [
+    "item-frames",
+    "invisible",
+    "building",
+    "server-side"
+   ],
+   "icon": "https://horizon-rust.github.io/horizon-mods/icons/invisible_frames.png",
+   "version": "0.1.1"
+  },
+  {
+   "id": "itemnew",
+   "name": "Item New",
+   "summary": "Newly picked-up items glow in your hotbar and inventory until you look at them.",
+   "description": "**A native Horizon mod**: the launcher builds it into the game (install it on the launcher's Mods page, then press Build there). Native mods are not sandboxed and run with your account's rights, so read the source before you build it. Pinned to Horizon 142388e and horizon-mixins 0d6b103.\n\nItems you just got (picked up, crafted, taken from a chest, given) get a soft glow in the hotbar and in inventory and container screens, until you point at them or close the screen.\n\n- Styles: glow, glow with a star, by rarity colour.\n- Which screens, and when a mark clears, are settings; `/itemnew` shows or clears the marks.\n\nSettings: Options → Mods → Item New. Inspired by [Item Highlighter](https://modrinth.com/mod/item-highlighter); not affiliated, no code from it.",
+   "authors": [
+    "d3grando"
+   ],
+   "tags": [
+    "inventory",
+    "highlight",
+    "new-items",
+    "hotbar"
+   ],
+   "icon": "https://horizon-rust.github.io/horizon-mods/icons/itemnew.png",
+   "version": "0.1.1"
+  },
+  {
+   "id": "jei",
+   "name": "JEI for Horizon",
+   "summary": "An item and recipe viewer for Horizon: every item beside container screens, with search, recipes, uses, tooltips and bookmarks",
+   "description": "An item and recipe viewer for [Horizon](https://playhorizon.dev), the Rust reimplementation of Minecraft: Java Edition.\n\nHorizon JEI is inspired by [JustEnoughItems (JEI)](https://github.com/mezz/JustEnoughItems). JEI serves as the reference specification, while this project is a completely new Rust implementation built around Horizon's native hook points.\n\n**Version 0.2.1 — Overlay and bookmarks**\n\n### Features\n\n- **Recipe Navigation:** Browse recipe history with **Back** and click recipe slots to open the corresponding item.\n- **Recipe Placement:** Use the **+** button to place a recipe into the open crafting grid, provided it is available in the recipe book.\n- **Item Giving:** Give items through Options → Mods → JEI or `/jei give`. In creative mode, left-click gives one item and right-click gives a full stack. In survival mode, clicking opens the recipe viewer instead.\n- **Item Tooltips:** Every tooltip the game shows, the panel's included, names the keys and counts exactly: `R: Recipes (12)`, `U: Uses (3)`, and a star on the stacks in your bar.\n- **Subtypes:** Every `(item, components)` pair the recipe tables name is an item of its own in the list, so the potions and the tipped arrows are there like JEI's subtypes.\n- **Bookmarks:** Press **A** over a stack to bookmark it. The bar sits at the screen's top left corner in two columns of twelve: the left button opens a bookmark's recipes, the right one its uses, shift-click or the middle button removes it, and dragging moves it. It is kept in `config/jei/bookmarks.txt` and returns with the next world.\n- **List Order & Config:** By name or by id, from the settings page or `/jei sort name|id`, kept in `config/jei/jei.cfg` along with the tooltip hints and the bar.\n- **World Transition Fix:** Session cache is properly invalidated on world transitions even when JEI is temporarily disabled, preventing stale item IDs or recipes from lingering across worlds.\n- **Localization:** English and Spanish interface translations. Item names are retrieved directly from the game and respect the player's language.\n- **Diagnostics:** `/jei` reports the game's recipe table sizes, `/jei bookmarks clear` empties the bar and `/jei config` says where its files are.\n\n### Current Limitations\n\nContainer slot click integration (R and U work over any slot, a click does not), the creative inventory panel, the non-recipe categories (anvil, grindstone, composter, and fuel), shift-click recipe placement, recipe transfer into furnaces, and the `$tooltip` / `%creative tab` searches are not yet supported.\n\nSome of these features require native hook points that Horizon does not currently expose. See the [JEI parity matrix](https://github.com/enderliker/horizon-jei/blob/main/docs/jei-parity.md) for implementation details.\n\n### Requirements & Security\n\nRequires Horizon **26.3** and hook points version **313** or later: tested and verified on Horizon Nightly (`6560641` and latest `fdc87ae`).\n\nHorizon native mods are compiled directly into the game and are **not sandboxed**. Only build source code you trust.\n\nHorizon JEI reads the game's items and recipes, its container interface, chat, tooltips and screens. It writes only its own folder, `config/jei/` (`jei.cfg` for the options, `bookmarks.txt` for the bar), and nothing else. It makes no network connections.\n\n*Unofficial project. Not affiliated with mezz, Mojang, Microsoft, or the Horizon project.*",
+   "authors": [
+    "enderliker"
+   ],
+   "tags": [
+    "recipes",
+    "item-browser",
+    "recipe-viewer",
+    "search",
+    "port"
+   ],
+   "icon": "https://horizon-rust.github.io/horizon-mods/icons/jei.png",
+   "version": "0.2.1"
+  },
+  {
+   "id": "keystrokes",
+   "name": "Keystrokes",
+   "summary": "Your movement keys, mouse buttons and space bar in a corner, lit while held, with clicks per second.",
+   "description": "Horizon's own keystrokes overlay, formerly an extra in Options > Horizon Extras.\n\n- Forward, left, back and right as you bound them, the two mouse buttons and the space bar, lit while held.\n- Clicks per second under each mouse button (can be turned off).\n- Settings: Options > Mods > Keystrokes > Settings (corner; clicks per second).\n\nIt reads which keys you hold and your clicks, and draws on the HUD: nothing else.\n\nNow a native mod (2.0.0): built into the game by the launcher, on the Horizon you play, like any native mod\n(install it on the launcher's Mods page, then press Build there). Your settings carry over from 1.0.0. Turn it off in\nOptions > Mods: it rests at once, and the next build leaves it out. Its source is\n[horizon-mods/native/keystrokes](https://github.com/horizon-rust/horizon-mods/tree/main/native/keystrokes).\n",
+   "authors": [
+    "Horizon"
+   ],
+   "tags": [
+    "keystrokes",
+    "hud",
+    "cps",
+    "pvp"
+   ],
+   "icon": "https://horizon-rust.github.io/horizon-mods/icons/keystrokes.png",
+   "version": "2.0.0"
+  },
+  {
+   "id": "kotost_chest",
+   "name": "Kotost Chest",
+   "summary": "Two buttons beside a chest's sort button: everything into the chest, everything out of it.",
+   "description": "Two buttons beside a chest's sort button: **arrow up** moves your whole main inventory into the chest (the hotbar stays), **arrow down** moves everything out of the chest into your inventory.\n\nEach button is a run of ordinary Shift-clicks, so it works on any server, vanilla included, and nothing is needed on the server. Needs Horizon's sort buttons on (`sort:true` in `horizon-extras.txt`).\n\nNative source mod: the launcher compiles it after a warning; it runs with your account's permissions. No Minecraft code or assets are included.",
+   "authors": [
+    "Kotost Games"
+   ],
+   "tags": [
+    "chest",
+    "inventory",
+    "quality-of-life"
+   ],
+   "icon": "https://horizon-rust.github.io/horizon-mods/icons/kotost_chest.png",
+   "version": "0.1.0"
+  },
+  {
+   "id": "kotost_roulette",
+   "name": "Kotost Roulette",
+   "summary": "Stake game items, spin a wheel, win a dearer item or lose the stake. Every item has a price in points; Russian and English.",
+   "description": "Open the Roulette (every player gets the item on joining or respawning, or `/roulette`), drag a stack from your inventory onto the left panel and pick the reward: **x2, x4, x5, x8, x10**, a chance (**30 %, 50 %, 70 %**), or any item from the searchable catalog. The chance is shown before the spin: 0.996 / multiplier (x2 is 49.8 %). The ring turns for three seconds, slows down, clicks over the sectors, and plays a win or a loss sound.\n\nThe roll is the server's: it takes the stake the moment it rolls, so leaving mid-spin never returns or duplicates anything. A reward goes to your inventory, onto the ground when it is full, or into your saved inventory if you left. Game items only: no money, nothing to buy.\n\nAbout 400 vanilla items have a price in points (flower 8, iron ingot 10, diamond 100, netherite ingot 1000); edit `config/kotost_roulette.txt` on the server to change or add prices (mods' items too). Items without a price can't be staked. Needed on the server and the client. Screen and messages are in Russian or English by the player's game language.\n\nNative source mod: the launcher compiles it after a warning; it runs with your account's permissions. No Minecraft code or assets are included.",
+   "authors": [
+    "Kotost Games"
+   ],
+   "tags": [
+    "items",
+    "wheel",
+    "minigame",
+    "luck"
+   ],
+   "icon": "https://horizon-rust.github.io/horizon-mods/icons/kotost_roulette.png",
+   "version": "0.1.0"
+  },
+  {
+   "id": "light_overlay",
+   "name": "Light Overlay",
+   "summary": "1:1 Light Overlay & MiniHUD (F7): visualizes mob-spawnable blocks with 3D Yellow (night spawn) and Red (always/cave spawn) crosses (X) or 3D light level numbers",
+   "description": "A 1:1 native Rust port of Light Overlay and MiniHUD's F7 Light Level Overlay for Horizon. Press F7 during gameplay to scan nearby spawnable block surfaces and render depth-tested 3D markers directly on block tops. Red markers indicate blocks where hostile mobs can spawn at any time (caves/indoor darkness), Yellow markers indicate blocks where hostile mobs can spawn at night, and optional Green markers show safe blocks. Supports Crosses (X), 3D Numbers (0-15), or Both, with configurable scan radius (8 to 20 blocks) and Modern (== 0) or Legacy (<= 7) spawn thresholds.",
+   "authors": [
+    "CayMac"
+   ],
+   "tags": [
+    "light-level",
+    "mob-spawning",
+    "overlay",
+    "minihud",
+    "port"
+   ],
+   "icon": "https://horizon-rust.github.io/horizon-mods/icons/light_overlay.png",
+   "version": "1.0.0"
+  },
+  {
+   "id": "living_camera",
+   "name": "Living Camera",
+   "summary": "A camera that moves with you: it leans into strafes, sways on turns, dips on landing and bobs with your steps",
+   "description": "A camera that moves with you. It leans into strafes, tips as you jump and fall, sways on fast turns, dips when you land, bobs with your steps and breathes while you stand still. Everything runs on springs, so the camera eases into each motion and settles back with a little weight instead of snapping.\n\n- **Strafe and forward lean**: the camera rolls into sideways movement and tips slightly while running.\n- **Turn sway**: fast mouse turns tilt the view.\n- **Jump and fall tilt**: the view lifts going up and dips coming down.\n- **Landing dip**: a hard landing bumps the camera down, then it springs back.\n- **Step bob**: a soft bounce in step with your walking, on top of vanilla's.\n- **Idle breathing** and **Speed FOV** (off by default).\n- **Hand sway**: the held item lags behind fast turns and leans with the camera.\n- **Presets** (Subtle, Default, Cinematic, PvP), **damage shake**, and calmer effects **while aiming** or **riding mounts**.\n\nEvery effect has its own strength (OFF to 200%), plus overall intensity, smoothness and bounce presets, how much stays while swimming or flying, when fast travel fades it out (elytra, boats, minecarts, so it stays out of flight mods' way) and the lean direction. All in Options > Mods > Living Camera, with a key to toggle it in game.\n\nClient side only: it works in single player and on any server. It reads only your own position, view and the block at your eyes, with no network or file access beyond its own settings.\n\nSource: https://github.com/selfmonoraque5/living-camera\n\nInspired by Camera Overhaul by Mirsario (https://github.com/Mirsario/Minecraft-CameraOverhaul). Written from scratch for Horizon: it contains none of Camera Overhaul's code or assets and is not made or endorsed by Mirsario.",
+   "authors": [
+    "selfmonoraque5"
+   ],
+   "tags": [
+    "camera",
+    "immersion",
+    "client-side",
+    "animation",
+    "fov",
+    "view-bobbing"
+   ],
+   "icon": "https://horizon-rust.github.io/horizon-mods/icons/living_camera.png",
+   "version": "1.1.0"
+  },
+  {
+   "id": "livingmotion",
+   "name": "LivingMotion",
+   "summary": "Punchy moves ported into a hnmod.",
+   "description": "Makes ur avatar animated in 3rd person. simmilar to punchy moves.",
+   "authors": [
+    "bart"
+   ],
+   "tags": [
+    "punchy",
+    "animation",
+    "3rdperson"
+   ],
+   "icon": "https://horizon-rust.github.io/horizon-mods/icons/livingmotion.png",
+   "version": "1.2.0"
+  },
+  {
+   "id": "minimap",
+   "name": "Minimap",
+   "summary": "A map of the world around you in a corner of the screen.",
+   "description": "Horizon's own minimap, formerly an extra in Options > Horizon Extras.\n\n- A map of the land around you, drawn like a map item: vanilla's map colours with their height shading and water depth, and your arrow.\n- Underground, under a roof and in the Nether it maps the floor around your height.\n- Settings: Options > Mods > Minimap > Settings (corner; size; square or round; zoom, 0.5 to 4 blocks per pixel; turn with the player).\n\nIt shows a map in a corner of the screen: nothing else.\n\nNow a native mod (2.0.0): built into the game by the launcher, on the Horizon you play, like any native mod\n(install it on the launcher's Mods page, then press Build there). Your settings carry over from 1.0.0. Turn it off in\nOptions > Mods: it rests at once, and the next build leaves it out. Its source is\n[horizon-mods/native/minimap](https://github.com/horizon-rust/horizon-mods/tree/main/native/minimap).\n",
+   "authors": [
+    "Horizon"
+   ],
+   "tags": [
+    "minimap",
+    "map",
+    "navigation",
+    "hud"
+   ],
+   "icon": "https://horizon-rust.github.io/horizon-mods/icons/minimap.png",
+   "version": "2.0.0"
+  },
+  {
+   "id": "motion_blur",
+   "name": "Motion Blur",
+   "summary": "Blurs what moves: mobs, players, items and vehicles along their own motion, with optional camera blur.",
+   "description": "Moving mobs, players, items, minecarts and boats blur along their own motion. The camera's motion (turning, walking) can blur too, and is off by default.\n\nEach frame the mod works out every pixel's motion since the last frame (the world's from the depth buffer and the camera, entities from last frame's vertices), finds the largest motion near each tile, and gathers along it with depth-aware weights (McGuire et al., \"A Reconstruction Filter for Plausible Motion Blur\", 2012).\n\nSettings are in Options → Mods → Motion Blur: strength for moving things and the camera, shutter angle or a fixed exposure, the longest blur, quality, blurring yourself in third person, and a view that shows each pixel's motion.",
+   "authors": [
+    "levzzz5154"
+   ],
+   "tags": [
+    "motion-blur",
+    "post-processing",
+    "graphics",
+    "visual"
+   ],
+   "icon": "https://horizon-rust.github.io/horizon-mods/icons/motion_blur.png",
+   "version": "0.1.0"
+  },
+  {
+   "id": "movement_status",
+   "name": "Movement Status",
+   "summary": "Better toggle Sprint/Sneak display functionality",
+   "description": "# Movement Status\n\nA lightweight native HUD for Horizon that shows your current movement state in the corner of the screen.\n\nIt reads the live player state (sprinting, sneaking, flying, elytra gliding) and the physical vs. logical key state so it can correctly distinguish between a key that is being held and a key that is toggled via vanilla’s Toggle Sprint / Toggle Crouch options.\n\n## Features\n\n- Live movement status in the bottom-left corner:\n  - `Sprint [Held]` / `Sprint [Toggled]`\n  - `Sneak [Held]` / `Sneak [Toggled]`\n  - `Flying [Creative]` / `Flying [Elytra]`\n- Multiple states can be shown at once (sprint + sneak, etc.)\n- Optional semi-transparent background box\n- Respects vanilla Toggle Sprint and Toggle Crouch settings\n- Uses the real physical key state so the Held/Toggled labels stay accurate\n\n## Requirements\n\n- Horizon (Minecraft: Java Edition 26.3)\n- Native mod support enabled in the launcher\n\n## Installation\n\n1. Install the mod from the launcher’s Mods page (or drop the `.hnmod` into `horizon-native-mods/`).\n2. Click **Build** and confirm the native-code warning.\n3. Once built, turn the mod on under Options → Mods.\n\n## Settings\n\nA single toggle controls the background box. Open Options → Mods → Movement Status → Settings to turn it on or off.\n\n## Notes\n\nThis is a status HUD only. It does not change movement, keybinds, or gameplay. It simply reports what the game is already doing.\n\nThe physical key checks currently use the vanilla defaults (Left Control for sprint, Left Shift for sneak). Custom keybinds may show the wrong Held/Toggled label until a future update maps the bound key.\n\n## License\n\nMIT",
+   "authors": [
+    "Unidex101"
+   ],
+   "icon": "https://horizon-rust.github.io/horizon-mods/icons/movement_status.png",
+   "version": "0.1.1"
+  },
+  {
+   "id": "projecte_core",
+   "name": "ProjectE for Horizon",
+   "summary": "Unofficial port of ProjectE: EMC, transmutation tables, collectors, condensers, dark and red matter tools and armour.",
+   "description": "**This mod has two parts, and you need both.** Install this one, the native part, and [ProjectE for Horizon (assets)](https://playhorizon.dev/mods/projecte), then press Build.\n\nAn **unofficial** port of [ProjectE](https://github.com/sinkillerj/ProjectE) to Horizon. It isn't made or supported by the ProjectE team, so please report its bugs here, not to them.\n\nBreak items down into EMC and turn that EMC into new items:\n\n- **Transmutation Table and Tablet**: burn an item to learn it and gain its EMC, then make more of anything you've learned. Your EMC and knowledge are saved per player.\n- **Philosopher's Stone**: changes blocks in the world, with charge and modes, and works as a crafting tool.\n- **EMC devices**: Energy Collectors MK1-3, Anti-Matter Relays MK1-3, Energy Condensers MK1 and MK2, Dark and Red Matter Furnaces, Klein Stars.\n- **Fuels and matter**: Alchemical Coal, Mobius and Aeternalis Fuel, Dark and Red Matter, covalence dusts.\n- **Gear**: unbreakable dark and red matter tools that dig wider as they charge, the katar and morning star, dark matter, red matter and gem armour.\n- **Trinkets**: rings, stones, amulets, the Repair Talisman, Gem of Eternal Density, Watch of Flowing Time, divining rods, lenses, the pedestal, the Interdiction Torch, Nova explosives, Alchemical Chest and the 16 Alchemical Bags.\n\nKeys: V charge, G mode, C extra function, R fire projectile.\n\nThe menus are chest and furnace screens, not ProjectE's own. Some things are simplified or missing: Swiftwolf's Rending Gale gives speed and slow falling, not flight; projectiles act at once; rings cost no EMC; the Mercurial Eye isn't ported. EMC values are a fixed table worked out from ProjectE's defaults, so they don't adapt to other mods. The [README](https://github.com/d3xc0/projecte-horizon#simplified-or-left-out) has the full list.\n\nNative source mod: install it on the launcher's Mods page, press Build there, and confirm the native-code warning. It runs with your account's permissions.\n\n**Credits.** All credit for the design goes to [ProjectE](https://github.com/sinkillerj/ProjectE) (MIT, Copyright (c) 2020 Sin Tachikawa) by SinKillerJ, pupnewfster, MaPePeR, MozeIntel and its contributors, a rewrite of Equivalent Exchange 2 by x3n0ph0b3. Its recipes, EMC conversions and names are used under its MIT licence; see [CREDITS.md](https://github.com/d3xc0/projecte-horizon/blob/main/CREDITS.md).\n\nThe textures are original work made for this port, inspired by ProjectE's look; ProjectE's and EE2's art isn't included. No Minecraft code or assets are included. MIT licensed.",
+   "authors": [
+    "Arthur Black"
+   ],
+   "tags": [
+    "emc",
+    "transmutation",
+    "alchemy",
+    "tools"
+   ],
+   "icon": "https://horizon-rust.github.io/horizon-mods/icons/projecte_core.png",
+   "version": "0.1.0"
+  },
+  {
+   "id": "pvp_music",
+   "name": "PVP Music",
+   "summary": "Battle music during combat: fades, death fades and the phased two-half track switch, the original's behavior kept.",
+   "description": "**A native Horizon mod**: the launcher builds it into the game (install it on the launcher's Mods page, then press Build there). Native mods are not sandboxed and run with your account's rights, so read the source before you build it. Pinned to the Horizon tree this was built against.\n\n- Mutual-combat detection: attacks on and by players and mobs are remembered for 5 s; a mob we hit that then hits us starts a mob battle.\n- A landed hit on a player starts a player battle; explosion and bad-respawn-point hurts pull in combat within 12 blocks; a wither within 30 blocks starts a fight.\n- The battle track fades in and out, death fades run at the configured multiplier, and the phased two-half music switches at low health on a beat. Battles of 30 s or more end with the short end sound, of 60 s or more with the long end sound.\n- `/pvpmusic` drives every setting the original's config screen kept.\n\nSounds: the `.hnmod` carries code only, so the four tracks ship as a companion resource pack on the same release (`pvp-music-sounds-1.2.0.zip`, the original's CC0 assets). Install it as a resource pack and the music plays; without it the mod is silent.\n\nPort of [PvP Music](https://modrinth.com/mod/Tkf0xIjA) by Countered (CC0-1.0); credited upstream, original license preserved. The sound-asset gap is documented in the port README and tracked on horizon-rust/horizon.\n",
+   "authors": [
+    "sparticle62ops"
+   ],
+   "tags": [
+    "combat",
+    "music",
+    "audio",
+    "qol"
+   ],
+   "icon": "https://horizon-rust.github.io/horizon-mods/icons/pvp_music.png",
+   "version": "1.2.0"
+  },
+  {
+   "id": "rarity_borders",
+   "name": "Rarity Borders",
+   "summary": "Adds clean, vanilla-style colored borders to inventory items based on their rarity.",
+   "description": "Rarity Borders makes item rarity easier to recognize with subtle, pixel-perfect borders inspired by Minecraft's vanilla interface.\n\n**Features:**\n- Colored borders for Uncommon, Rare, and Epic items.\n- Clean square outlines with a highlighted bottom edge.\n- Works with inventory and container slots.\n- Optional borders for Common items and the hotbar.\n- In-game settings to toggle features.\n- Lightweight, client-side native Rust mod.",
+   "authors": [
+    "Xariami"
+   ],
+   "tags": [
+    "rarity",
+    "borders",
+    "inventory",
+    "items",
+    "equipment",
+    "vanilla",
+    "client-side"
+   ],
+   "icon": "https://horizon-rust.github.io/horizon-mods/icons/rarity_borders.png",
+   "version": "0.1.1"
+  },
+  {
+   "id": "recipes",
+   "name": "Recipes",
+   "summary": "Every item beside your inventory, with its recipes and uses.",
+   "description": "Horizon's own recipe viewer.\n\n- Every item sits in a panel beside your inventory and container screens, with a search box: words in the name or the id, `@minecraft` for a namespace, `#logs` for a tag.\n- R over an item (in the panel, in any slot, or in a recipe) shows its recipes, and U shows its uses. A click does the same: a left click for recipes, a right click for uses. Both keys can be rebound in Controls.\n- Recipes have a tab for each station: crafting table, furnace, blast furnace, smoker, campfire, stonecutter, smithing table and brewing stand. Back returns through the pages you opened.\n- + beside a crafting recipe you know fills the crafting grid, as the recipe book does.\n- In creative mode, turn on \"Click gives items\" in its settings: a click on an item in the panel then gives you one, and a right click gives a stack.\n- On servers that are not Horizon, it shows this game's own 26.3 recipes. Which recipes you know, and what + can fill, follow the server's recipe book.\n\nIt reads the game's items and recipes, hears its own keys and your clicks on the panel, and places recipes or gives items only when you ask: nothing else.\n\nNow a native mod (2.0.0): built into the game by the launcher, on the Horizon you play, like any native mod\n(install it on the launcher's Mods page, then press Build there). It needs Horizon's native hook points version 2, in the\nNightlies from 4baa571 on. Your settings and keys carry over from 1.0.0. Turn it off in Options > Mods: it rests at\nonce, and the next build leaves it out. Its source is\n[horizon-mods/native/recipes](https://github.com/horizon-rust/horizon-mods/tree/main/native/recipes).\n",
+   "authors": [
+    "Horizon"
+   ],
+   "tags": [
+    "recipes",
+    "item-browser",
+    "recipe-viewer",
+    "search"
+   ],
+   "icon": "https://horizon-rust.github.io/horizon-mods/icons/recipes.png",
+   "version": "2.0.0"
+  },
+  {
+   "id": "resourcify",
+   "name": "ResourcifyHorizon",
+   "summary": "Resourcify for Horizon",
+   "description": "Find and install resource packs from Modrinth without leaving the game. By tariksabanuz.\n\nA **+** button appears in the top right of the Resource Packs screen. It opens a browser with:\n\n- a search box that searches while you type, a sort button (Relevance, Downloads, Newest, Updated) and a switch between \"for this game version\" and \"all versions\";\n- a list of packs with pictures, authors and download counts, loaded as you scroll;\n- a detail pane with the versions of the selected pack and an **Install** button.\n\nInstalling downloads the file from Modrinth's own server (`cdn.modrinth.com` only), checks it against the SHA-1 hash Modrinth provides, and saves it in `resourcepacks/`. Nothing is turned on for you.\n\nSource code: https://github.com/tariksabanuz/ResourcifyHorizon",
+   "authors": [
+    "tariksabanuz"
+   ],
+   "tags": [
+    "resource-packs",
+    "modrinth",
+    "browser",
+    "download"
+   ],
+   "icon": "https://horizon-rust.github.io/horizon-mods/icons/resourcify.png",
+   "version": "0.1.2"
+  },
+  {
+   "id": "rider_hud",
+   "name": "Rider HUD",
+   "summary": "Improves the Minecraft HUD while riding mounts, keeping hunger, mount health, and experience visible.",
+   "description": "Rider HUD improves the vanilla Minecraft interface while riding horses and other mounts.\n\n**Features:**\n- Displays player hunger and mount health at the same time.\n- Keeps the experience bar visible while riding.\n- Shows the jump bar when charging a jump.\n- Preserves the familiar vanilla Minecraft HUD style.\n- Includes in-game settings to toggle features.\n\nLightweight, client-side native mod built in Rust for Horizon.",
+   "authors": [
+    "Xariami"
+   ],
+   "tags": [
+    "hud",
+    "mounts",
+    "horse",
+    "riding",
+    "utility",
+    "client-side"
+   ],
+   "icon": "https://horizon-rust.github.io/horizon-mods/icons/rider_hud.png",
+   "version": "0.1.0"
+  },
+  {
+   "id": "rmotd",
+   "name": "RMotd",
+   "summary": "Rotating server list MOTDs, managed in game with /randommotd and /motd.",
+   "description": "A Horizon port of [adasjusk's RMotd](https://github.com/adasjusk/RMotd), the rotating MOTD plugin.\n\n- The MOTD in the server list changes every 10 seconds, through the list in `config/rmotd.json` (the Fabric build's file).\n- `/randommotd` turns rotation on and off.\n- `/motd create <name> <motd>` adds an MOTD, `/motd reload` reads the file again (operator level 2).\n- MOTDs take `&` colour codes.\n\nIt sets the MOTD of a world opened to LAN. The server list ping shows the rotation, the LAN broadcast keeps the first one. Horizon has no MOTD hook point, so a support module in `horizon_client::lan` writes the private MOTD field of the LAN server. Its injections are all hook points, but that field is not a stable API, so a later Nightly can break the build. Runs where the world is hosted: single player and worlds opened to LAN (Horizon's dedicated server cannot build native mods yet). Native mods run with the player's account permissions and are not sandboxed.\n\nSource: `horizon/` in https://github.com/Vakarux12/RMotd, a fork of the original. CC-BY-SA-4.0, the original's licence, with a grant for Horizon's reviewers in `horizon/REVIEW-GRANT.md`.\n",
+   "authors": [
+    "adasjusk",
+    "Vakarux12"
+   ],
+   "tags": [
+    "motd",
+    "server-list",
+    "lan",
+    "commands",
+    "port"
+   ],
+   "icon": "https://horizon-rust.github.io/horizon-mods/icons/rmotd.png",
+   "version": "1.0.0"
+  },
+  {
+   "id": "schematics",
+   "name": "Schematics",
+   "summary": "Load schematics in every common format, see them as ghost blocks in the world, check what is missing, paste them and save areas.",
+   "description": "Schematics for Horizon.\n\nReads `.litematic`, `.schem` (Sponge versions 1 to 3), `.schematic` (numeric ids of 1.12 and before), `.nbt`, `.mcstructure` (Bedrock, translated on a best-effort basis) and `.bp`. Put files in `schematics/` in the game folder.\n\n- **M**: the menu: load a file, then move, turn, mirror or paste the placement.\n- **In the world**: missing blocks show as see-through ghosts, wrong blocks red, wrong states orange, extra blocks magenta.\n- **Materials**: what it takes, what is missing and what you carry.\n- **Save area**: a stick's left and right clicks set two corners; save them as `.litematic`, `.schem` or `.nbt`.\n- **Page Up / Page Down**: one layer at a time.\n- **/schematics** (or **/sch**): the same from chat.\n\n**What it does and doesn't do:** it reads the game's world, block models and player, and draws over the world, the HUD and its own screen. It reads and writes schematic files in `schematics/` and its settings and placements in `horizon-mods/.horizon-mod-data/schematics/`. It opens no network connections. Pasting in single player runs on the world's own server; on a server it sends `/setblock` and `/summon` commands, which need permission there.\n\nWritten from scratch for Horizon. Pinned to Horizon `c9d474d`, because it reads the game's block models, atlas and world, and the single player server's levels.",
+   "authors": [
+    "Nirokx"
+   ],
+   "tags": [
+    "schematics",
+    "building",
+    "litematic",
+    "schem",
+    "ghost-blocks",
+    "material-list"
+   ],
+   "icon": "https://horizon-rust.github.io/horizon-mods/icons/schematics.png",
+   "version": "1.0.0"
+  },
+  {
+   "id": "seedcrackerx",
+   "name": "SeedCrackerX",
+   "summary": "SeedCrackerX for Horizon: finds the world seed of a server from the structures you walk past, outlined through walls.",
+   "description": "A port to Rust of [SeedCrackerX](https://github.com/19MisterX98/SeedcrackerX) 2.16.2 for Horizon, written from the Java source together with the parts of the SeedFinding libraries it calls. Walk near structures (igloos, temples, monuments, shipwrecks, end cities, buried treasure, outposts, trial chambers, desert wells, end gateways, emerald ore, dungeons) and they are outlined through walls; with enough of them the world seed is printed in chat. Commands are `/seedcracker ...` as in the Java (`render outlines`, `finder`, `data`, `cracker`, `version`, `database`, `gui`), and the settings are on the mod's page in Options > Mods. PARITY.md in the source lists every Java file and what became of it.\n\nWhat it does not do: the Dungeon and Warped Fungus cracking of Minecraft 1.17 and older (it needs a lattice solver) and the biome-based world seed search. A world seed is found from structures and the hashed seed the server sends. Like the Java mod it shows information the game does not draw by itself, so some servers do not allow it: that choice is the player's.\n\nFor reviewers:\n- Network, in two places, both in `src/game/seedcracker.rs` and both the Java mod's own behaviour: (1) once when the mod starts, one HTTP GET of the public Google Sheet of known server seeds (`DATABASE_URL`, `src/config/database.rs`) on a background thread, always, with no switch; (2) only if the player switches `databaseSubmits` on (off by default), when a seed is cracked on a server with more than 10 players: the mod asks the game's own `horizon_client::auth::join_server` to prove the account to Mojang's session service under the id `seedcrackerx`, then posts the server address, dimension, seed, version and the player's name (or a hash of it) to the sheet's script (`DATABASE_POST_URL`). The mod never reads or stores the access token. Nothing else opens a socket.\n- It writes only under `horizon-mods/.horizon-mod-data/seedcrackerx/`: `seedcracker.json` (settings, the Java's layout), `known_seeds.txt` and a folder `SeedCracker saved structures`; it reads the same files back.\n- It starts an operating system program in one place, `open_uri` in `src/game/seedcracker.rs` (`rundll32` on Windows, `open` on macOS, `xdg-open` on Linux): `/seedcracker database` and the links on its settings page open the seed sheet in the browser.\n- The `.hnmod` is built from the source of the tagged release, `python tools/pack.py`, and is the same file every time (line endings are written as LF). It carries `LICENSE` and `NOTICE.md`.\n- MIT, like every original it is a port of; `NOTICE.md` lists SeedCrackerX and the SeedFinding libraries it calls with their copyright notices. Tests: `cargo test` (a diff against 7.3k lines produced by the real Java libraries, the cracker, the finders).\n- Pinned to Nightly 2026-11-04 (6475f62): the launcher builds the game on that commit, and so does not depend on the Nightly the player has.",
+   "authors": [
+    "luhnox (this port); SeedCrackerX by 19MisterX98 and the SeedCrackerX contributors; the SeedFinding libraries by KaptainWutax and Neil and Matthew Bolan"
+   ],
+   "icon": "https://horizon-rust.github.io/horizon-mods/icons/seedcrackerx.png",
+   "version": "0.2.3"
+  },
+  {
+   "id": "server_flags",
+   "name": "Server Flags",
+   "summary": "A flag beside each server in the Multiplayer list for the country it's hosted in",
+   "description": "A small flag beside each server in your Multiplayer list for the country it's hosted in. Hover the flag for the country's name, and pick servers close to you for a better ping at a glance.\n\n- **Pixel-art flags** after each server's name, or on its icon when the name is long.\n- **67 drawn flags**, the countries servers are most often hosted in; any other country shows its two-letter code.\n- **Country name on hover**, like \"Germany (DE)\".\n- Servers on your own network are never looked up.\n\nSettings in Options > Mods > Server Flags: lookups on/off, flag position, hover tooltip, codes for countries without a flag, reset.\n\n- A grey **?** marks a server whose location can't be shown; hover it for why (an ad blocker blocking the lookup, DDoS protection, or a wrong address).\n\n**Privacy:** to know where a server is, the mod resolves its address and sends only that IP address to https://api.country.is (open source, no account or key), which answers with a country code. Once per server per game session, in the background, only while \"Look up server locations\" is on. Nothing about you, your account or your other servers is sent; with the setting off, nothing is sent at all.\n\nHorizon has no hook point for the server list, so besides hook points this mod hooks the list's own tooltip pass (Screen::draw_tooltip in multiplayer.rs) and lays the flags out as the list lays out its rows. A later Horizon that changes the server list needs an update of this mod.\n\nSource: https://github.com/selfmonoraque5/server-flags\n\nInspired by Server Country Flags by Khajiitos (https://modrinth.com/mod/server-country-flags). Written from scratch for Horizon: it contains none of its code or images (the flags are drawn in code) and is not made or endorsed by Khajiitos. Locations by country.is.",
+   "authors": [
+    "selfmonoraque5"
+   ],
+   "tags": [
+    "servers",
+    "multiplayer",
+    "flags",
+    "country",
+    "client-side"
+   ],
+   "icon": "https://horizon-rust.github.io/horizon-mods/icons/server_flags.png",
+   "version": "1.0.1"
+  },
+  {
+   "id": "serverify",
+   "name": "Serverify",
+   "summary": "Find Minecraft servers and add them to your Multiplayer list, from a page in your web browser.",
+   "description": "Serverify is a server browser. Press **F8** (or type `/serverify web`, or press the button on the mod's settings page) and your web browser opens a page with a search box, a category menu and cards showing each server's picture, address, player count and country. Press **Add** and the server goes to the top of your Multiplayer list. Then join it from Horizon's own Multiplayer screen.\n\nIt is the Horizon version of [Serverify](https://github.com/Louchatfroff/serverify), the server browser for Fabric, Quilt, Forge and NeoForge, by the same author.\n\n## What it does\n\n- Opens a server browser page in your web browser: search, 22 categories, an offline-mode filter and an **Add** button.\n- Adds servers to `servers.dat` in the game folder, with the name cleaned of colour codes.\n- Adds chat commands: `/serverify web`, `list [category]`, `search <words>`, `next`, `prev`, `add <number>` and `categories`.\n- Adds a row in Options > Mods with a rebindable key (F8 by default) and a settings page with two buttons: open the browser, and **Offline-mode servers only** (on by default).\n\nHorizon joins servers that check Minecraft accounts with your Microsoft sign-in, like the official launcher. This version still turns the offline-mode filter on by default, from a time when Horizon couldn't: turn it off to see all servers.\n\n## What it contacts\n\n- **Modrinth.** The game asks `api.modrinth.com` for the server list and `cdn.modrinth.com` for server pictures, only when you look for servers.\n- **Three listing sites.** With the offline-mode filter off (and for top-mc-servers.net's list of cracked servers when it is on), the game fetches public pages of `top-mc-servers.net`, `minecraftservers.org` and `minecraft-mp.com`, and their server pictures. The game builds those addresses itself. The page reads the fetched pages with the browser's own HTML parser.\n- **A page on your computer.** The first time you open the page, the mod starts a small web server on `127.0.0.1` (this computer only, never the network) with a random secret in its address, made for each session. The page talks only to that server. A request with another host name, another origin or no secret is refused. The server can show the list, send a picture and add one server to your Multiplayer list.\n- It sends no data about you, and makes no request at any other time.\n\n## What it does not do\n\n- It does not run any code from the sites it reads, and it does not send your data anywhere.\n- It does not change anything but `servers.dat` (one entry at a time) and its own settings in `horizon-mods/.horizon-mod-data/serverify/`.\n- It does not draw screens or buttons in the game: Horizon's hook points have none, so the screen is your web browser.\n- It cannot make Horizon join servers that check Minecraft accounts.\n- Adding a server rewrites `servers.dat`, which drops the hidden direct-join entries Horizon keeps. Your saved servers stay.\n\n## Install\n\nInstall it from the launcher's Mods page, then press Build there, and play that instance. Guide: https://github.com/Louchatfroff/serverify/tree/main/horizon/serverify#readme\n\nNative mods are not sandboxed. The source is public and licensed GPL-3.0-only: https://github.com/Louchatfroff/serverify/tree/main/horizon/serverify",
+   "authors": [
+    "Louchatfroff"
+   ],
+   "tags": [
+    "server-list",
+    "servers",
+    "multiplayer",
+    "browser"
+   ],
+   "icon": "https://horizon-rust.github.io/horizon-mods/icons/serverify.png",
+   "version": "0.1.0"
+  },
+  {
+   "id": "simple_voice_chat",
+   "name": "Simple Voice Chat client (unofficial)",
+   "summary": "Client-side voice chat: mic capture, Opus, positional mixing, push-to-talk, groups. Speaks Simple Voice Chat 2.6.x protocol (compat version 20).",
+   "description": "**A native Horizon mod**: the launcher builds it into the game (install it on the launcher's Mods page, then press Build there). Native mods are not sandboxed and run with your account's rights, so read the source before you build it. Pinned to the Horizon tree this was built against.\n\n- **Mic capture + playback** through the platform's audio stack, Opus encode/decode (libopus vendored, Xiph BSD).\n- **UDP voice** with positional mixing, so players hear each other from where they stand.\n- **Push-to-talk**, voice **groups**, and activation controls.\n- Speaks the **Simple Voice Chat 2.6.x** protocol (compatibility version 20). Tested so far only against Horizon's own voicechat-server, not yet against the Simple Voice Chat plugin on a Paper or Fabric server.\n\nClean-room reimplementation of the client half of [Simple Voice Chat](https://modrinth.com/mod/simple-voice-chat) by henkelmax; not affiliated, no code or assets from it. Original implementation, MIT. Includes libopus (Xiph, BSD-style license).\n",
+   "authors": [
+    "sparticle62ops"
+   ],
+   "tags": [
+    "voice",
+    "voicechat",
+    "opus",
+    "multiplayer"
+   ],
+   "icon": "https://horizon-rust.github.io/horizon-mods/icons/simple_voice_chat.png",
+   "version": "1.0.0"
+  },
+  {
+   "id": "speedrun_timer",
+   "name": "Speedrun Timer",
+   "summary": "Speedrun Timer Is a mod made to count the time it took you to beat the Game",
+   "description": "An RTA speedrun timer in a corner of the screen, `HH:MM:SS.mmm` with live milliseconds, as a native mod for\nHorizon.\n\n- **Starts** on your first move after a world loads, and **stops** when you take the exit portal back from the End.\n  Dying is not a finish: the run keeps counting.\n- **Resets** on its own when you leave a world, ready for the next run.\n- **Saves** every finished run, and your personal best, in the mod's data folder; its settings page has a button to\n  open it.\n- `/speedrun`, `/speedrun start`, `/speedrun stop` and `/speedrun reset`.\n\nPick its corner in Options > Mods > Speedrun Timer > Settings. It hides with F1 and keeps clear of F3.",
+   "authors": [
+    "Demerobit"
+   ],
+   "tags": [
+    "speedrun",
+    "timer",
+    "rta",
+    "hud"
+   ],
+   "icon": "https://horizon-rust.github.io/horizon-mods/icons/speedrun_timer.png",
+   "version": "1.0.1"
+  },
+  {
+   "id": "status_effect_hud",
+   "name": "Status Effect HUD",
+   "summary": "1:1 Status Effect Bars & Inventory HUD+ Potion HUD: displays active potion/beacon effects with icons, Roman numeral amplifiers, color-coded mm:ss countdown time",
+   "description": "A 1:1 native Rust port of Status Effect Bars and Inventory HUD+ (Potion HUD) for Horizon. Renders all active potion and beacon status effects directly on the HUD during gameplay with their official mob_effect sprites, translated effect names, and Roman numeral potency levels (II, III, IV). Includes color-coded mm:ss countdown timers (White for >30s, Yellow for 10-30s, Flashing Red for <=10s urgent expiration warning, and Aqua infinity symbol for permanent effects) alongside smooth duration progress bars colored in each effect's authentic vanilla potion color.",
+   "authors": [
+    "CayMac"
+   ],
+   "tags": [
+    "hud",
+    "status-effects",
+    "potions",
+    "timers",
+    "port"
+   ],
+   "icon": "https://horizon-rust.github.io/horizon-mods/icons/status_effect_hud.png",
+   "version": "1.0.0"
+  },
+  {
+   "id": "toggle_sprint",
+   "name": "Toggle Sprint",
+   "summary": "1:1 Better Sprinting & Lunar ToggleSprint HUD: toggle sprint and toggle sneak with [Sprinting (Toggled)] / [Key Held] / [Flying] status HUD and configurable Cre",
+   "description": "A 1:1 native Rust port of Better Sprinting and the Lunar/Badlion ToggleSprint HUD for Horizon. Allows toggling continuous sprint (V or vanilla Sprint key) and sneak (C) without holding keys down, while automatically pausing toggled sneak inside inventory and chest screens so Shift-clicking items works normally. Renders the classic movement status HUD ([Sprinting (Toggled)], [Sprinting (Key Held)], [Sneaking (Toggled)], [Sneaking (Key Held)], [Flying (2.0x Boost)], [Swimming], [Gliding (Elytra)], [Riding]) and includes a configurable Creative Fly Speed Boost multiplier (1.0x to 4.0x).",
+   "authors": [
+    "CayMac"
+   ],
+   "tags": [
+    "toggle-sprint",
+    "toggle-sneak",
+    "hud",
+    "movement",
+    "pvp"
+   ],
+   "icon": "https://horizon-rust.github.io/horizon-mods/icons/toggle_sprint.png",
+   "version": "1.0.0"
+  },
+  {
+   "id": "voltz_core",
+   "name": "Voltz",
+   "summary": "Machines, power, pipes, a nuclear reactor, missiles, turrets and force fields: the classic Voltz tech pack remade for Horizon.",
+   "description": "**This mod has two parts, and you need both.** Install this one, the native part, and [Voltz (assets)](https://playhorizon.dev/mods/voltz), then press Build.\n\nVoltz is a big tech and explosives pack for Horizon, remade from the spirit of the classic Voltz modpack. It adds working machines, power, automation and weapons, each set in its own creative tab:\n\n- **Power**: wire, coal, heat, wind, solar and geothermal generators, batteries and energy storage.\n- **Processing**: electric furnace, crusher, compressor, extractor, enrichment chamber, infuser, alloy smelter, SAG mill, smeltery, coke oven, blast furnace, centrifuge and more, with survival recipes.\n- **Automation**: item pipes, quarry, mining well, and an ME-style storage network with drives, a terminal and an import bus.\n- **Nuclear**: a 9x6 grid reactor with fuel rods, vents, heat exchangers and coolant cells. Let it overheat and it melts down.\n- **Explosives and missiles**: 16 explosive blocks, 12 missiles, a launcher and a target designator.\n- **Defence**: force field projector, four turrets, guns and ammo.\n- **Worldgen**: new ores, plus tools, armor and six chest tiers.\n\nNative source mod: install it on the launcher's Mods page, press Build there, and confirm the native-code warning. It runs with your account's permissions. It is pinned to one Horizon Nightly and Horizon Mixins revision.\n\n**Credits.** All code and art here is new, written for Horizon. Nothing was copied or decompiled from another mod. It follows the gameplay of mods from the Voltz pack, and the full list with authors, licences and links is in [CREDITS.md](https://github.com/d3xc0/voltz-horizon/blob/main/CREDITS.md): Mekanism, ICBM Classic, Ender IO, Tinkers' Construct, BuildCraft, Applied Energistics 2, Iron Chests, IndustrialCraft 2, Railcraft, Atomic Science, Modular Force Field System, Open Modular Turrets and Techguns. Not affiliated with any of them.\n\nNo Minecraft code or assets are included. MIT licensed.",
+   "authors": [
+    "Arthur Black"
+   ],
+   "tags": [
+    "machines",
+    "energy",
+    "explosives",
+    "automation",
+    "reactor"
+   ],
+   "icon": "https://horizon-rust.github.io/horizon-mods/icons/voltz_core.png",
+   "version": "0.3.0"
+  }
+ ]
+}
